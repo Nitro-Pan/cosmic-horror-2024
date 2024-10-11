@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cosmic-horror-2024", "cosmic-horror-2024.csproj", "{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{B8C2DF2E-B0C5-4FCB-89E1-C9873C35F1EB}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg3wd0xwwiene"]
+
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_ctu0p"]
+[ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/basic_attack.tres" id="2_spjqj"]
+[ext_resource type="Texture2D" uid="uid://ccwoklb7awwqy" path="res://sprites/lime-fish.png" id="3_jwgyq"]
+
+[node name="SomeCharacter" type="Node2D"]
+script = ExtResource("1_ctu0p")
+BaseHealth = 100.0
+BaseSpeed = 10.0
+BaseArmour = 5.0
+BaseAttacks = Array[Resource]([ExtResource("2_spjqj"), ExtResource("2_spjqj"), ExtResource("2_spjqj"), ExtResource("2_spjqj")])
+
+[node name="Lime-fish" type="Sprite2D" parent="."]
+position = Vector2(85, 58)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("3_jwgyq")
+flip_h = true

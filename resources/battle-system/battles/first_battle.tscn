@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://jc4af7ys8qs1"]
+
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/ActionManager.cs" id="1_ceyor"]
+[ext_resource type="PackedScene" uid="uid://ykirsocqtb2y" path="res://resources/battle-system/battles/attack_selector.tscn" id="2_1u40j"]
+[ext_resource type="PackedScene" uid="uid://cnrf37a01u6fd" path="res://resources/battle-system/battles/character_selector.tscn" id="3_3bx1j"]
+
+[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker")]
+script = ExtResource("1_ceyor")
+EnemyCharacters = NodePath("EnemySelector")
+AllyCharacters = NodePath("AllySelector")
+AttackPicker = NodePath("AttackSelector")
+
+[node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
+position = Vector2(606, 556)
+
+[node name="AllySelector" parent="." instance=ExtResource("3_3bx1j")]
+position = Vector2(2, 265)
+
+[node name="EnemySelector" parent="." instance=ExtResource("3_3bx1j")]
+position = Vector2(493, 87)

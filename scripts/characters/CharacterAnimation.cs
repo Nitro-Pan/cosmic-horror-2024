@@ -15,4 +15,9 @@ public partial class CharacterAnimation : Sprite2D
 	{
         
     }
+
+	public void SetColour(Color colour)
+	{
+        ((ShaderMaterial) Material).SetShaderParameter("colour", colour);
+    }
 }

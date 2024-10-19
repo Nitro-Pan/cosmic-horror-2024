@@ -21,6 +21,7 @@ shader_parameter/progress = 0.0
 shader_parameter/startOffset = 0.0
 shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_epmww"]
 font_size = 21

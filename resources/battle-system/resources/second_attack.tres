@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_21g07")
-CanHitSlots = PackedInt32Array(0, 1)
-UsableFromSlots = PackedInt32Array(2, 3)
+CanHitSlots = PackedInt32Array(2, 1, 0)
+UsableFromSlots = PackedInt32Array(2, 3, 1)
 IsFriendly = false
 Damage = 20.0
 Accuracy = 110.0

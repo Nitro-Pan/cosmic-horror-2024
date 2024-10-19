@@ -49,6 +49,7 @@ public partial class ActionManager : Node
 #if DEBUG
 			GD.Print($"Selected Character for attack:\n\tEnemy? {IsEnemyPicking}\n\t{Characters[ _selectedCharacterIndex ]}");
 #endif
+			OnCharacterChanged.Invoke(AttackingCharacter);
 		}
 	}
 	private BattleCharacter AttackingCharacter => Characters[ _selectedCharacterIndex ];
@@ -65,8 +66,11 @@ public partial class ActionManager : Node
     };
     [Export] public AttackPicker AttackPicker { get; set; }
 
+	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
+
 	public event Action<PickState> OnPickStateChangedForward;
 	public event Action<PickState> OnPickStateChangedBackward;
+	public event Action<BattleCharacter> OnCharacterChanged;
 
 	public override void _Ready()
 	{
@@ -86,6 +90,8 @@ public partial class ActionManager : Node
 
 		OnPickStateChangedForward += PickStateChangedForward;
 		OnPickStateChangedBackward += PickStateChangedBackward;
+		OnCharacterChanged += CharacterChanged;
+
 		SelectedPickState = PickState.PickingAttack;
 
 		base._Ready();
@@ -93,6 +99,13 @@ public partial class ActionManager : Node
 
 	public override void _Process(double delta)
 	{
+		if (EnemyTurnManager.ShouldProgressTurnState)
+		{
+			EnemyTurnManager.TurnStateHandled();
+			SelectedCharacterIndex++;
+			AttackPicker.Set(AttackingCharacter);
+		}
+
 		base._Process(delta);
 	}
 
@@ -224,6 +237,16 @@ public partial class ActionManager : Node
         }
     }
 
+	private void CharacterChanged(BattleCharacter character)
+	{
+		if (EnemyCharacters.ContainsAction(character))
+		{
+			SetProcessInput(false);
+			DoEnemyTurn();
+			SetProcessInput(true);
+		}
+	}
+
 	private void CompleteLoop()
 	{
 #if DEBUG
@@ -249,6 +272,13 @@ public partial class ActionManager : Node
 		GD.Print("-----BEGINNING OF TURN-----");
 #endif
 	}
+
+	private void DoEnemyTurn()
+	{
+        EnemyTurnManager.Set(AttackingCharacter, EnemyCharacters, AllyCharacters);
+        EnemyTurnManager.ProcessTurn();
+		// SelectedCharacterIndex++;
+    }
 
     private bool IsCharacterFriendly(BattleCharacter character)
 	{

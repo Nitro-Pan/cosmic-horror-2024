@@ -22,6 +22,8 @@ uniform float firstHalf: hint_range(0.0, 1.0) = 0.5;
 // How much of the right or bottom half of the texture is modified.
 uniform float secondHalf: hint_range(0.0, 1.0) = 0.5;
 
+uniform vec4 colour: source_color = vec4(1.0);
+
 void vertex() {
 	VERTEX += vec2(0, sin(TIME + startOffset) * bounceAmplitude);
 }
@@ -59,10 +61,10 @@ void fragment() {
 			if (againstWaveUv <= 0.0 || againstWaveUv >= 1.0) {
 				COLOR.a = 0.0;
 			} else {
-				COLOR = texColor;
+				COLOR = texColor * colour;
 			}
 		} else {
-			COLOR = texColor;
+			COLOR *= texColor * colour;
 		}
 	}
 }

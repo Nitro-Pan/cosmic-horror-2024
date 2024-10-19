@@ -29,18 +29,32 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
     {
         foreach (BattleCharacter character in ActionList)
         {
-            bool isValid = false;
+            character.SetSelectableState(false);
+        }
+
+        foreach (BattleCharacter character in GetValidCharactersForAttack(attack))
+        {
+            character.SetSelectableState(true);
+        }
+    }
+
+    public IReadOnlyList<BattleCharacter> GetValidCharactersForAttack(AttackAction attack)
+    {
+        List<BattleCharacter> validCharacters = new List<BattleCharacter>();
+
+        foreach (BattleCharacter character in ActionList)
+        {
             foreach (int slot in attack.CanHitSlots)
             {
                 if (character.BattlePosition == slot)
                 {
-                    isValid = true;
+                    validCharacters.Add(character);
                     break;
                 }
             }
-
-            character.SetSelectableState(isValid);
         }
+
+        return validCharacters;
     }
 
     public void ResetHighlights()

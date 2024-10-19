@@ -19,7 +19,7 @@ public abstract partial class BattleCharacter : Node2D
 	[Export] public float BaseArmour { get; protected set; }
     [Export] public Godot.Collections.Array<AttackAction> BaseAttacks { get; protected set; }
 	[Export] public Label HealthLabel { get; protected set; }
-	[Export] protected Sprite2D CharacterSprite { get; set; }
+	[Export] protected CharacterAnimation CharacterSprite { get; set; }
 	[Export] private Color SelectableColor { get; set; }
 	[Export] private Color UnselectableColor { get; set; }
 
@@ -88,12 +88,31 @@ public abstract partial class BattleCharacter : Node2D
 
 	public void SetSelectableState(bool isSelectable)
 	{
-		CharacterSprite.Modulate = isSelectable ? SelectableColor : UnselectableColor;
+		CharacterSprite.SetColour(isSelectable ? SelectableColor : UnselectableColor);
 	}
 
 	public void SetBattlePosition(int battlePosition)
 	{
 		CurrentStats.BattlePosition = battlePosition;
+	}
+
+	public IReadOnlyList<AttackAction> GetValidAttacks()
+	{
+		List<AttackAction> validAttacks = new List<AttackAction>();
+
+		foreach (AttackAction action in BaseAttacks)
+		{
+			foreach (int slot in action.UsableFromSlots)
+			{
+				if (slot == BattlePosition)
+				{
+					validAttacks.Add(action);
+					break;
+				}
+			}
+		}
+
+		return validAttacks;
 	}
 
 	private void SetUI()

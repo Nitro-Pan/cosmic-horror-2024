@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnrf37a01u6fd"]
+[gd_scene load_steps=7 format=3 uid="uid://cnrf37a01u6fd"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_e5egf"]
 [ext_resource type="Texture2D" uid="uid://dfa7u7vsfi62h" path="res://sprites/attacks/selector.png" id="2_ox43i"]
-[ext_resource type="PackedScene" uid="uid://bg3wd0xwwiene" path="res://resources/battle-system/battles/some_friendly_character.tscn" id="3_wlggj"]
+[ext_resource type="PackedScene" uid="uid://35cvejel8lda" path="res://resources/battle-system/characters/brain_sturgeon.tscn" id="3_xuloy"]
+[ext_resource type="PackedScene" uid="uid://ccl4lnlsamhn8" path="res://resources/battle-system/characters/fish_mascot.tscn" id="4_d4oei"]
+[ext_resource type="PackedScene" uid="uid://cyeoblyxn3tmb" path="res://resources/battle-system/characters/loveland_toad.tscn" id="5_7hlfj"]
+[ext_resource type="PackedScene" uid="uid://cmdipi03t0j81" path="res://resources/battle-system/characters/spotted_snappie.tscn" id="6_87j2b"]
 
 [node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_e5egf")
-ActionList = [NodePath("Characters/SomeCharacter1"), NodePath("Characters/SomeCharacter2"), NodePath("Characters/SomeCharacter3"), NodePath("Characters/SomeCharacter4")]
+ActionList = [NodePath("Characters/Brain Sturgeon"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Spotted Snappie")]
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
 
@@ -17,13 +20,13 @@ texture = ExtResource("2_ox43i")
 
 [node name="Characters" type="Node2D" parent="."]
 
-[node name="SomeCharacter1" parent="Characters" instance=ExtResource("3_wlggj")]
+[node name="Brain Sturgeon" parent="Characters" instance=ExtResource("3_xuloy")]
 
-[node name="SomeCharacter2" parent="Characters" instance=ExtResource("3_wlggj")]
-position = Vector2(165, 0)
+[node name="Fish Mascot" parent="Characters" instance=ExtResource("4_d4oei")]
+position = Vector2(150, 0)
 
-[node name="SomeCharacter3" parent="Characters" instance=ExtResource("3_wlggj")]
-position = Vector2(326, 0)
+[node name="Loveland Toad" parent="Characters" instance=ExtResource("5_7hlfj")]
+position = Vector2(300, 0)
 
-[node name="SomeCharacter4" parent="Characters" instance=ExtResource("3_wlggj")]
-position = Vector2(490, 0)
+[node name="Spotted Snappie" parent="Characters" instance=ExtResource("6_87j2b")]
+position = Vector2(450, 0)

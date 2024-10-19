@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bg3wd0xwwiene"]
+
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_40lda"]
+[ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/basic_attack.tres" id="2_wqckf"]
+[ext_resource type="Resource" uid="uid://3dwgvj5sfyrr" path="res://resources/battle-system/resources/second_attack.tres" id="3_n37l2"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_didxc"]
+[ext_resource type="Texture2D" uid="uid://ccwoklb7awwqy" path="res://sprites/lime-fish.png" id="5_e00dy"]
+[ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_wgxkj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
+resource_local_to_scene = true
+shader = ExtResource("4_didxc")
+shader_parameter/bounceAmplitude = 27.703
+shader_parameter/waveAmplitude = 0.022
+shader_parameter/waveFrequency = 49.987
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 3.027
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_epmww"]
+font_size = 21
+font_color = Color(1, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SomeCharacter" type="Node2D" node_paths=PackedStringArray("HealthLabel")]
+script = ExtResource("1_40lda")
+BaseHealth = 100.0
+BaseSpeed = 10.0
+BaseArmour = 5.0
+BaseAttacks = Array[Resource]([ExtResource("2_wqckf"), ExtResource("2_wqckf"), ExtResource("2_wqckf"), ExtResource("3_n37l2")])
+HealthLabel = NodePath("Label")
+
+[node name="Lime-fish" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pjrd5")
+position = Vector2(85, 58)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("5_e00dy")
+flip_h = true
+script = ExtResource("6_wgxkj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 58.0
+offset_top = 89.0
+offset_right = 123.0
+offset_bottom = 119.0
+text = "health"
+label_settings = SubResource("LabelSettings_epmww")

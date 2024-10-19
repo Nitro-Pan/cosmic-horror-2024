@@ -8,6 +8,6 @@ script = ExtResource("1_a2114")
 CanHitSlots = PackedInt32Array(0, 1)
 UsableFromSlots = PackedInt32Array(0, 1)
 IsFriendly = false
-Damage = 20.0
+Damage = 100000.0
 Accuracy = 110.0
 Texture = ExtResource("1_epq2e")

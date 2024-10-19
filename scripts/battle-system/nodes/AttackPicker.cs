@@ -8,13 +8,14 @@ public partial class AttackPicker : ActionPicker<AttackAction>
     [Export] protected override Godot.Collections.Array<AttackAction> ActionList { get; set; }
     [Export] private Sprite2D[] Buttons { get; set; }
     [Export] private Color DisabledColour { get; set; }
+    [Export] private Color EnabledColour { get; set; } = new Color(1.0f, 1.0f, 1.0f);
+
+    private BattleCharacter SourceCharacter { get; set; }
 
     public override void _Ready()
     {
-        OnSelectedActionChanged += OnActionChanged;
         base._Ready();
     }
-
 
     public override void Set(IList<AttackAction> actionList)
     {
@@ -34,6 +35,26 @@ public partial class AttackPicker : ActionPicker<AttackAction>
         OnActionChanged(SelectedActionIndex);
     }
 
+    public void Set(BattleCharacter source)
+    {
+        Set(source.BaseAttacks);
+
+        SourceCharacter = source;
+
+        for (int i = 0; i < ActionList.Count && i < Buttons.Length; i++)
+        {
+            Buttons[ i ].Modulate = DisabledColour;
+            foreach (int validPosition in ActionList[i].UsableFromSlots)
+            {
+                if (source.BattlePosition == validPosition)
+                {
+                    Buttons[ i ].Modulate = EnabledColour;
+                    break;
+                }
+            }
+        }
+    }
+
     protected override void PrintSelectedAction(int action)
     {
         GD.Print($"Selected Attack: {ActionList[ SelectedActionIndex ]}");
@@ -49,7 +70,7 @@ public partial class AttackPicker : ActionPicker<AttackAction>
         base.ConfirmAction();
     }
 
-    private void OnActionChanged(int index)
+    protected override void OnActionChanged(int index)
     { 
         SelectorSprite.Position = Buttons[ index ].Position;
     }

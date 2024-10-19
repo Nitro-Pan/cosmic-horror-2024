@@ -9,10 +9,10 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
     [Export] protected Sprite2D SelectorSprite;
 
     protected abstract Godot.Collections.Array<T> ActionList { get; set; }
-    private int TotalActions => ActionList.Count;
+    protected int TotalActions => ActionList.Count;
 
     private int _selectedActionIndex = 0;
-    public int SelectedActionIndex
+    public virtual int SelectedActionIndex
     {
         get => _selectedActionIndex;
         set
@@ -32,7 +32,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
 #if DEBUG
         OnSelectedActionChanged += PrintSelectedAction;
 #endif
-
+        OnSelectedActionChanged += OnActionChanged;
         base._Ready();
     }
 
@@ -79,8 +79,15 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
         OnActionCancelled?.Invoke();
     }
 
+    protected abstract void OnActionChanged(int index);
+
     public virtual IReadOnlyList<T> GetAllActions()
     {
         return ActionList;
+    }
+
+    public virtual bool ContainsAction(T action)
+    {
+        return ActionList.Contains(action);
     }
 }

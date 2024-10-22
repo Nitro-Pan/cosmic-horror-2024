@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsfhskw5dlp7h"
-path="res://.godot/imported/pass-icon.png-92a9372c1b7e4358e5282d99bbd48490.ctex"
+path="res://.godot/imported/pass-icon.png-53ef16360d4d6b87078d9de21553e21c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pass-icon.png"
-dest_files=["res://.godot/imported/pass-icon.png-92a9372c1b7e4358e5282d99bbd48490.ctex"]
+source_file="res://sprites/attacks/pass-icon.png"
+dest_files=["res://.godot/imported/pass-icon.png-53ef16360d4d6b87078d9de21553e21c.ctex"]
 
 [params]
 

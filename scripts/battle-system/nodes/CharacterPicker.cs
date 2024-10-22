@@ -61,6 +61,27 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
         }
     }
 
+    public void DimAllExcept(params BattleCharacter[] doNotDim)
+    {
+        foreach (BattleCharacter character in ActionList)
+        {
+            character.SetSelectableState(false);
+
+            if (doNotDim == null || doNotDim.Length == 0)
+            {
+                continue;
+            }
+
+            foreach (BattleCharacter notDimmed in doNotDim)
+            {
+                if (character == notDimmed)
+                {
+                    character.SetSelectableState(true);
+                }
+            }
+        }
+    }
+
     protected override void PrintSelectedAction(int action)
     {
         GD.Print($"Selected Character: {ActionList[ SelectedActionIndex ]}");

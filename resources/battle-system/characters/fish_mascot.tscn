@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccl4lnlsamhn8"]
+[gd_scene load_steps=15 format=3 uid="uid://ccl4lnlsamhn8"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_qcshh"]
 [ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/bite_attack.tres" id="2_hgdsa"]
@@ -36,7 +36,7 @@ resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lime-fish:position")
+tracks/0/path = NodePath("CharacterSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,7 +48,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lime-fish:rotation")
+tracks/1/path = NodePath("CharacterSprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -60,7 +60,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lime-fish:scale")
+tracks/2/path = NodePath("CharacterSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -72,7 +72,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Lime-fish:z_index")
+tracks/3/path = NodePath("CharacterSprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -84,53 +84,54 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_isd2l"]
 resource_name = "showcase_character"
+length = 1.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lime-fish:position")
+tracks/0/path = NodePath("CharacterSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.225313),
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 0.225313, 0.224),
 "update": 0,
-"values": [Vector2(166, 25), Vector2(287, 25)]
+"values": [Vector2(166, 25), Vector2(210, 25), Vector2(52, 27)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lime-fish:rotation")
+tracks/1/path = NodePath("CharacterSprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.225313),
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 0.225313, 1),
 "update": 0,
-"values": [0.0, 0.0872665]
+"values": [0.0, 0.0872665, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lime-fish:scale")
+tracks/2/path = NodePath("CharacterSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 0.224),
 "update": 0,
-"values": [Vector2(0.45, 0.45)]
+"values": [Vector2(0.45, 0.45), Vector2(0.45, 0.45), Vector2(0.144, 0.144)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Lime-fish:z_index")
+tracks/3/path = NodePath("CharacterSprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2]
+"values": [2, 2, 0]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -143,29 +144,82 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"EndAttack"
+"method": &"ResetAttackAnimation"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_vgpti"]
+resource_name = "hurt"
+length = 1.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 0.224),
+"update": 0,
+"values": [Vector2(52, 27), Vector2(0, 27), Vector2(52, 27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 0.224),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(0.14375, 0.14375)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSprite:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 2, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_76t16"]
 _data = {
 "RESET": SubResource("Animation_yoox7"),
-"attack": SubResource("Animation_isd2l")
+"attack": SubResource("Animation_isd2l"),
+"hurt": SubResource("Animation_vgpti")
 }
 
-[node name="SomeCharacter" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
+[node name="FishMascot" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_qcshh")
 BaseHealth = 100.0
 BaseSpeed = 10.0
-BaseArmour = 5.0
+BaseArmour = 7.0
 BaseAttacks = Array[Resource]([ExtResource("2_hgdsa"), ExtResource("3_62qyv"), ExtResource("4_fjn4n"), ExtResource("5_oa3mr")])
-HealthLabel = NodePath("Label")
-CharacterSprite = NodePath("Lime-fish")
+HealthLabel = NodePath("HealthLabel")
+CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")
 SelectableColor = Color(1, 1, 1, 1)
 UnselectableColor = Color(0.392157, 0.392157, 0.392157, 1)
 
-[node name="Lime-fish" type="Sprite2D" parent="."]
+[node name="CharacterSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pjrd5")
 position = Vector2(52, 27)
 scale = Vector2(0.14375, 0.14375)
@@ -173,7 +227,7 @@ texture = ExtResource("5_t0le5")
 flip_h = true
 script = ExtResource("6_0xpwx")
 
-[node name="Label" type="Label" parent="."]
+[node name="HealthLabel" type="Label" parent="."]
 offset_left = 20.0
 offset_top = 55.0
 offset_right = 85.0

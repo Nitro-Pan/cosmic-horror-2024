@@ -31,7 +31,7 @@ public abstract partial class BattleCharacter : Node2D
 	public int BattlePosition => CurrentStats.BattlePosition;
 
 	public event Action<BattleCharacter> OnCharacterDead;
-	public event Action OnAttackAnimationFinished;
+	private Action OnAttackAnimationFinished { get; set; }
 
     public override void _Ready()
     {
@@ -65,7 +65,7 @@ public abstract partial class BattleCharacter : Node2D
 		}
 
 		float lastHealth = CurrentStats.Health;
-        CurrentStats.Health -= attack.Damage * 1 / CurrentStats.Armour;
+        CurrentStats.Health -= attack.Damage * (1 / (attack.IsFriendly ? 1 : CurrentStats.Armour));
 
 		if (lastHealth == CurrentStats.Health)
 		{
@@ -87,19 +87,25 @@ public abstract partial class BattleCharacter : Node2D
 		CurrentStats.Health = Math.Clamp(Health, 0, BaseHealth);
 
         SetUI();
+		StartTakeDamage();
 
         return CurrentStats;
 	}
 
-	public void StartAttack()
+	public void StartAttack(Action onComplete)
 	{
 		Animator.Play("attack");
+		OnAttackAnimationFinished = onComplete;
 	}
 
-	public void EndAttack()
+	public void ResetAttackAnimation()
 	{
-		Animator.Play("RESET");
 		OnAttackAnimationFinished?.Invoke();
+	}
+
+	public void StartTakeDamage()
+	{
+		Animator.Play("hurt");
 	}
 
 	public void SetSelectableState(bool isSelectable)

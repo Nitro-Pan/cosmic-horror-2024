@@ -21,7 +21,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
             OnSelectedActionChanged.Invoke(_selectedActionIndex);
         }
     }
-    public T SelectedAction => ActionList[ReverseSelectionOrder ? TotalActions - SelectedActionIndex : SelectedActionIndex];
+    public T SelectedAction => ActionList[SelectedActionIndex];
 
     public event Action<int> OnSelectedActionChanged;
     public event Action<T> OnActionConfirmed;
@@ -101,5 +101,11 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
         {
             SelectorSprite.Hide();
         }
+    }
+
+    public int ChangeSelectedAction(int delta)
+    {
+        delta *= ReverseSelectionOrder ? -1 : 1;
+        return SelectedActionIndex += delta;
     }
 }

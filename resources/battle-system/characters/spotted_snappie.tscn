@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmdipi03t0j81"]
+[gd_scene load_steps=19 format=3 uid="uid://cmdipi03t0j81"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_dpg57"]
 [ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/bite_attack.tres" id="2_akbk3"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cvp035k77quv8" path="res://sprites/characters/spotted snappie.png" id="5_fkn52"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/pass_attack.tres" id="5_kscnl"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_ocwld"]
+[ext_resource type="Texture2D" uid="uid://cqb0cdgoofow2" path="res://resources/battle-system/characters/attacking/snappie attack.png" id="9_lwoq0"]
+[ext_resource type="Texture2D" uid="uid://c1kf0ptwmekhp" path="res://resources/battle-system/characters/attacking/splash.png" id="10_ldaba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
@@ -25,6 +27,38 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1lke"]
+resource_local_to_scene = true
+shader = ExtResource("4_pyrf5")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.051
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2od85"]
+resource_local_to_scene = true
+shader = ExtResource("4_pyrf5")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.017
+shader_parameter/waveFrequency = 21.165
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 2.942
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_epmww"]
 font_size = 21
 font_color = Color(1, 0, 0, 1)
@@ -36,101 +70,174 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lime-fish:z_index")
+tracks/0/path = NodePath("CharacterSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Lime-fish:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.17, 0.17)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Lime-fish:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Lime-fish:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(61, 36)]
 }
-
-[sub_resource type="Animation" id="Animation_jtqru"]
-resource_name = "attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lime-fish:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.42),
-"update": 0,
-"values": [Vector2(100, 36), Vector2(150, 36)]
-}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lime-fish:rotation")
+tracks/1/path = NodePath("CharacterSprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.42),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0872665]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lime-fish:scale")
+tracks/2/path = NodePath("CharacterSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.45, 0.45)]
+"values": [Vector2(0.17, 0.17)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Lime-fish:z_index")
+tracks/3/path = NodePath("CharacterSprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Splash:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 32)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Splash/AttackingSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Splash:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.17, 0.17)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Splash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Splash/AttackingSprite:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jtqru"]
+resource_name = "attack"
+length = 1.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 0.42, 0.224),
+"update": 0,
+"values": [Vector2(100, 36), Vector2(150, 36), Vector2(61, 36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 0.42, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 0.224),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.45, 0.45), Vector2(0.17, 0.17)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSprite:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 2, 0]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -143,29 +250,154 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"EndAttack"
+"method": &"ResetAttackAnimation"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Splash:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 32), Vector2(100, 32), Vector2(50, 32)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Splash/AttackingSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 5), Vector2(20, 5), Vector2(6, 5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Splash:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.45, 0.45), Vector2(0.17, 0.17)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Splash:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CharacterSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Splash/AttackingSprite:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.139626, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2ilnw"]
+resource_name = "hurt"
+length = 1.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 0.224),
+"update": 0,
+"values": [Vector2(61, 36), Vector2(11, 36), Vector2(61, 36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 0.224),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(0.17, 0.17)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSprite:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 2, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mtmy8"]
 _data = {
 "RESET": SubResource("Animation_2uskb"),
-"attack": SubResource("Animation_jtqru")
+"attack": SubResource("Animation_jtqru"),
+"hurt": SubResource("Animation_2ilnw")
 }
 
-[node name="SomeCharacter" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
+[node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_dpg57")
 BaseHealth = 100.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_akbk3"), ExtResource("3_titij"), ExtResource("4_tg6n6"), ExtResource("5_kscnl")])
-HealthLabel = NodePath("Label")
-CharacterSprite = NodePath("Lime-fish")
+HealthLabel = NodePath("HealthLabel")
+CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")
 SelectableColor = Color(1, 1, 1, 1)
 UnselectableColor = Color(0.392157, 0.392157, 0.392157, 1)
 
-[node name="Lime-fish" type="Sprite2D" parent="."]
+[node name="CharacterSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pjrd5")
 position = Vector2(61, 36)
 scale = Vector2(0.17, 0.17)
@@ -173,7 +405,23 @@ texture = ExtResource("5_fkn52")
 flip_h = true
 script = ExtResource("6_ocwld")
 
-[node name="Label" type="Label" parent="."]
+[node name="Splash" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+z_as_relative = false
+material = SubResource("ShaderMaterial_r1lke")
+position = Vector2(50, 32)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("10_ldaba")
+
+[node name="AttackingSprite" type="Sprite2D" parent="Splash"]
+z_index = -1
+material = SubResource("ShaderMaterial_2od85")
+position = Vector2(6, 5)
+scale = Vector2(1, 1)
+texture = ExtResource("9_lwoq0")
+
+[node name="HealthLabel" type="Label" parent="."]
 offset_left = 20.0
 offset_top = 55.0
 offset_right = 85.0

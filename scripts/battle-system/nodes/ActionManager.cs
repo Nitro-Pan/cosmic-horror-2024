@@ -64,6 +64,12 @@ public partial class ActionManager : Node
         true => SelectedAttack.IsFriendly ? EnemyCharacters : AllyCharacters,
         false => SelectedAttack.IsFriendly ? AllyCharacters : EnemyCharacters,
     };
+    private CharacterPicker SourceCharacterPicker => IsEnemyPicking switch
+    {
+        true => SelectedAttack.IsFriendly ? AllyCharacters : EnemyCharacters,
+        false => SelectedAttack.IsFriendly ? EnemyCharacters : AllyCharacters,
+    };
+
     [Export] public AttackPicker AttackPicker { get; set; }
 
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
@@ -148,11 +154,12 @@ public partial class ActionManager : Node
 			{
                 AttackPicker.SelectedActionIndex += Math.Clamp(direction, -1, 1);
 				TargetCharacterPicker.HighlightValidOptions(SelectedAttack);
+				SourceCharacterPicker.DimAllExcept(AttackingCharacter);
                 break;
 			}
 		case PickState.PickingTarget:
 			{
-                TargetCharacterPicker.SelectedActionIndex += Math.Clamp(direction, -1, 1);
+				TargetCharacterPicker.ChangeSelectedAction(Math.Clamp(direction, -1, 1));
 				DefendingCharacter = TargetCharacterPicker.SelectedAction;
                 break;
 			}
@@ -194,10 +201,11 @@ public partial class ActionManager : Node
 					break;
 				}
 
-                AttackingCharacter.StartAttack();
-                SelectedCharacterIndex++;
+                AttackingCharacter.StartAttack(() => {
+                    SelectedCharacterIndex++;
+                    CompleteLoop();
+                });
 				DefendingCharacter.ApplyHit(SelectedAttack);
-				CompleteLoop();
 				break;
 			}
 		default:
@@ -278,6 +286,7 @@ public partial class ActionManager : Node
 	private void DoEnemyTurn()
 	{
         EnemyTurnManager.Set(AttackingCharacter, EnemyCharacters, AllyCharacters);
+		CurrentCharacterPicker.DimAllExcept(AttackingCharacter);
         EnemyTurnManager.ProcessTurn();
     }
 

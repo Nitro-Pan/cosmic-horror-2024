@@ -24,9 +24,7 @@ public class AutomaticTurnManager
 
         BattleCharacter selectedCharacterToHit = validTargets[ GD.RandRange(0, validTargets.Count - 1) ];
         selectedCharacterToHit.ApplyHit(attackAction);
-        Character.OnAttackAnimationFinished -= OnAttackFinished;
-        Character.OnAttackAnimationFinished += OnAttackFinished;
-        Character.StartAttack();
+        Character.StartAttack(OnAttackFinished);
         // animation maybe? can set a callback here
 
 #if DEBUG

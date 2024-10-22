@@ -74,7 +74,7 @@ public partial class AttackPicker : ActionPicker<AttackAction>
 
     protected override void OnActionChanged(int index)
     { 
-        SelectorSprite.Position = Buttons[ index ].Position;
+        SelectorTargetPosition = Buttons[ index ].Position;
     }
 }
 

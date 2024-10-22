@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cvp035k77quv8" path="res://sprites/characters/spotted snappie.png" id="5_fkn52"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/pass_attack.tres" id="5_kscnl"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_ocwld"]
+[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_3iels"]
 [ext_resource type="Texture2D" uid="uid://cqb0cdgoofow2" path="res://resources/battle-system/characters/attacking/snappie attack.png" id="9_lwoq0"]
-[ext_resource type="Texture2D" uid="uid://c1kf0ptwmekhp" path="res://resources/battle-system/characters/attacking/splash.png" id="10_ldaba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
@@ -412,13 +412,12 @@ z_as_relative = false
 material = SubResource("ShaderMaterial_r1lke")
 position = Vector2(50, 32)
 scale = Vector2(0.17, 0.17)
-texture = ExtResource("10_ldaba")
+texture = ExtResource("9_3iels")
 
 [node name="AttackingSprite" type="Sprite2D" parent="Splash"]
 z_index = -1
 material = SubResource("ShaderMaterial_2od85")
 position = Vector2(6, 5)
-scale = Vector2(1, 1)
 texture = ExtResource("9_lwoq0")
 
 [node name="HealthLabel" type="Label" parent="."]

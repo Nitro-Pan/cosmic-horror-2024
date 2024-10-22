@@ -99,7 +99,7 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
 
     protected override void OnActionChanged(int index)
     {
-        SelectorSprite.Position = ActionList[ index ].Position;
+        SelectorTargetPosition = ActionList[ index ].Position;
     }
 
     public bool IsAllDead()

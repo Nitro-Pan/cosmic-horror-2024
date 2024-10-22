@@ -139,7 +139,7 @@ public abstract partial class BattleCharacter : Node2D
 
 	private void SetUI()
 	{
-		HealthLabel.Text = $"{Health}/{BaseHealth}";
+		HealthLabel.Text = $"{Mathf.Floor(Health)}/{Mathf.Floor(BaseHealth)}";
 	}
 
 	private void OnDeath()

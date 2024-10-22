@@ -22,14 +22,14 @@ public partial class ActionManager : Node
 #if DEBUG
 			if (PreviousPickStates.TryPeek(out PickState previous))
 			{
-                GD.Print($"PickState: { value }\nPrevious: { previous }\n");
-            }
-			
+				GD.Print($"PickState: {value}\nPrevious: {previous}\n");
+			}
+
 #endif
 
 			Action<PickState> onPickChanged = backwards ? OnPickStateChangedBackward : OnPickStateChangedForward;
-            _selectedPickState = value;
-            onPickChanged?.Invoke(_selectedPickState);
+			_selectedPickState = value;
+			onPickChanged?.Invoke(_selectedPickState);
 		}
 	}
 	private Stack<PickState> PreviousPickStates { get; set; } = new Stack<PickState>();
@@ -60,17 +60,18 @@ public partial class ActionManager : Node
 	[Export] public CharacterPicker AllyCharacters { get; set; }
 	private CharacterPicker CurrentCharacterPicker => IsEnemyPicking ? EnemyCharacters : AllyCharacters;
 	private CharacterPicker TargetCharacterPicker => IsEnemyPicking switch
-    {
-        true => SelectedAttack.IsFriendly ? EnemyCharacters : AllyCharacters,
-        false => SelectedAttack.IsFriendly ? AllyCharacters : EnemyCharacters,
-    };
-    private CharacterPicker SourceCharacterPicker => IsEnemyPicking switch
-    {
-        true => SelectedAttack.IsFriendly ? AllyCharacters : EnemyCharacters,
-        false => SelectedAttack.IsFriendly ? EnemyCharacters : AllyCharacters,
-    };
+	{
+		true => SelectedAttack.IsFriendly ? EnemyCharacters : AllyCharacters,
+		false => SelectedAttack.IsFriendly ? AllyCharacters : EnemyCharacters,
+	};
+	private CharacterPicker SourceCharacterPicker => IsEnemyPicking switch
+	{
+		true => SelectedAttack.IsFriendly ? AllyCharacters : EnemyCharacters,
+		false => SelectedAttack.IsFriendly ? EnemyCharacters : AllyCharacters,
+	};
 
-    [Export] public AttackPicker AttackPicker { get; set; }
+	[Export] public AttackPicker AttackPicker { get; set; }
+	[Export] private AnimationPlayer AttackAnimationPlayer { get; set; }
 
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
 
@@ -177,7 +178,9 @@ public partial class ActionManager : Node
         case PickState.PickingAttack:
 			{
 				EnemyCharacters.ResetHighlights();
+				EnemyCharacters.ToggleSelector(false);
 				AllyCharacters.ResetHighlights();
+				AllyCharacters.ToggleSelector(false);
                 AttackPicker.Set(AttackingCharacter);
                 TraverseCurrentPickOption(0);
                 break;
@@ -189,7 +192,12 @@ public partial class ActionManager : Node
                 if (!SelectedAttack.CanPickFromCharacter(AttackingCharacter))
 				{
 					GoToPreviousPickState();
+					break;
 				}
+
+				TargetCharacterPicker.ToggleSelector(true);
+				SourceCharacterPicker.ToggleSelector(false);
+				AttackPicker.ToggleSelector(false);
 
                 break;
 			}
@@ -206,6 +214,9 @@ public partial class ActionManager : Node
                     CompleteLoop();
                 });
 				DefendingCharacter.ApplyHit(SelectedAttack);
+				AttackAnimationPlayer.Stop();
+				AttackAnimationPlayer.Play("slide_out_right");
+				TargetCharacterPicker.ToggleSelector(false);
 				break;
 			}
 		default:
@@ -221,16 +232,20 @@ public partial class ActionManager : Node
         {
         case PickState.PickingAttack:
             {
-				EnemyCharacters.ResetHighlights();
-				AllyCharacters.ResetHighlights();
-                BattleCharacter attackingCharacter = Characters[ SelectedCharacterIndex ];
-                AttackPicker.Set(attackingCharacter);
+                EnemyCharacters.ResetHighlights();
+                EnemyCharacters.ToggleSelector(false);
+                AllyCharacters.ResetHighlights();
+                AllyCharacters.ToggleSelector(false);
+                AttackPicker.Set(AttackingCharacter);
                 TraverseCurrentPickOption(0);
                 break;
             }
         case PickState.PickingTarget:
             {
                 TraverseCurrentPickOption(0);
+                TargetCharacterPicker.ToggleSelector(true);
+                SourceCharacterPicker.ToggleSelector(false);
+                AttackPicker.ToggleSelector(false);
                 break;
             }
         case PickState.Complete:
@@ -281,6 +296,7 @@ public partial class ActionManager : Node
 #if DEBUG
 		GD.Print("-----BEGINNING OF TURN-----");
 #endif
+		TraverseCurrentPickOption(0);
 	}
 
 	private void DoEnemyTurn()
@@ -288,6 +304,8 @@ public partial class ActionManager : Node
         EnemyTurnManager.Set(AttackingCharacter, EnemyCharacters, AllyCharacters);
 		CurrentCharacterPicker.DimAllExcept(AttackingCharacter);
         EnemyTurnManager.ProcessTurn();
+        AttackAnimationPlayer.Stop();
+        AttackAnimationPlayer.Play("slide_out_left");
     }
 
     private bool IsCharacterFriendly(BattleCharacter character)

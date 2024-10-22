@@ -1,20 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc0vr280bcuid"]
+[gd_scene load_steps=9 format=3 uid="uid://bc0vr280bcuid"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_7plmn"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_43m4v"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_vrcix"]
 [ext_resource type="PackedScene" uid="uid://35cvejel8lda" path="res://resources/battle-system/characters/brain_sturgeon.tscn" id="3_3463d"]
 [ext_resource type="PackedScene" uid="uid://ccl4lnlsamhn8" path="res://resources/battle-system/characters/fish_mascot.tscn" id="4_51kpf"]
 [ext_resource type="PackedScene" uid="uid://cyeoblyxn3tmb" path="res://resources/battle-system/characters/loveland_toad.tscn" id="5_7cga0"]
 [ext_resource type="PackedScene" uid="uid://cmdipi03t0j81" path="res://resources/battle-system/characters/spotted_snappie.tscn" id="6_5ceqx"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um12x"]
+resource_local_to_scene = true
+shader = ExtResource("2_43m4v")
+shader_parameter/bounceAmplitude = 5.276
+shader_parameter/waveAmplitude = 0.065
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
 [node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_7plmn")
 ActionList = [NodePath("Characters/Brain Sturgeon"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Spotted Snappie")]
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
+SelectorSpeed = 10.0
 
 [node name="Selector" type="Sprite2D" parent="."]
 z_index = 4096
+material = SubResource("ShaderMaterial_um12x")
 position = Vector2(0, -1)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("2_vrcix")

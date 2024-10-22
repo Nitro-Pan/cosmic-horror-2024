@@ -8,7 +8,9 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
 
     [Export] protected Sprite2D SelectorSprite;
     [Export] private bool ReverseSelectionOrder { get; set; }
+    [Export] private float SelectorSpeed { get; set; }
     protected abstract Godot.Collections.Array<T> ActionList { get; set; }
+    protected Vector2 SelectorTargetPosition { get; set; }
     protected int TotalActions => ActionList.Count;
 
     private int _selectedActionIndex = 0;
@@ -21,6 +23,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
             OnSelectedActionChanged.Invoke(_selectedActionIndex);
         }
     }
+
     public T SelectedAction => ActionList[SelectedActionIndex];
 
     public event Action<int> OnSelectedActionChanged;
@@ -38,6 +41,11 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
 
     public override void _Process(double delta)
     {
+        if (!SelectorSprite.Position.IsEqualApprox(SelectorTargetPosition))
+        {
+            SelectorSprite.Position = SelectorSprite.Position.Lerp(SelectorTargetPosition, SelectorSpeed * (float) delta);
+        }
+
         base._Process(delta);
     }
 

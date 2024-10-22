@@ -28,6 +28,7 @@ ActionList = Array[Resource]([ExtResource("2_lr75t"), ExtResource("2_lr75t")])
 Buttons = [NodePath("Node2D/Attack1"), NodePath("Node2D/Attack2"), NodePath("Node2D/Attack3"), NodePath("Node2D/Attack4")]
 DisabledColour = Color(0.6902, 0.178196, 0.177362, 1)
 SelectorSprite = NodePath("Selector")
+SelectorSpeed = 10.0
 
 [node name="Selector" type="Sprite2D" parent="."]
 z_index = 4096

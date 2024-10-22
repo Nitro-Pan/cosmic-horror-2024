@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("2_6k8up")
-CanHitSlots = PackedInt32Array(2, 3)
-UsableFromSlots = PackedInt32Array(0, 1, 2, 3)
-IsFriendly = false
+CanHitSlots = PackedInt32Array(2, 3, 0, 1)
+UsableFromSlots = PackedInt32Array(2, 3)
+IsFriendly = true
 Damage = 0.0
 Accuracy = 110.0
 StatusEffects = []

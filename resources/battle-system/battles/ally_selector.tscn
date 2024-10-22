@@ -1,11 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnrf37a01u6fd"]
+[gd_scene load_steps=9 format=3 uid="uid://cnrf37a01u6fd"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_e5egf"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_i30qf"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_v0voa"]
 [ext_resource type="PackedScene" uid="uid://35cvejel8lda" path="res://resources/battle-system/characters/brain_sturgeon.tscn" id="3_xuloy"]
 [ext_resource type="PackedScene" uid="uid://ccl4lnlsamhn8" path="res://resources/battle-system/characters/fish_mascot.tscn" id="4_d4oei"]
 [ext_resource type="PackedScene" uid="uid://cyeoblyxn3tmb" path="res://resources/battle-system/characters/loveland_toad.tscn" id="5_7hlfj"]
 [ext_resource type="PackedScene" uid="uid://cmdipi03t0j81" path="res://resources/battle-system/characters/spotted_snappie.tscn" id="6_87j2b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_auqbe"]
+resource_local_to_scene = true
+shader = ExtResource("2_v0voa")
+shader_parameter/bounceAmplitude = 3.385
+shader_parameter/waveAmplitude = 0.056
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_e5egf")
@@ -13,9 +30,11 @@ ActionList = [NodePath("Characters/Spotted Snappie"), NodePath("Characters/Lovel
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
 ReverseSelectionOrder = true
+SelectorSpeed = 10.0
 
 [node name="Selector" type="Sprite2D" parent="."]
 z_index = 4096
+material = SubResource("ShaderMaterial_auqbe")
 position = Vector2(0, -1)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("2_i30qf")

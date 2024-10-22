@@ -1,16 +1,196 @@
-[gd_scene load_steps=6 format=3 uid="uid://jc4af7ys8qs1"]
+[gd_scene load_steps=13 format=3 uid="uid://jc4af7ys8qs1"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/ActionManager.cs" id="1_ceyor"]
 [ext_resource type="PackedScene" uid="uid://ykirsocqtb2y" path="res://resources/battle-system/battles/attack_selector.tscn" id="2_1u40j"]
 [ext_resource type="PackedScene" uid="uid://cnrf37a01u6fd" path="res://resources/battle-system/battles/ally_selector.tscn" id="3_3bx1j"]
 [ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="4_pvc1j"]
 [ext_resource type="PackedScene" uid="uid://bc0vr280bcuid" path="res://resources/battle-system/battles/enemy_selector.tscn" id="4_rl5l5"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_11agx"]
+[ext_resource type="Texture2D" uid="uid://dhkwatypkpjbx" path="res://sprites/attacks/splash line.png" id="6_upmkc"]
 
-[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rho38"]
+shader = ExtResource("6_11agx")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.042
+shader_parameter/waveFrequency = 12.247
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_pp2nx"]
+resource_name = "slide_out_right"
+length = 1.235
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(61, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y0gk8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(61, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_olndr"]
+resource_name = "slide_out_left"
+length = 1.235
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.16667, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-66, 243, -66, 244, -66, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1100, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdnvf"]
+_data = {
+"RESET": SubResource("Animation_y0gk8"),
+"slide_out_left": SubResource("Animation_olndr"),
+"slide_out_right": SubResource("Animation_pp2nx")
+}
+
+[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer")]
 script = ExtResource("1_ceyor")
 EnemyCharacters = NodePath("EnemySelector")
 AllyCharacters = NodePath("AllySelector")
 AttackPicker = NodePath("AttackSelector")
+AttackAnimationPlayer = NodePath("AttackSmear/SmearAnimationPlayer")
 
 [node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
 position = Vector2(576, 561)
@@ -26,3 +206,19 @@ z_index = -1
 position = Vector2(573, 324)
 scale = Vector2(0.611111, 0.611111)
 texture = ExtResource("4_pvc1j")
+
+[node name="AttackSmear" type="Polygon2D" parent="."]
+clip_children = 1
+position = Vector2(61, -9)
+polygon = PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473)
+
+[node name="Smear" type="Sprite2D" parent="AttackSmear"]
+material = SubResource("ShaderMaterial_rho38")
+position = Vector2(488, 364)
+scale = Vector2(1.38178, 1.23308)
+texture = ExtResource("6_upmkc")
+
+[node name="SmearAnimationPlayer" type="AnimationPlayer" parent="AttackSmear"]
+libraries = {
+"": SubResource("AnimationLibrary_wdnvf")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://35cvejel8lda"]
+[gd_scene load_steps=12 format=3 uid="uid://35cvejel8lda"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_gcl06"]
 [ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/basic_attack.tres" id="2_ui17e"]
@@ -29,7 +29,129 @@ font_color = Color(1, 0, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="SomeCharacter" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite")]
+[sub_resource type="Animation" id="Animation_xj7ht"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lime-fish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50, 32), Vector2(67, 34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lime-fish:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lime-fish:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.282, 0.282)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lime-fish:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_otacx"]
+resource_name = "showcase_character"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lime-fish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.225313),
+"update": 0,
+"values": [Vector2(166, 25), Vector2(287, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lime-fish:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.225313),
+"update": 0,
+"values": [0.0, 0.0872665]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lime-fish:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.45, 0.45)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lime-fish:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndAttack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bdrv"]
+_data = {
+"RESET": SubResource("Animation_xj7ht"),
+"attack": SubResource("Animation_otacx")
+}
+
+[node name="SomeCharacter" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_gcl06")
 BaseHealth = 100.0
 BaseSpeed = 10.0
@@ -37,21 +159,27 @@ BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_ui17e"), ExtResource("2_ui17e"), ExtResource("2_ui17e"), ExtResource("3_d5y12")])
 HealthLabel = NodePath("Label")
 CharacterSprite = NodePath("Lime-fish")
+Animator = NodePath("AnimationPlayer")
 SelectableColor = Color(1, 1, 1, 1)
 UnselectableColor = Color(0.393086, 0.393086, 0.393085, 1)
 
 [node name="Lime-fish" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pjrd5")
-position = Vector2(85, 58)
-scale = Vector2(0.29, 0.29)
+position = Vector2(50, 32)
+scale = Vector2(0.282, 0.282)
 texture = ExtResource("5_tbwj3")
 flip_h = true
 script = ExtResource("6_18ykn")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 58.0
-offset_top = 89.0
-offset_right = 123.0
-offset_bottom = 119.0
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 85.0
+offset_bottom = 85.0
 text = "health"
 label_settings = SubResource("LabelSettings_epmww")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6bdrv")
+}

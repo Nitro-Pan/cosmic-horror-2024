@@ -30,6 +30,11 @@ public partial class AttackAction : Resource
 
     public bool CanHitCharacter(BattleCharacter character)
     {
+        if (character.IsDead())
+        {
+            return false;
+        }
+
         foreach (int slot in CanHitSlots)
         {
             if (character.BattlePosition == slot)

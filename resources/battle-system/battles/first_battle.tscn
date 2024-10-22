@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jc4af7ys8qs1"]
+[gd_scene load_steps=5 format=3 uid="uid://jc4af7ys8qs1"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/ActionManager.cs" id="1_ceyor"]
 [ext_resource type="PackedScene" uid="uid://ykirsocqtb2y" path="res://resources/battle-system/battles/attack_selector.tscn" id="2_1u40j"]
 [ext_resource type="PackedScene" uid="uid://cnrf37a01u6fd" path="res://resources/battle-system/battles/character_selector.tscn" id="3_3bx1j"]
+[ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="4_pvc1j"]
 
 [node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker")]
 script = ExtResource("1_ceyor")
@@ -11,10 +12,16 @@ AllyCharacters = NodePath("AllySelector")
 AttackPicker = NodePath("AttackSelector")
 
 [node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
-position = Vector2(606, 556)
+position = Vector2(576, 561)
 
 [node name="AllySelector" parent="." instance=ExtResource("3_3bx1j")]
-position = Vector2(2, 265)
+position = Vector2(77.705, 292)
 
 [node name="EnemySelector" parent="." instance=ExtResource("3_3bx1j")]
-position = Vector2(493, 87)
+position = Vector2(701, 289)
+
+[node name="Fish-bg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(573, 324)
+scale = Vector2(0.611111, 0.611111)
+texture = ExtResource("4_pvc1j")

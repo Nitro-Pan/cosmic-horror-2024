@@ -20,6 +20,7 @@ public abstract partial class BattleCharacter : Node2D
     [Export] public Godot.Collections.Array<AttackAction> BaseAttacks { get; protected set; }
 	[Export] public Label HealthLabel { get; protected set; }
 	[Export] protected CharacterAnimation CharacterSprite { get; set; }
+	[Export] private AnimationPlayer Animator { get; set; }
 	[Export] private Color SelectableColor { get; set; }
 	[Export] private Color UnselectableColor { get; set; }
 
@@ -76,14 +77,27 @@ public abstract partial class BattleCharacter : Node2D
             CurrentStats.StatusEffects.Add(new StatusEffect { EffectType = BattleUtils.StatusType.Dying, Duration = 9999 });
 		}
 
-		SetUI();
-
 		if (Health <= 0)
 		{
 			OnCharacterDead.Invoke(this);
+			OnDeath();
 		}
 
-		return CurrentStats;
+		CurrentStats.Health = Math.Clamp(Health, 0, BaseHealth);
+
+        SetUI();
+
+        return CurrentStats;
+	}
+
+	public void StartAttack()
+	{
+		Animator.Play("attack");
+	}
+
+	public void EndAttack()
+	{
+		Animator.Play("RESET");
 	}
 
 	public void SetSelectableState(bool isSelectable)
@@ -119,6 +133,11 @@ public abstract partial class BattleCharacter : Node2D
 	{
 		HealthLabel.Text = $"{Health}/{BaseHealth}";
 	}
+
+	private void OnDeath()
+	{
+		CharacterSprite.FlipV = true;
+    }
 
 	public bool IsDead()
 	{

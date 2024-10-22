@@ -44,13 +44,9 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
 
         foreach (BattleCharacter character in ActionList)
         {
-            foreach (int slot in attack.CanHitSlots)
+            if (attack.CanHitCharacter(character))
             {
-                if (character.BattlePosition == slot)
-                {
-                    validCharacters.Add(character);
-                    break;
-                }
+                validCharacters.Add(character);
             }
         }
 

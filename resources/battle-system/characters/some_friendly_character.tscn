@@ -11,16 +11,17 @@
 resource_local_to_scene = true
 shader = ExtResource("4_didxc")
 shader_parameter/bounceAmplitude = 27.703
-shader_parameter/waveAmplitude = 0.022
-shader_parameter/waveFrequency = 49.987
+shader_parameter/waveAmplitude = 0.089
+shader_parameter/waveFrequency = 55.628
 shader_parameter/verticalWave = true
 shader_parameter/keepTransparency = true
 shader_parameter/useTime = true
-shader_parameter/waveSpeed = 3.027
+shader_parameter/waveSpeed = 9.694
 shader_parameter/progress = 0.0
 shader_parameter/startOffset = 0.0
 shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_epmww"]
 font_size = 21

@@ -194,7 +194,8 @@ public partial class ActionManager : Node
 					break;
 				}
 
-				SelectedCharacterIndex++;
+                AttackingCharacter.StartAttack();
+                SelectedCharacterIndex++;
 				DefendingCharacter.ApplyHit(SelectedAttack);
 				CompleteLoop();
 				break;
@@ -243,6 +244,7 @@ public partial class ActionManager : Node
 		{
 			SetProcessInput(false);
 			DoEnemyTurn();
+			AllyCharacters.ResetHighlights();
 			SetProcessInput(true);
 		}
 	}

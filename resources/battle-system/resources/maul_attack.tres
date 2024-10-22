@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dw7r0skafn31s"]
+
+[ext_resource type="Texture2D" uid="uid://bm4y4cj2sdcru" path="res://sprites/attacks/maul-icon.png" id="1_xsfwi"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_4rnit"]
+
+[resource]
+script = ExtResource("2_4rnit")
+CanHitSlots = PackedInt32Array(0)
+UsableFromSlots = PackedInt32Array(0, 1)
+IsFriendly = false
+Damage = 20.0
+Accuracy = 110.0
+StatusEffects = []
+Texture = ExtResource("1_xsfwi")

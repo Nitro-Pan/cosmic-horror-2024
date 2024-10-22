@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkd3n2p5v3785"
-path="res://.godot/imported/brain sturgeon.png-8ef71141ed3a3028c41257f97ae5ea35.ctex"
+uid="uid://bm4y4cj2sdcru"
+path="res://.godot/imported/maul-icon.png-a6e80bb77cd7ad5ccce729660b8f1dcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/brain sturgeon.png"
-dest_files=["res://.godot/imported/brain sturgeon.png-8ef71141ed3a3028c41257f97ae5ea35.ctex"]
+source_file="res://sprites/attacks/maul-icon.png"
+dest_files=["res://.godot/imported/maul-icon.png-a6e80bb77cd7ad5ccce729660b8f1dcd.ctex"]
 
 [params]
 

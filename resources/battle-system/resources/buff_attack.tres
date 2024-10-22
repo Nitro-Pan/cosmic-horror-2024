@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c2pmtk5n80rs6"]
+
+[ext_resource type="Texture2D" uid="uid://ti7eixo12vig" path="res://sprites/attacks/buff-icon.png" id="1_5f3qf"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_6k8up"]
+
+[resource]
+script = ExtResource("2_6k8up")
+CanHitSlots = PackedInt32Array(2, 3)
+UsableFromSlots = PackedInt32Array(0, 1, 2, 3)
+IsFriendly = false
+Damage = 0.0
+Accuracy = 110.0
+StatusEffects = []
+Texture = ExtResource("1_5f3qf")

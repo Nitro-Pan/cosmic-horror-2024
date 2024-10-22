@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d217tsqlvvf4i"
-path="res://.godot/imported/nibble-icon.png-9236b3dd2f6ef7df51b0187c1e1ad042.ctex"
+uid="uid://bh3hhe30thlrv"
+path="res://.godot/imported/loveland frog.png-eb6b4c10c176945f6f8a6bacc991b711.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/nibble-icon.png"
-dest_files=["res://.godot/imported/nibble-icon.png-9236b3dd2f6ef7df51b0187c1e1ad042.ctex"]
+source_file="res://sprites/characters/loveland frog.png"
+dest_files=["res://.godot/imported/loveland frog.png-eb6b4c10c176945f6f8a6bacc991b711.ctex"]
 
 [params]
 

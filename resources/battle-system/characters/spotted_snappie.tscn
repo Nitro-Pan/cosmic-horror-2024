@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmdipi03t0j81"]
+[gd_scene load_steps=14 format=3 uid="uid://cmdipi03t0j81"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_dpg57"]
-[ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/basic_attack.tres" id="2_brs2c"]
-[ext_resource type="Resource" uid="uid://3dwgvj5sfyrr" path="res://resources/battle-system/resources/second_attack.tres" id="3_dt7r1"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/bite_attack.tres" id="2_akbk3"]
+[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/nibble_attack.tres" id="3_titij"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_pyrf5"]
-[ext_resource type="Texture2D" uid="uid://cvp035k77quv8" path="res://sprites/spotted snappie.png" id="5_fkn52"]
+[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/tendril_attack.tres" id="4_tg6n6"]
+[ext_resource type="Texture2D" uid="uid://cvp035k77quv8" path="res://sprites/characters/spotted snappie.png" id="5_fkn52"]
+[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/pass_attack.tres" id="5_kscnl"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_ocwld"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
@@ -28,6 +30,57 @@ font_size = 21
 font_color = Color(1, 0, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_2uskb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lime-fish:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lime-fish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.17, 0.17)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lime-fish:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lime-fish:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(61, 36)]
+}
 
 [sub_resource type="Animation" id="Animation_jtqru"]
 resource_name = "attack"
@@ -94,57 +147,6 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_2uskb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lime-fish:z_index")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Lime-fish:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.17, 0.17)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Lime-fish:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Lime-fish:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(61, 36)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mtmy8"]
 _data = {
 "RESET": SubResource("Animation_2uskb"),
@@ -156,7 +158,7 @@ script = ExtResource("1_dpg57")
 BaseHealth = 100.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
-BaseAttacks = Array[Resource]([ExtResource("3_dt7r1"), ExtResource("2_brs2c"), ExtResource("2_brs2c"), ExtResource("2_brs2c")])
+BaseAttacks = Array[Resource]([ExtResource("2_akbk3"), ExtResource("3_titij"), ExtResource("4_tg6n6"), ExtResource("5_kscnl")])
 HealthLabel = NodePath("Label")
 CharacterSprite = NodePath("Lime-fish")
 Animator = NodePath("AnimationPlayer")

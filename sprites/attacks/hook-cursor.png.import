@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cok86hjwwtfu3"
-path="res://.godot/imported/cadaverfly.png-d600fd1fffd8c20049636f2afdbd8b9f.ctex"
+uid="uid://tpa4ihxt524i"
+path="res://.godot/imported/hook-cursor.png-178073db8e9a344cc384001a5bc2c5a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/attacks/cadaverfly.png"
-dest_files=["res://.godot/imported/cadaverfly.png-d600fd1fffd8c20049636f2afdbd8b9f.ctex"]
+source_file="res://sprites/attacks/hook-cursor.png"
+dest_files=["res://.godot/imported/hook-cursor.png-178073db8e9a344cc384001a5bc2c5a3.ctex"]
 
 [params]
 

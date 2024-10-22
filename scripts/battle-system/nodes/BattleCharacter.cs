@@ -31,6 +31,7 @@ public abstract partial class BattleCharacter : Node2D
 	public int BattlePosition => CurrentStats.BattlePosition;
 
 	public event Action<BattleCharacter> OnCharacterDead;
+	public event Action OnAttackAnimationFinished;
 
     public override void _Ready()
     {
@@ -98,6 +99,7 @@ public abstract partial class BattleCharacter : Node2D
 	public void EndAttack()
 	{
 		Animator.Play("RESET");
+		OnAttackAnimationFinished?.Invoke();
 	}
 
 	public void SetSelectableState(bool isSelectable)

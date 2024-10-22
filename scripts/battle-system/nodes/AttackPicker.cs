@@ -53,6 +53,8 @@ public partial class AttackPicker : ActionPicker<AttackAction>
                 }
             }
         }
+
+        ToggleSelector(true);
     }
 
     protected override void PrintSelectedAction(int action)

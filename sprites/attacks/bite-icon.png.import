@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cblb1nxwa2ehh"
-path="res://.godot/imported/REAL-FISH-LEGIT.png-33987cef294b3716f5ed4c4ad5b3dfe6.ctex"
+uid="uid://be5wwgad6o4x2"
+path="res://.godot/imported/bite-icon.png-1dca53c5e29897c8b1637b28191a7d8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/REAL-FISH-LEGIT.png"
-dest_files=["res://.godot/imported/REAL-FISH-LEGIT.png-33987cef294b3716f5ed4c4ad5b3dfe6.ctex"]
+source_file="res://sprites/attacks/bite-icon.png"
+dest_files=["res://.godot/imported/bite-icon.png-1dca53c5e29897c8b1637b28191a7d8c.ctex"]
 
 [params]
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b12wvhtllqtkg"]
+
+[ext_resource type="Texture2D" uid="uid://ddh85y4taj0nx" path="res://sprites/attacks/square-fish.png" id="1_q2vm0"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_l6cgh"]
+
+[resource]
+script = ExtResource("2_l6cgh")
+CanHitSlots = PackedInt32Array(0, 1, 2, 3)
+UsableFromSlots = PackedInt32Array(0, 1, 2, 3)
+IsFriendly = true
+Damage = 0.0
+Accuracy = 0.0
+StatusEffects = []
+Texture = ExtResource("1_q2vm0")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm4y4cj2sdcru"
-path="res://.godot/imported/maul-icon.png-90cc9d75c6f7f412edda95e4b259d7e1.ctex"
+uid="uid://dgpjsmoefakrs"
+path="res://.godot/imported/necronomiclam.png-27f9cb8c1bd44bea18f4bbeab43a18d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/maul-icon.png"
-dest_files=["res://.godot/imported/maul-icon.png-90cc9d75c6f7f412edda95e4b259d7e1.ctex"]
+source_file="res://sprites/characters/necronomiclam.png"
+dest_files=["res://.godot/imported/necronomiclam.png-27f9cb8c1bd44bea18f4bbeab43a18d4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpjsmoefakrs"
-path="res://.godot/imported/necronomiclam.png-e3819b4fdd4f633f91b8e4a89e59b7d1.ctex"
+uid="uid://6cl0174jbvet"
+path="res://.godot/imported/tendril-icon.png-00590fd354a6dd33bf4d8b91de720022.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/necronomiclam.png"
-dest_files=["res://.godot/imported/necronomiclam.png-e3819b4fdd4f633f91b8e4a89e59b7d1.ctex"]
+source_file="res://sprites/attacks/tendril-icon.png"
+dest_files=["res://.godot/imported/tendril-icon.png-00590fd354a6dd33bf4d8b91de720022.ctex"]
 
 [params]
 

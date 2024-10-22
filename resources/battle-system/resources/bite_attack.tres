@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ciia24blbm7oq"]
+
+[ext_resource type="Texture2D" uid="uid://be5wwgad6o4x2" path="res://sprites/attacks/bite-icon.png" id="1_i6ke3"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_o35xo"]
+
+[resource]
+script = ExtResource("2_o35xo")
+CanHitSlots = PackedInt32Array(0, 1)
+UsableFromSlots = PackedInt32Array(0, 1)
+IsFriendly = false
+Damage = 10.0
+Accuracy = 110.0
+StatusEffects = []
+Texture = ExtResource("1_i6ke3")

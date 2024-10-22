@@ -24,12 +24,14 @@ public class AutomaticTurnManager
 
         BattleCharacter selectedCharacterToHit = validTargets[ GD.RandRange(0, validTargets.Count - 1) ];
         selectedCharacterToHit.ApplyHit(attackAction);
+        Character.OnAttackAnimationFinished -= OnAttackFinished;
+        Character.OnAttackAnimationFinished += OnAttackFinished;
+        Character.StartAttack();
         // animation maybe? can set a callback here
 
 #if DEBUG
         GD.Print($"Processed turn for {Character}\nHit: {selectedCharacterToHit}\nAttack: {attackAction}");
 #endif
-        ShouldProgressTurnState = true;
     }
 
     public void TurnStateHandled()
@@ -41,6 +43,11 @@ public class AutomaticTurnManager
     {
         IReadOnlyList<AttackAction> attacks = Character.GetValidAttacks();
         return attacks[ GD.RandRange(0, attacks.Count - 1) ];
+    }
+
+    private void OnAttackFinished()
+    {
+        ShouldProgressTurnState = true;
     }
 }
 

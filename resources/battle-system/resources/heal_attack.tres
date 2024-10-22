@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dua5ja7sc4qxd"]
+
+[ext_resource type="Texture2D" uid="uid://b1ex2dfsbfu1y" path="res://sprites/attacks/heal-icon.png" id="1_wj5hj"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_3wd3d"]
+
+[resource]
+script = ExtResource("2_3wd3d")
+CanHitSlots = PackedInt32Array(2, 3)
+UsableFromSlots = PackedInt32Array(0, 1, 2, 3)
+IsFriendly = true
+Damage = -10.0
+Accuracy = 110.0
+StatusEffects = []
+Texture = ExtResource("1_wj5hj")

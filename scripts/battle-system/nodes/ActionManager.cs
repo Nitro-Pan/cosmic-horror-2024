@@ -279,7 +279,6 @@ public partial class ActionManager : Node
 	{
         EnemyTurnManager.Set(AttackingCharacter, EnemyCharacters, AllyCharacters);
         EnemyTurnManager.ProcessTurn();
-		// SelectedCharacterIndex++;
     }
 
     private bool IsCharacterFriendly(BattleCharacter character)

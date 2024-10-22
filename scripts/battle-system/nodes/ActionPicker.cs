@@ -7,7 +7,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
     private const int DEFAULT_MAX_ACTIONS = 4;
 
     [Export] protected Sprite2D SelectorSprite;
-
+    [Export] private bool ReverseSelectionOrder { get; set; }
     protected abstract Godot.Collections.Array<T> ActionList { get; set; }
     protected int TotalActions => ActionList.Count;
 
@@ -21,7 +21,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
             OnSelectedActionChanged.Invoke(_selectedActionIndex);
         }
     }
-    public T SelectedAction => ActionList[SelectedActionIndex];
+    public T SelectedAction => ActionList[ReverseSelectionOrder ? TotalActions - SelectedActionIndex : SelectedActionIndex];
 
     public event Action<int> OnSelectedActionChanged;
     public event Action<T> OnActionConfirmed;
@@ -89,5 +89,17 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
     public virtual bool ContainsAction(T action)
     {
         return ActionList.Contains(action);
+    }
+
+    public void ToggleSelector(bool isOn)
+    { 
+        if (isOn)
+        {
+            SelectorSprite.Show();
+        }
+        else
+        {
+            SelectorSprite.Hide();
+        }
     }
 }

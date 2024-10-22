@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvp035k77quv8"
-path="res://.godot/imported/spotted snappie.png-72de4d37627b8630fd7bc516c5a826d0.ctex"
+path="res://.godot/imported/spotted snappie.png-b912e3439f70580b0bf7689024dec5ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/spotted snappie.png"
-dest_files=["res://.godot/imported/spotted snappie.png-72de4d37627b8630fd7bc516c5a826d0.ctex"]
+source_file="res://sprites/characters/spotted snappie.png"
+dest_files=["res://.godot/imported/spotted snappie.png-b912e3439f70580b0bf7689024dec5ba.ctex"]
 
 [params]
 

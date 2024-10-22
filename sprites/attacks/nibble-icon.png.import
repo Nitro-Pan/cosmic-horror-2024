@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ex2dfsbfu1y"
-path="res://.godot/imported/heal-icon.png-2f1c5f993e1d77ee850f5c4db83f51aa.ctex"
+uid="uid://d217tsqlvvf4i"
+path="res://.godot/imported/nibble-icon.png-8018acdc61a843fc379c162c62ed0d7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/heal-icon.png"
-dest_files=["res://.godot/imported/heal-icon.png-2f1c5f993e1d77ee850f5c4db83f51aa.ctex"]
+source_file="res://sprites/attacks/nibble-icon.png"
+dest_files=["res://.godot/imported/nibble-icon.png-8018acdc61a843fc379c162c62ed0d7d.ctex"]
 
 [params]
 

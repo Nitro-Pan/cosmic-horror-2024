@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://katnx0380oeb"]
+
+[ext_resource type="Texture2D" uid="uid://6cl0174jbvet" path="res://sprites/attacks/tendril-icon.png" id="1_wexxt"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_thk8q"]
+
+[resource]
+script = ExtResource("2_thk8q")
+CanHitSlots = PackedInt32Array(2, 3)
+UsableFromSlots = PackedInt32Array(1, 2, 3)
+IsFriendly = false
+Damage = 10.0
+Accuracy = 110.0
+StatusEffects = []
+Texture = ExtResource("1_wexxt")

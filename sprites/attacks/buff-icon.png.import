@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbwx2qdx8q5l2"
-path="res://.godot/imported/debuff icon.png-78d2d64d557135fab37bb10d23504b22.ctex"
+uid="uid://ti7eixo12vig"
+path="res://.godot/imported/buff-icon.png-5318e5c61d912339342140f4b7d23ce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/debuff icon.png"
-dest_files=["res://.godot/imported/debuff icon.png-78d2d64d557135fab37bb10d23504b22.ctex"]
+source_file="res://sprites/attacks/buff-icon.png"
+dest_files=["res://.godot/imported/buff-icon.png-5318e5c61d912339342140f4b7d23ce8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ljkstsydivis"
-path="res://.godot/imported/yellow-fish.png-09268894ae441bd560d653bb3a097823.ctex"
+uid="uid://bbwx2qdx8q5l2"
+path="res://.godot/imported/debuff-icon.png-4b36ec8f9ed9d40e6a587d321d509a42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/yellow-fish.png"
-dest_files=["res://.godot/imported/yellow-fish.png-09268894ae441bd560d653bb3a097823.ctex"]
+source_file="res://sprites/attacks/debuff-icon.png"
+dest_files=["res://.godot/imported/debuff-icon.png-4b36ec8f9ed9d40e6a587d321d509a42.ctex"]
 
 [params]
 

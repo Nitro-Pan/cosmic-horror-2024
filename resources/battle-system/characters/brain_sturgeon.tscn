@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://35cvejel8lda"]
+[gd_scene load_steps=14 format=3 uid="uid://35cvejel8lda"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_gcl06"]
-[ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/basic_attack.tres" id="2_ui17e"]
-[ext_resource type="Resource" uid="uid://3dwgvj5sfyrr" path="res://resources/battle-system/resources/second_attack.tres" id="3_d5y12"]
+[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/tendril_attack.tres" id="2_ixrg0"]
+[ext_resource type="Resource" uid="uid://c2pmtk5n80rs6" path="res://resources/battle-system/resources/buff_attack.tres" id="3_hymop"]
+[ext_resource type="Resource" uid="uid://dua5ja7sc4qxd" path="res://resources/battle-system/resources/heal_attack.tres" id="4_e484f"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_orbop"]
-[ext_resource type="Texture2D" uid="uid://bkd3n2p5v3785" path="res://sprites/brain sturgeon.png" id="5_tbwj3"]
+[ext_resource type="Texture2D" uid="uid://bkd3n2p5v3785" path="res://sprites/characters/brain sturgeon.png" id="5_tbwj3"]
+[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/pass_attack.tres" id="5_usjyo"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_18ykn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
@@ -156,7 +158,7 @@ script = ExtResource("1_gcl06")
 BaseHealth = 100.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
-BaseAttacks = Array[Resource]([ExtResource("2_ui17e"), ExtResource("2_ui17e"), ExtResource("2_ui17e"), ExtResource("3_d5y12")])
+BaseAttacks = Array[Resource]([ExtResource("2_ixrg0"), ExtResource("3_hymop"), ExtResource("4_e484f"), ExtResource("5_usjyo")])
 HealthLabel = NodePath("Label")
 CharacterSprite = NodePath("Lime-fish")
 Animator = NodePath("AnimationPlayer")

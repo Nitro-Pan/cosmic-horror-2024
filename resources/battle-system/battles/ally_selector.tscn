@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cnrf37a01u6fd"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_e5egf"]
-[ext_resource type="Texture2D" uid="uid://dfa7u7vsfi62h" path="res://sprites/attacks/selector.png" id="2_ox43i"]
+[ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_i30qf"]
 [ext_resource type="PackedScene" uid="uid://35cvejel8lda" path="res://resources/battle-system/characters/brain_sturgeon.tscn" id="3_xuloy"]
 [ext_resource type="PackedScene" uid="uid://ccl4lnlsamhn8" path="res://resources/battle-system/characters/fish_mascot.tscn" id="4_d4oei"]
 [ext_resource type="PackedScene" uid="uid://cyeoblyxn3tmb" path="res://resources/battle-system/characters/loveland_toad.tscn" id="5_7hlfj"]
@@ -9,14 +9,16 @@
 
 [node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_e5egf")
-ActionList = [NodePath("Characters/Brain Sturgeon"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Spotted Snappie")]
+ActionList = [NodePath("Characters/Spotted Snappie"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Brain Sturgeon")]
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
+ReverseSelectionOrder = true
 
 [node name="Selector" type="Sprite2D" parent="."]
 z_index = 4096
-position = Vector2(99, 61)
-texture = ExtResource("2_ox43i")
+position = Vector2(0, -1)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("2_i30qf")
 
 [node name="Characters" type="Node2D" parent="."]
 

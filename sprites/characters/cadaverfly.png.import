@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0xoygswtyvvk"
-path="res://.godot/imported/fish!.png-d792c8a380e945496549d3d2e49f2336.ctex"
+uid="uid://cckmoay8bbif1"
+path="res://.godot/imported/cadaverfly.png-9a0aac50c0cf94e2e3910acf0d4b11de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fish!.png"
-dest_files=["res://.godot/imported/fish!.png-d792c8a380e945496549d3d2e49f2336.ctex"]
+source_file="res://sprites/characters/cadaverfly.png"
+dest_files=["res://.godot/imported/cadaverfly.png-9a0aac50c0cf94e2e3910acf0d4b11de.ctex"]
 
 [params]
 

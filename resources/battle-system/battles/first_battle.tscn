@@ -76,7 +76,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_olndr"]
 resource_name = "slide_out_left"
-length = 1.235
+length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,7 +84,7 @@ tracks/0/path = NodePath(".:polygon")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.16667, 1.23333),
+"times": PackedFloat32Array(0, 0.1, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [PackedVector2Array(-66, 243, -66, 244, -66, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473)]
@@ -120,7 +120,7 @@ tracks/3/path = NodePath(".:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.16667, 1.23333),
+"times": PackedFloat32Array(0, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -128,7 +128,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_pp2nx"]
 resource_name = "slide_out_right"
-length = 1.235
+length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -136,10 +136,10 @@ tracks/0/path = NodePath(".:polygon")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.16667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473)]
+"values": [PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, 1100, 244, 1100, 472, -69, 473), PackedVector2Array(-66, 243, -62, 244, -63, 472, -69, 473)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -172,7 +172,7 @@ tracks/3/path = NodePath(".:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.16667, 1.23333),
+"times": PackedFloat32Array(0, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]

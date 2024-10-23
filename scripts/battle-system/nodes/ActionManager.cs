@@ -301,13 +301,14 @@ public partial class ActionManager : Node
         if (EnemyCharacters.ContainsAction(character))
 		{
 			SetProcessInput(false);
-			DoEnemyTurn();
+			character.StartSelect(DoEnemyTurn);
 		}
 
 		if (AllyCharacters.ContainsAction(character))
 		{
 			SetProcessInput(true);
             AttackPicker.Set(AttackingCharacter);
+			character.StartSelect();
         }
 	}
 

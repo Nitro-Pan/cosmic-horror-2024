@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cyeoblyxn3tmb"]
+[gd_scene load_steps=17 format=3 uid="uid://cyeoblyxn3tmb"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_ayaqh"]
 [ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="2_laugq"]
@@ -216,11 +216,41 @@ tracks/4/keys = {
 }
 tracks/4/use_blend = true
 
+[sub_resource type="Animation" id="Animation_y7s0j"]
+resource_name = "select"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.28, 0.28), Vector2(0.35, 0.35), Vector2(0.28, 0.28)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndSelectAnimation"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3yf8g"]
 _data = {
 "RESET": SubResource("Animation_ja0wx"),
 "attack": SubResource("Animation_ds7du"),
-"hurt": SubResource("Animation_mcolw")
+"hurt": SubResource("Animation_mcolw"),
+"select": SubResource("Animation_y7s0j")
 }
 
 [node name="LovelandToad" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]

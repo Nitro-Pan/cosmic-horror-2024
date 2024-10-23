@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dt78irfxvtq0y"]
+[gd_scene load_steps=21 format=3 uid="uid://dt78irfxvtq0y"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_qiwtt"]
 [ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="2_hpuqp"]
@@ -394,11 +394,41 @@ tracks/4/keys = {
 }
 tracks/4/use_blend = true
 
+[sub_resource type="Animation" id="Animation_qlodl"]
+resource_name = "select"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.23125, 0.23125), Vector2(0.31, 0.31), Vector2(0.23125, 0.23125)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndSelectAnimation"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mtmy8"]
 _data = {
 "RESET": SubResource("Animation_2uskb"),
 "attack": SubResource("Animation_jtqru"),
-"hurt": SubResource("Animation_2ilnw")
+"hurt": SubResource("Animation_2ilnw"),
+"select": SubResource("Animation_qlodl")
 }
 
 [node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]

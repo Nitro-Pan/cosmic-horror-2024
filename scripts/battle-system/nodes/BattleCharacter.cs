@@ -33,6 +33,7 @@ public abstract partial class BattleCharacter : Node2D
 
 	public event Action<BattleCharacter> OnCharacterDead;
 	private Action OnAttackAnimationFinished { get; set; }
+	private Action OnSelectAnimationFinished { get; set; }
 
 	private Vector2 TargetPosition { get; set; }
 
@@ -101,15 +102,26 @@ public abstract partial class BattleCharacter : Node2D
         return CurrentStats;
 	}
 
-	public void StartAttack(Action onComplete)
+	public void StartAttack(Action onComplete = null)
 	{
 		Animator.Play("attack");
 		OnAttackAnimationFinished = onComplete;
 	}
 
+	public void StartSelect(Action onComplete = null)
+	{
+		Animator.Play("select");
+		OnSelectAnimationFinished = onComplete;
+	}
+
 	public void ResetAttackAnimation()
 	{
 		OnAttackAnimationFinished?.Invoke();
+	}
+
+	private void EndSelectAnimation()
+	{
+		OnSelectAnimationFinished?.Invoke();
 	}
 
 	public void StartTakeDamage()

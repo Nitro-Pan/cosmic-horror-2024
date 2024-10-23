@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1kf0ptwmekhp"
-path="res://.godot/imported/splash.png-465d43249c459167f803ad0ea7f4b843.ctex"
+uid="uid://cvp035k77quv8"
+path="res://.godot/imported/spotted snappie.png-a6a69e41c184144eb886135bec7df3dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/battle-system/characters/attacking/splash.png"
-dest_files=["res://.godot/imported/splash.png-465d43249c459167f803ad0ea7f4b843.ctex"]
+source_file="res://sprites/characters/idle/spotted snappie.png"
+dest_files=["res://.godot/imported/spotted snappie.png-a6a69e41c184144eb886135bec7df3dd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkd3n2p5v3785"
-path="res://.godot/imported/brain sturgeon.png-dd3be4702ab986c6ebf9d43bfb0a1227.ctex"
+uid="uid://d0xoygswtyvvk"
+path="res://.godot/imported/fish!.png-8d678ed3afbe8a717fabd010e2dcdec8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/brain sturgeon.png"
-dest_files=["res://.godot/imported/brain sturgeon.png-dd3be4702ab986c6ebf9d43bfb0a1227.ctex"]
+source_file="res://sprites/characters/idle/fish!.png"
+dest_files=["res://.godot/imported/fish!.png-8d678ed3afbe8a717fabd010e2dcdec8.ctex"]
 
 [params]
 

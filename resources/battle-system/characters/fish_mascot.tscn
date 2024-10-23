@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccl4lnlsamhn8"]
+[gd_scene load_steps=16 format=3 uid="uid://ccl4lnlsamhn8"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_qcshh"]
-[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/bite_attack.tres" id="2_hgdsa"]
-[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/maul_attack.tres" id="3_62qyv"]
-[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/nibble_attack.tres" id="4_fjn4n"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="2_hgdsa"]
+[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_62qyv"]
+[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="4_fjn4n"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_xqidw"]
-[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/pass_attack.tres" id="5_oa3mr"]
-[ext_resource type="Texture2D" uid="uid://d0xoygswtyvvk" path="res://sprites/characters/fish!.png" id="5_t0le5"]
+[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_oa3mr"]
+[ext_resource type="Texture2D" uid="uid://d0xoygswtyvvk" path="res://sprites/characters/idle/fish!.png" id="5_t0le5"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_0xpwx"]
+[ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="9_k3y6h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
@@ -199,6 +200,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [2, 2, 0]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitEffectPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_k3y6h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_76t16"]
 _data = {
@@ -239,3 +255,7 @@ label_settings = SubResource("LabelSettings_epmww")
 libraries = {
 "": SubResource("AnimationLibrary_76t16")
 }
+
+[node name="HitEffectPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"Sound Effects"

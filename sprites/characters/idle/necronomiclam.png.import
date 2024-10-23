@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqb0cdgoofow2"
-path="res://.godot/imported/snappie attack.png-8a9dd4e66c3a59da6f0d69524bbdcfbc.ctex"
+uid="uid://dgpjsmoefakrs"
+path="res://.godot/imported/necronomiclam.png-b647f6607a989cd1485b81680f655213.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/battle-system/characters/attacking/snappie attack.png"
-dest_files=["res://.godot/imported/snappie attack.png-8a9dd4e66c3a59da6f0d69524bbdcfbc.ctex"]
+source_file="res://sprites/characters/idle/necronomiclam.png"
+dest_files=["res://.godot/imported/necronomiclam.png-b647f6607a989cd1485b81680f655213.ctex"]
 
 [params]
 

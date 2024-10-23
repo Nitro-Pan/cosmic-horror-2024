@@ -3,7 +3,9 @@
     public enum StatusType
     {
         None,
-        Dying
+        Dying,
+        Moving,
+        Passing
     }
 
     public enum HitType

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh3hhe30thlrv"
-path="res://.godot/imported/loveland frog.png-eb6b4c10c176945f6f8a6bacc991b711.ctex"
+uid="uid://cqb0cdgoofow2"
+path="res://.godot/imported/snappie attack.png-d3d59334c701d1035c416c08e892e0d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/loveland frog.png"
-dest_files=["res://.godot/imported/loveland frog.png-eb6b4c10c176945f6f8a6bacc991b711.ctex"]
+source_file="res://sprites/characters/attacking/snappie attack.png"
+dest_files=["res://.godot/imported/snappie attack.png-d3d59334c701d1035c416c08e892e0d8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0xoygswtyvvk"
-path="res://.godot/imported/fish!.png-fcfed72bfc971eaeb22ffbdb52cfb92d.ctex"
+uid="uid://bgrhog7eee1jt"
+path="res://.godot/imported/amigara minnow.png-1aa3f257813f00e838f2b16ae31bee3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/fish!.png"
-dest_files=["res://.godot/imported/fish!.png-fcfed72bfc971eaeb22ffbdb52cfb92d.ctex"]
+source_file="res://sprites/characters/idle/amigara minnow.png"
+dest_files=["res://.godot/imported/amigara minnow.png-1aa3f257813f00e838f2b16ae31bee3e.ctex"]
 
 [params]
 

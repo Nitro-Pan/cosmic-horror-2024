@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpjsmoefakrs"
-path="res://.godot/imported/necronomiclam.png-27f9cb8c1bd44bea18f4bbeab43a18d4.ctex"
+uid="uid://c8t4olfj8pki4"
+path="res://.godot/imported/cadaverfly attack.png-32e8109d130d7f4a8d059f4c52a44ceb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/necronomiclam.png"
-dest_files=["res://.godot/imported/necronomiclam.png-27f9cb8c1bd44bea18f4bbeab43a18d4.ctex"]
+source_file="res://sprites/characters/attacking/cadaverfly attack.png"
+dest_files=["res://.godot/imported/cadaverfly attack.png-32e8109d130d7f4a8d059f4c52a44ceb.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvp035k77quv8"
-path="res://.godot/imported/spotted snappie.png-b912e3439f70580b0bf7689024dec5ba.ctex"
+uid="uid://bh3hhe30thlrv"
+path="res://.godot/imported/loveland frog.png-8c004337e106998af72cf473907a6ffe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/spotted snappie.png"
-dest_files=["res://.godot/imported/spotted snappie.png-b912e3439f70580b0bf7689024dec5ba.ctex"]
+source_file="res://sprites/characters/idle/loveland frog.png"
+dest_files=["res://.godot/imported/loveland frog.png-8c004337e106998af72cf473907a6ffe.ctex"]
 
 [params]
 

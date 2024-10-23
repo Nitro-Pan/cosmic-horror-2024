@@ -1,20 +1,20 @@
 [gd_scene load_steps=21 format=3 uid="uid://dt78irfxvtq0y"]
 
-[ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_qiwtt"]
-[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="2_hpuqp"]
-[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="3_4dkwg"]
-[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_xogjo"]
-[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_pu5cf"]
-[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_i1gw1"]
-[ext_resource type="Texture2D" uid="uid://cckmoay8bbif1" path="res://sprites/characters/idle/cadaverfly.png" id="7_1fp28"]
-[ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="8_jsqrg"]
-[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_rppmr"]
-[ext_resource type="Texture2D" uid="uid://c8t4olfj8pki4" path="res://sprites/characters/attacking/cadaverfly attack.png" id="10_vnxsv"]
-[ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="11_ov45l"]
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_0epft"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="2_131oy"]
+[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="3_vynaf"]
+[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_wwfy3"]
+[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_rfndp"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_wwtua"]
+[ext_resource type="Texture2D" uid="uid://cckmoay8bbif1" path="res://sprites/characters/idle/cadaverfly.png" id="7_evp2y"]
+[ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="8_3ewbb"]
+[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_pmqrp"]
+[ext_resource type="Texture2D" uid="uid://c8t4olfj8pki4" path="res://sprites/characters/attacking/cadaverfly attack.png" id="10_li8h4"]
+[ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="11_w5lcp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
-shader = ExtResource("6_i1gw1")
+shader = ExtResource("6_wwtua")
 shader_parameter/bounceAmplitude = 0.0
 shader_parameter/waveAmplitude = 0.028
 shader_parameter/waveFrequency = 7.072
@@ -30,7 +30,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1lke"]
 resource_local_to_scene = true
-shader = ExtResource("6_i1gw1")
+shader = ExtResource("6_wwtua")
 shader_parameter/bounceAmplitude = 0.0
 shader_parameter/waveAmplitude = 0.051
 shader_parameter/waveFrequency = 10.0
@@ -46,7 +46,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2od85"]
 resource_local_to_scene = true
-shader = ExtResource("6_i1gw1")
+shader = ExtResource("6_wwtua")
 shader_parameter/bounceAmplitude = 0.0
 shader_parameter/waveAmplitude = 0.017
 shader_parameter/waveFrequency = 21.165
@@ -388,7 +388,7 @@ tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("11_ov45l")
+"stream": ExtResource("11_w5lcp")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -432,11 +432,11 @@ _data = {
 }
 
 [node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
-script = ExtResource("1_qiwtt")
+script = ExtResource("1_0epft")
 BaseHealth = 100.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
-BaseAttacks = Array[Resource]([ExtResource("2_hpuqp"), ExtResource("3_4dkwg"), ExtResource("4_xogjo"), ExtResource("5_pu5cf")])
+BaseAttacks = Array[Resource]([ExtResource("2_131oy"), ExtResource("3_vynaf"), ExtResource("4_wwfy3"), ExtResource("5_rfndp")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")
@@ -447,9 +447,9 @@ UnselectableColor = Color(0.392157, 0.392157, 0.392157, 1)
 material = SubResource("ShaderMaterial_pjrd5")
 position = Vector2(61, 38)
 scale = Vector2(0.23125, 0.23125)
-texture = ExtResource("7_1fp28")
+texture = ExtResource("7_evp2y")
 flip_h = true
-script = ExtResource("8_jsqrg")
+script = ExtResource("8_3ewbb")
 
 [node name="Splash" type="Sprite2D" parent="."]
 visible = false
@@ -458,13 +458,13 @@ z_as_relative = false
 material = SubResource("ShaderMaterial_r1lke")
 position = Vector2(50, 32)
 scale = Vector2(0.17, 0.17)
-texture = ExtResource("9_rppmr")
+texture = ExtResource("9_pmqrp")
 
 [node name="AttackingSprite" type="Sprite2D" parent="Splash"]
 z_index = -1
 material = SubResource("ShaderMaterial_2od85")
 position = Vector2(6, 5)
-texture = ExtResource("10_vnxsv")
+texture = ExtResource("10_li8h4")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 20.0

@@ -1,20 +1,20 @@
 [gd_scene load_steps=21 format=3 uid="uid://cmdipi03t0j81"]
 
-[ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_dpg57"]
-[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_ljmcx"]
-[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_j1ha2"]
-[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_pyrf5"]
-[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_tg6n6"]
-[ext_resource type="Texture2D" uid="uid://cvp035k77quv8" path="res://sprites/characters/idle/spotted snappie.png" id="5_fkn52"]
-[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_kscnl"]
-[ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_ocwld"]
-[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_3iels"]
-[ext_resource type="Texture2D" uid="uid://cqb0cdgoofow2" path="res://sprites/characters/attacking/snappie attack.png" id="9_lwoq0"]
-[ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="11_oambm"]
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_tcio4"]
+[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_ld3cs"]
+[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_sch5u"]
+[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_23bad"]
+[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_f7ijk"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_3q1ul"]
+[ext_resource type="Texture2D" uid="uid://cvp035k77quv8" path="res://sprites/characters/idle/spotted snappie.png" id="7_04eds"]
+[ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="8_ohnpr"]
+[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_4m0yk"]
+[ext_resource type="Texture2D" uid="uid://cqb0cdgoofow2" path="res://sprites/characters/attacking/snappie attack.png" id="10_068rw"]
+[ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="11_o56re"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
-shader = ExtResource("4_pyrf5")
+shader = ExtResource("6_3q1ul")
 shader_parameter/bounceAmplitude = 27.703
 shader_parameter/waveAmplitude = 0.022
 shader_parameter/waveFrequency = 49.987
@@ -30,7 +30,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1lke"]
 resource_local_to_scene = true
-shader = ExtResource("4_pyrf5")
+shader = ExtResource("6_3q1ul")
 shader_parameter/bounceAmplitude = 0.0
 shader_parameter/waveAmplitude = 0.051
 shader_parameter/waveFrequency = 10.0
@@ -46,7 +46,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2od85"]
 resource_local_to_scene = true
-shader = ExtResource("4_pyrf5")
+shader = ExtResource("6_3q1ul")
 shader_parameter/bounceAmplitude = 0.0
 shader_parameter/waveAmplitude = 0.017
 shader_parameter/waveFrequency = 21.165
@@ -388,7 +388,7 @@ tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("11_oambm")
+"stream": ExtResource("11_o56re")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -432,11 +432,11 @@ _data = {
 }
 
 [node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
-script = ExtResource("1_dpg57")
+script = ExtResource("1_tcio4")
 BaseHealth = 100.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
-BaseAttacks = Array[Resource]([ExtResource("2_ljmcx"), ExtResource("3_j1ha2"), ExtResource("4_tg6n6"), ExtResource("5_kscnl")])
+BaseAttacks = Array[Resource]([ExtResource("2_ld3cs"), ExtResource("3_sch5u"), ExtResource("4_23bad"), ExtResource("5_f7ijk")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")
@@ -447,9 +447,9 @@ UnselectableColor = Color(0.392157, 0.392157, 0.392157, 1)
 material = SubResource("ShaderMaterial_pjrd5")
 position = Vector2(61, 36)
 scale = Vector2(0.17, 0.17)
-texture = ExtResource("5_fkn52")
+texture = ExtResource("7_04eds")
 flip_h = true
-script = ExtResource("6_ocwld")
+script = ExtResource("8_ohnpr")
 
 [node name="Splash" type="Sprite2D" parent="."]
 visible = false
@@ -458,13 +458,13 @@ z_as_relative = false
 material = SubResource("ShaderMaterial_r1lke")
 position = Vector2(50, 32)
 scale = Vector2(0.17, 0.17)
-texture = ExtResource("9_3iels")
+texture = ExtResource("9_4m0yk")
 
 [node name="AttackingSprite" type="Sprite2D" parent="Splash"]
 z_index = -1
 material = SubResource("ShaderMaterial_2od85")
 position = Vector2(6, 5)
-texture = ExtResource("9_lwoq0")
+texture = ExtResource("10_068rw")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 20.0

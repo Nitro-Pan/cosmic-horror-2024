@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm60olfovogwr"
-path="res://.godot/imported/fish attack.png-4aa25e9d88889a16fcf4b889c6b61d2a.ctex"
+uid="uid://b3y0mmoaw7yr7"
+path="res://.godot/imported/loveland toad attack.png-872498529abb1e827fcea3d68ee9214b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/attacks/fish attack.png"
-dest_files=["res://.godot/imported/fish attack.png-4aa25e9d88889a16fcf4b889c6b61d2a.ctex"]
+source_file="res://sprites/characters/attacking/loveland toad attack.png"
+dest_files=["res://.godot/imported/loveland toad attack.png-872498529abb1e827fcea3d68ee9214b.ctex"]
 
 [params]
 

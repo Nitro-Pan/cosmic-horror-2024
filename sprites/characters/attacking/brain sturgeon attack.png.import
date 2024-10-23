@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3y0mmoaw7yr7"
-path="res://.godot/imported/loveland toad attack.png-c810175a15922fb6d2004bde44b070ba.ctex"
+uid="uid://c6pw5vtlnwyev"
+path="res://.godot/imported/brain sturgeon attack.png-737e46a2e91f56d82436c815e3bbf00c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/attacks/loveland toad attack.png"
-dest_files=["res://.godot/imported/loveland toad attack.png-c810175a15922fb6d2004bde44b070ba.ctex"]
+source_file="res://sprites/characters/attacking/brain sturgeon attack.png"
+dest_files=["res://.godot/imported/brain sturgeon attack.png-737e46a2e91f56d82436c815e3bbf00c.ctex"]
 
 [params]
 

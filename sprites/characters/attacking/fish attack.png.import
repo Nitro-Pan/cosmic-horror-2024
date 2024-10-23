@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6pw5vtlnwyev"
-path="res://.godot/imported/brain sturgeon attack.png-49e54b140d7a1c2c1ee5c4c142531137.ctex"
+uid="uid://dm60olfovogwr"
+path="res://.godot/imported/fish attack.png-4787c31b0a4850d4e8760a461b4cbafa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/attacks/brain sturgeon attack.png"
-dest_files=["res://.godot/imported/brain sturgeon attack.png-49e54b140d7a1c2c1ee5c4c142531137.ctex"]
+source_file="res://sprites/characters/attacking/fish attack.png"
+dest_files=["res://.godot/imported/fish attack.png-4787c31b0a4850d4e8760a461b4cbafa.ctex"]
 
 [params]
 

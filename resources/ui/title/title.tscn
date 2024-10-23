@@ -67,6 +67,7 @@ focus_neighbor_bottom = NodePath("../PlayButton")
 text = "EXIT"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_oufey")
 offset_left = 287.0
 offset_top = 65.0
@@ -74,3 +75,11 @@ offset_right = 857.0
 offset_bottom = 265.0
 text = "BREACH"
 label_settings = SubResource("LabelSettings_oaxxp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 373.0
+offset_top = 93.0
+offset_right = 776.0
+offset_bottom = 248.0
+bbcode_enabled = true
+text = "[wave][font_size=100]BREACH"

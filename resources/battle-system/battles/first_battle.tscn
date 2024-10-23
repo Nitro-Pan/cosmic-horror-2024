@@ -185,11 +185,12 @@ _data = {
 "slide_out_right": SubResource("Animation_pp2nx")
 }
 
-[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker")]
+[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer")]
 script = ExtResource("1_ceyor")
 EnemyCharacters = NodePath("EnemySelector")
 AllyCharacters = NodePath("AllySelector")
 AttackPicker = NodePath("AttackSelector")
+AttackAnimationPlayer = NodePath("AttackSmear/SmearAnimationPlayer")
 
 [node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
 position = Vector2(576, 561)

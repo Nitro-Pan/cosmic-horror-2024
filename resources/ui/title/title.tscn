@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://cem65vxxrl4y0"]
+
+[ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="1_27xw4"]
+[ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_mtu4l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oufey"]
+shader = ExtResource("2_mtu4l")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.032
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oaxxp"]
+font_size = 146
+
+[node name="TitleScene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.099986, 0.099986, 0.099986, 1)
+position = Vector2(574, 326)
+scale = Vector2(0.613889, 0.613889)
+texture = ExtResource("1_27xw4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 347.0
+offset_right = 724.0
+offset_bottom = 396.0
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+text = "PLAY"
+
+[node name="CreditsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 416.0
+offset_right = 724.0
+offset_bottom = 465.0
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+text = "CREDITS
+"
+
+[node name="ExitButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 486.0
+offset_right = 723.0
+offset_bottom = 535.0
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+text = "EXIT"
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_oufey")
+offset_left = 287.0
+offset_top = 65.0
+offset_right = 857.0
+offset_bottom = 265.0
+text = "BREACH"
+label_settings = SubResource("LabelSettings_oaxxp")

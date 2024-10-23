@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ykirsocqtb2y"]
+[gd_scene load_steps=9 format=3 uid="uid://ykirsocqtb2y"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AttackPicker.cs" id="1_dxwbr"]
 [ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/attacks/basic_attack.tres" id="2_lr75t"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="3_3s05u"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="3_udtot"]
 [ext_resource type="Texture2D" uid="uid://be5wwgad6o4x2" path="res://sprites/attacks/bite-icon.png" id="4_1swdw"]
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/AttackDisplay.cs" id="6_ltv6m"]
+[ext_resource type="Script" path="res://scripts/battle-system/nodes/HitFiller.cs" id="7_voxhx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hedru"]
 resource_local_to_scene = true
@@ -22,10 +24,11 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
-[node name="AttackSelector" type="Node2D" node_paths=PackedStringArray("Buttons", "SelectorSprite")]
+[node name="AttackSelector" type="Node2D" node_paths=PackedStringArray("Buttons", "Display", "SelectorSprite")]
 script = ExtResource("1_dxwbr")
 ActionList = Array[Resource]([ExtResource("2_lr75t"), ExtResource("2_lr75t")])
 Buttons = [NodePath("Node2D/Attack1"), NodePath("Node2D/Attack2"), NodePath("Node2D/Attack3"), NodePath("Node2D/Attack4")]
+Display = NodePath("AttackDisplay")
 DisabledColour = Color(0.6902, 0.178196, 0.177362, 1)
 SelectorSprite = NodePath("Selector")
 SelectorSpeed = 10.0
@@ -62,3 +65,62 @@ position = Vector2(150, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("4_1swdw")
 region_rect = Rect2(0, 0, 128, 128)
+
+[node name="AttackDisplay" type="Node2D" parent="." node_paths=PackedStringArray("HitSlotsDisplay", "DamageLabel", "AccuracyLabel", "EffectLabel")]
+script = ExtResource("6_ltv6m")
+HitSlotsDisplay = NodePath("HitFiller")
+DamageLabel = NodePath("Damage")
+AccuracyLabel = NodePath("Accuracy")
+EffectLabel = NodePath("Effect")
+
+[node name="Damage" type="Label" parent="AttackDisplay"]
+offset_left = 211.0
+offset_top = -40.0
+offset_right = 325.0
+offset_bottom = -17.0
+text = "Damage: {0}"
+
+[node name="Accuracy" type="Label" parent="AttackDisplay"]
+offset_left = 211.0
+offset_top = -16.0
+offset_right = 325.0
+offset_bottom = 7.0
+text = "Accuracy: {0}"
+
+[node name="HitFiller" type="Node2D" parent="AttackDisplay" node_paths=PackedStringArray("Polygons")]
+position = Vector2(257, 22)
+script = ExtResource("7_voxhx")
+Polygons = [NodePath("HitMarker"), NodePath("HitMarker2"), NodePath("HitMarker3"), NodePath("HitMarker4")]
+
+[node name="HitMarker" type="Polygon2D" parent="AttackDisplay/HitFiller"]
+z_index = 1
+position = Vector2(-51, -9)
+polygon = PackedVector2Array(5, 1, 5, 17, 22, 17, 22, 1)
+
+[node name="HitMarker2" type="Polygon2D" parent="AttackDisplay/HitFiller"]
+z_index = 1
+position = Vector2(-26, -9)
+polygon = PackedVector2Array(5, 1, 5, 17, 22, 17, 22, 1)
+
+[node name="HitMarker3" type="Polygon2D" parent="AttackDisplay/HitFiller"]
+z_index = 1
+position = Vector2(-1, -9)
+polygon = PackedVector2Array(5, 1, 5, 17, 22, 17, 22, 1)
+
+[node name="HitMarker4" type="Polygon2D" parent="AttackDisplay/HitFiller"]
+z_index = 1
+position = Vector2(24, -9)
+polygon = PackedVector2Array(5, 1, 5, 17, 22, 17, 22, 1)
+
+[node name="Line2D" type="Line2D" parent="AttackDisplay/HitFiller"]
+position = Vector2(-376, 22)
+points = PackedVector2Array(338, -22, 415, -22)
+width = 4.0
+default_color = Color(0.43134, 0.43134, 0.43134, 1)
+
+[node name="Effect" type="Label" parent="AttackDisplay"]
+offset_left = 211.0
+offset_top = 38.0
+offset_right = 325.0
+offset_bottom = 61.0
+text = "EFFECT"

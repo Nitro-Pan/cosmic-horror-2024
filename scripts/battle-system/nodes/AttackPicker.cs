@@ -7,6 +7,7 @@ public partial class AttackPicker : ActionPicker<AttackAction>
 {
     [Export] protected override Godot.Collections.Array<AttackAction> ActionList { get; set; }
     [Export] private Sprite2D[] Buttons { get; set; }
+    [Export] private AttackDisplay Display { get; set; }
     [Export] private Color DisabledColour { get; set; }
     [Export] private Color EnabledColour { get; set; } = new Color(1.0f, 1.0f, 1.0f);
 
@@ -75,6 +76,7 @@ public partial class AttackPicker : ActionPicker<AttackAction>
     protected override void OnActionChanged(int index)
     { 
         SelectorTargetPosition = Buttons[ index ].Position;
+        Display.Set(ActionList[ index ]);
     }
 }
 

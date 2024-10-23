@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cwdm06omj58ba"]
+
+[ext_resource type="Resource" uid="uid://yqrawyl28m0y" path="res://resources/battle-system/resources/status-effects/move_effect.tres" id="1_wlx3a"]
+[ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_yhdid"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="3_mmtlf"]
+
+[resource]
+script = ExtResource("3_mmtlf")
+CanHitSlots = PackedInt32Array(0, 1, 2, 3)
+UsableFromSlots = PackedInt32Array(0, 1, 2, 3)
+IsFriendly = true
+Damage = 0.0
+Accuracy = 0.0
+StatusEffects = [ExtResource("1_wlx3a")]
+Texture = ExtResource("2_yhdid")

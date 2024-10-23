@@ -5,30 +5,31 @@ public class AutomaticTurnManager
 {
     public bool ShouldProgressTurnState { get; private set; } = false;
 
-    private BattleCharacter Character { get; set; }
+    private BattleCharacter AttackingCharacter { get; set; }
+    private BattleCharacter DefendingCharacter { get; set; }
     private CharacterPicker FriendlyCharacters { get; set; }
     private CharacterPicker EnemyCharacters { get; set; }
+    private AttackAction SelectedAttack { get; set; }
 
     public void Set(BattleCharacter character, CharacterPicker friendlyCharacters, CharacterPicker enemyCharacters)
     {
-        Character = character;
+        AttackingCharacter = character;
         FriendlyCharacters = friendlyCharacters;
         EnemyCharacters = enemyCharacters;
     }
 
     public void ProcessTurn()
     {
-        AttackAction attackAction = GetAttackAction();
-        CharacterPicker targets = attackAction.IsFriendly ? FriendlyCharacters : EnemyCharacters;
-        IReadOnlyList<BattleCharacter> validTargets = targets.GetValidCharactersForAttack(attackAction);
+        SelectedAttack = GetAttackAction();
+        CharacterPicker targets = SelectedAttack.IsFriendly ? FriendlyCharacters : EnemyCharacters;
+        IReadOnlyList<BattleCharacter> validTargets = targets.GetValidCharactersForAttack(SelectedAttack);
 
-        BattleCharacter selectedCharacterToHit = validTargets[ GD.RandRange(0, validTargets.Count - 1) ];
-        selectedCharacterToHit.ApplyHit(attackAction);
-        Character.StartAttack(OnAttackFinished);
-        // animation maybe? can set a callback here
+        DefendingCharacter = validTargets[ GD.RandRange(0, validTargets.Count - 1) ];
+        DefendingCharacter.ApplyHit(SelectedAttack);
+        AttackingCharacter.StartAttack(OnAttackFinished);
 
 #if DEBUG
-        GD.Print($"Processed turn for {Character}\nHit: {selectedCharacterToHit}\nAttack: {attackAction}");
+        GD.Print($"Processed turn for {AttackingCharacter}\nHit: {DefendingCharacter}\nAttack: {SelectedAttack}");
 #endif
     }
 
@@ -39,12 +40,29 @@ public class AutomaticTurnManager
 
     private AttackAction GetAttackAction()
     {
-        IReadOnlyList<AttackAction> attacks = Character.GetValidAttacks();
+        IReadOnlyList<AttackAction> attacks = AttackingCharacter.GetValidAttacks();
         return attacks[ GD.RandRange(0, attacks.Count - 1) ];
     }
 
     private void OnAttackFinished()
     {
+        CharacterPicker targetPicker = SelectedAttack.IsFriendly ? FriendlyCharacters : EnemyCharacters;
+
+        if (SelectedAttack.ContainsStatus(BattleUtils.StatusType.Moving))
+        {
+            targetPicker.ShoveCharacters(AttackingCharacter, DefendingCharacter);
+        }
+
+        if (SelectedAttack.GetStatusEffect(BattleUtils.StatusType.Pushing) is StatusEffect pushEffect)
+        {
+            targetPicker.ShoveCharacters(DefendingCharacter, targetPicker.GetFurthestCharacter(DefendingCharacter, pushEffect.Amount));
+        }
+
+        if (SelectedAttack.GetStatusEffect(BattleUtils.StatusType.Pulling) is StatusEffect pullEffect)
+        {
+            targetPicker.ShoveCharacters(DefendingCharacter, targetPicker.GetFurthestCharacter(DefendingCharacter, -pullEffect.Amount));
+        }
+
         ShouldProgressTurnState = true;
     }
 }

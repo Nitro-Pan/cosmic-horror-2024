@@ -110,14 +110,18 @@ public partial class ActionManager : Node
 		{
 			EnemyTurnManager.TurnStateHandled();
 			SelectedCharacterIndex++;
-			AttackPicker.Set(AttackingCharacter);
-		}
+        }
 
 		base._Process(delta);
 	}
 
     public override void _Input(InputEvent @event)
     {
+		if (!IsProcessingInput())
+		{
+			return;
+		}
+
 		if (@event.IsActionPressed("ui_select"))
 		{
 			PreviousPickStates.Push(SelectedPickState);
@@ -153,14 +157,14 @@ public partial class ActionManager : Node
 		{
 		case PickState.PickingAttack:
 			{
-                AttackPicker.SelectedActionIndex += Math.Clamp(direction, -1, 1);
+				AttackPicker.SelectedActionIndex += Math.Sign(direction);
 				TargetCharacterPicker.HighlightValidOptions(SelectedAttack);
 				SourceCharacterPicker.DimAllExcept(AttackingCharacter);
                 break;
 			}
 		case PickState.PickingTarget:
 			{
-				TargetCharacterPicker.ChangeSelectedAction(Math.Clamp(direction, -1, 1));
+				TargetCharacterPicker.ChangeSelectedAction(Math.Sign(direction));
 				DefendingCharacter = TargetCharacterPicker.SelectedAction;
                 break;
 			}
@@ -195,6 +199,16 @@ public partial class ActionManager : Node
 					break;
 				}
 
+				if (SelectedAttack.ContainsStatus(BattleUtils.StatusType.Passing))
+				{
+#if DEBUG
+					GD.Print("Passing the turn");
+#endif
+					SelectedCharacterIndex++;
+                    CompleteLoop();
+					break;
+				}
+
 				TargetCharacterPicker.ToggleSelector(true);
 				SourceCharacterPicker.ToggleSelector(false);
 				AttackPicker.ToggleSelector(false);
@@ -209,7 +223,25 @@ public partial class ActionManager : Node
 					break;
 				}
 
+				if (SelectedAttack.ContainsStatus(BattleUtils.StatusType.Moving))
+				{
+					TargetCharacterPicker.ShoveCharacters(AttackingCharacter, DefendingCharacter);
+                    SelectedCharacterIndex++;
+                    CompleteLoop();
+					return;
+                }
+				
                 AttackingCharacter.StartAttack(() => {
+                    if (SelectedAttack.GetStatusEffect(BattleUtils.StatusType.Pushing) is StatusEffect pushEffect)
+                    {
+                        TargetCharacterPicker.ShoveCharacters(DefendingCharacter, TargetCharacterPicker.GetFurthestCharacter(DefendingCharacter, pushEffect.Amount));
+                    }
+
+                    if (SelectedAttack.GetStatusEffect(BattleUtils.StatusType.Pulling) is StatusEffect pullEffect)
+                    {
+                        TargetCharacterPicker.ShoveCharacters(DefendingCharacter, TargetCharacterPicker.GetFurthestCharacter(DefendingCharacter, -pullEffect.Amount));
+                    }
+
                     SelectedCharacterIndex++;
                     CompleteLoop();
                 });
@@ -263,13 +295,20 @@ public partial class ActionManager : Node
 
 	private void CharacterChanged(BattleCharacter character)
 	{
-		if (EnemyCharacters.ContainsAction(character))
+        AllyCharacters.ResetHighlights();
+        EnemyCharacters.ResetHighlights();
+
+        if (EnemyCharacters.ContainsAction(character))
 		{
 			SetProcessInput(false);
 			DoEnemyTurn();
-			AllyCharacters.ResetHighlights();
-			SetProcessInput(true);
 		}
+
+		if (AllyCharacters.ContainsAction(character))
+		{
+			SetProcessInput(true);
+            AttackPicker.Set(AttackingCharacter);
+        }
 	}
 
 	private void CompleteLoop()

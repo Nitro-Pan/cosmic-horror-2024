@@ -5,7 +5,9 @@
         None,
         Dying,
         Moving,
-        Passing
+        Passing,
+        Pushing,
+        Pulling
     }
 
     public enum HitType

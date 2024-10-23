@@ -1,14 +1,15 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://katnx0380oeb"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://katnx0380oeb"]
 
-[ext_resource type="Texture2D" uid="uid://6cl0174jbvet" path="res://sprites/attacks/tendril-icon.png" id="1_wexxt"]
-[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_thk8q"]
+[ext_resource type="Texture2D" uid="uid://6cl0174jbvet" path="res://sprites/attacks/tendril-icon.png" id="1_sng4w"]
+[ext_resource type="Resource" uid="uid://dbdsj4cca1nhy" path="res://resources/battle-system/resources/status-effects/pull_effect_1.tres" id="1_xeu2h"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_57uu3"]
 
 [resource]
-script = ExtResource("2_thk8q")
+script = ExtResource("2_57uu3")
 CanHitSlots = PackedInt32Array(2, 3)
 UsableFromSlots = PackedInt32Array(1, 2, 3)
 IsFriendly = false
 Damage = 10.0
 Accuracy = 110.0
-StatusEffects = []
-Texture = ExtResource("1_wexxt")
+StatusEffects = [ExtResource("1_xeu2h")]
+Texture = ExtResource("1_sng4w")

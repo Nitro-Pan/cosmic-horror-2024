@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Godot;
 
 public partial class CharacterPicker : ActionPicker<BattleCharacter>
 {
     [Export] protected override Godot.Collections.Array<BattleCharacter> ActionList { get; set; }
     [Export] private Color DisabledColour { get; set; }
+    private List<Vector2> SettledPositions { get; set; } = new List<Vector2>();
 
     public override void _Ready()
     {
@@ -17,9 +19,11 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
     {
         base.Set(actionList);
 
+        SettledPositions.Clear();
         for (int i = 0; i < ActionList.Count; i++)
         {
             ActionList[ i ].SetBattlePosition(i);
+            SettledPositions.Add(actionList[i].Position);
         }
 
         OnActionChanged(SelectedActionIndex);
@@ -82,6 +86,58 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
         }
     }
 
+    // there should be a better way to do this that doesn't involve taking random refs but w/e
+    public void SwapCharacters(BattleCharacter from, BattleCharacter to)
+    {
+        if (!(ActionList.Contains(from) && ActionList.Contains(to)))
+        {
+#if DEBUG
+            GD.Print("Trying to swap two invalid characters, aborting");
+#endif
+            return;
+        }
+
+        int fromListPosition = ActionList.IndexOf(from);
+        int toListPosition = ActionList.IndexOf(to);
+
+        ActionList[ fromListPosition ] = to;
+        ActionList[ toListPosition ] = from;
+
+        int toBattlePosition = to.BattlePosition;
+        to.SetBattlePosition(from.BattlePosition);
+        from.SetBattlePosition(toBattlePosition);
+
+        to.MoveToPosition(SettledPositions[fromListPosition]);
+        from.MoveToPosition(SettledPositions[toListPosition]);
+    }
+
+    public void ShoveCharacters(BattleCharacter from, BattleCharacter to)
+    {
+        if (!(ActionList.Contains(from) && ActionList.Contains(to)))
+        {
+#if DEBUG
+            GD.Print("Trying to swap two invalid characters, aborting");
+#endif
+            return;
+        }
+
+        int amount = ActionList.IndexOf(to) - ActionList.IndexOf(from);
+        int amountMagnitude = Math.Abs(amount);
+        int direction = Math.Sign(amount);
+
+        for (int i = 0; i < amountMagnitude; i++)
+        {
+            BattleCharacter nextCharacter = direction switch
+            {
+                1 => GetNextCharacter(from),
+                -1 => GetPreviousCharacter(from),
+                _ => from
+            };
+
+            SwapCharacters(from, nextCharacter);
+        }
+    }
+
     protected override void PrintSelectedAction(int action)
     {
         GD.Print($"Selected Character: {ActionList[ SelectedActionIndex ]}");
@@ -113,5 +169,33 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
         }
 
         return true;
+    }
+
+    public BattleCharacter GetNextCharacter(BattleCharacter origin)
+    {
+        int index = ActionList.IndexOf(origin) + 1;
+        if (index >= ActionList.Count)
+        {
+            return origin;
+        }
+
+        return ActionList[ index ];
+    }
+
+    public BattleCharacter GetPreviousCharacter(BattleCharacter origin)
+    {
+        int index = ActionList.IndexOf(origin) - 1;
+        if (index < 0)
+        {
+            return origin;
+        }
+
+        return ActionList[ index ];
+    }
+
+    public BattleCharacter GetFurthestCharacter(BattleCharacter origin, int delta)
+    {
+        int index = Math.Clamp(ActionList.IndexOf(origin) + delta, 0, TotalActions - 1);
+        return ActionList[ index ];
     }
 }

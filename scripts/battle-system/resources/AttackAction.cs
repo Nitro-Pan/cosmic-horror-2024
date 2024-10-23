@@ -46,6 +46,32 @@ public partial class AttackAction : Resource
         return false;
     }
 
+    public bool ContainsStatus(BattleUtils.StatusType status)
+    {
+        foreach (StatusEffect effect in StatusEffects)
+        {
+            if (effect.EffectType == status)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public StatusEffect GetStatusEffect(BattleUtils.StatusType status)
+    {
+        foreach (StatusEffect effect in StatusEffects)
+        {
+            if (effect.EffectType == status)
+            {
+                return effect;
+            }
+        }
+
+        return null;
+    }
+
     public override string ToString()
     {
         string output = $"Attack:\n\tDamage: {Damage}\n\tAccuracy: {Accuracy}\n\tCan Hit: ";

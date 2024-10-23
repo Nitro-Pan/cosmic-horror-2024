@@ -23,8 +23,9 @@ public abstract partial class BattleCharacter : Node2D
 	[Export] private AnimationPlayer Animator { get; set; }
 	[Export] private Color SelectableColor { get; set; }
 	[Export] private Color UnselectableColor { get; set; }
+	[Export] private float PositionSwapSpeed { get; set; } = 5.0f;
 
-	protected Stats CurrentStats { get; set; }
+    protected Stats CurrentStats { get; set; }
 	public float Speed => CurrentStats.Speed;
 	public float Health => CurrentStats.Health;
 	public float Armour => CurrentStats.Armour;
@@ -32,6 +33,8 @@ public abstract partial class BattleCharacter : Node2D
 
 	public event Action<BattleCharacter> OnCharacterDead;
 	private Action OnAttackAnimationFinished { get; set; }
+
+	private Vector2 TargetPosition { get; set; }
 
     public override void _Ready()
     {
@@ -43,6 +46,7 @@ public abstract partial class BattleCharacter : Node2D
         };
 
         HealthLabel.Text = $"{Health}/{BaseHealth}";
+		TargetPosition = Position;
 
         base._Ready();
     }
@@ -50,6 +54,11 @@ public abstract partial class BattleCharacter : Node2D
 
     public override void _Process(double delta)
     {
+		if (!Position.IsEqualApprox(TargetPosition))
+		{
+            Position = Position.Lerp(TargetPosition, (float) delta * PositionSwapSpeed);
+        }
+
 		base._Process(delta);
     }
 
@@ -116,6 +125,11 @@ public abstract partial class BattleCharacter : Node2D
 	public void SetBattlePosition(int battlePosition)
 	{
 		CurrentStats.BattlePosition = battlePosition;
+	}
+
+	public void MoveToPosition(Vector2 position)
+	{
+		TargetPosition = position;
 	}
 
 	public IReadOnlyList<AttackAction> GetValidAttacks()

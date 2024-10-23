@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://yqrawyl28m0y"]
+
+[ext_resource type="Script" path="res://scripts/battle-system/resources/StatusEffect.cs" id="1_qrnxy"]
+
+[resource]
+script = ExtResource("1_qrnxy")
+EffectType = 2
+Duration = 0

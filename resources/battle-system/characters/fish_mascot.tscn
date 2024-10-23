@@ -1,25 +1,59 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccl4lnlsamhn8"]
+[gd_scene load_steps=21 format=3 uid="uid://ch2htfgcenmhv"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_qcshh"]
-[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="2_hgdsa"]
+[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_ivgb3"]
 [ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_62qyv"]
-[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="4_fjn4n"]
+[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_7ocq1"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_xqidw"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_oa3mr"]
 [ext_resource type="Texture2D" uid="uid://d0xoygswtyvvk" path="res://sprites/characters/idle/fish!.png" id="5_t0le5"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_0xpwx"]
 [ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="9_k3y6h"]
+[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_lp7v6"]
+[ext_resource type="Texture2D" uid="uid://dm60olfovogwr" path="res://sprites/characters/attacking/fish attack.png" id="10_ojcu5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
 shader = ExtResource("4_xqidw")
-shader_parameter/bounceAmplitude = 65.427
-shader_parameter/waveAmplitude = 0.046
-shader_parameter/waveFrequency = 20.047
+shader_parameter/bounceAmplitude = 27.703
+shader_parameter/waveAmplitude = 0.022
+shader_parameter/waveFrequency = 49.987
 shader_parameter/verticalWave = true
 shader_parameter/keepTransparency = true
 shader_parameter/useTime = true
-shader_parameter/waveSpeed = 4.823
+shader_parameter/waveSpeed = 3.027
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1lke"]
+resource_local_to_scene = true
+shader = ExtResource("4_xqidw")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.051
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2od85"]
+resource_local_to_scene = true
+shader = ExtResource("4_xqidw")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.017
+shader_parameter/waveFrequency = 21.165
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 2.942
 shader_parameter/progress = 0.0
 shader_parameter/startOffset = 0.0
 shader_parameter/firstHalf = 0.5
@@ -32,8 +66,8 @@ font_color = Color(1, 0, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_yoox7"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_2uskb"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,7 +102,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.14375, 0.14375)]
+"values": [Vector2(0.144, 0.144)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -82,9 +116,81 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Splash:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 32)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Splash/AttackingSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Splash:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.17, 0.17)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Splash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Splash/AttackingSprite:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
-[sub_resource type="Animation" id="Animation_isd2l"]
-resource_name = "showcase_character"
+[sub_resource type="Animation" id="Animation_jtqru"]
+resource_name = "attack"
 length = 1.15
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -94,9 +200,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.13333),
-"transitions": PackedFloat32Array(1, 0.225313, 0.224),
+"transitions": PackedFloat32Array(1, 0.42, 0.224),
 "update": 0,
-"values": [Vector2(166, 25), Vector2(210, 25), Vector2(52, 27)]
+"values": [Vector2(100, 36), Vector2(150, 36), Vector2(52, 27)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -106,7 +212,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 1.13333),
-"transitions": PackedFloat32Array(1, 0.225313, 1),
+"transitions": PackedFloat32Array(1, 0.42, 1),
 "update": 0,
 "values": [0.0, 0.0872665, 0.0]
 }
@@ -148,8 +254,80 @@ tracks/4/keys = {
 "method": &"ResetAttackAnimation"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Splash:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 32), Vector2(100, 32), Vector2(50, 32)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Splash/AttackingSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 5), Vector2(20, 5), Vector2(6, 5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Splash:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.45, 0.45), Vector2(0.17, 0.17)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Splash:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CharacterSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Splash/AttackingSprite:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.139626, 0.0]
+}
 
-[sub_resource type="Animation" id="Animation_vgpti"]
+[sub_resource type="Animation" id="Animation_2ilnw"]
 resource_name = "hurt"
 length = 1.15
 tracks/0/type = "value"
@@ -162,7 +340,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.13333),
 "transitions": PackedFloat32Array(1, 1, 0.224),
 "update": 0,
-"values": [Vector2(52, 27), Vector2(0, 27), Vector2(52, 27)]
+"values": [Vector2(61, 36), Vector2(11, 36), Vector2(52, 27)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -186,7 +364,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1, 1.13333),
 "transitions": PackedFloat32Array(1, 1, 0.224),
 "update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(0.14375, 0.14375)]
+"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(0.144, 0.144)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -216,7 +394,7 @@ tracks/4/keys = {
 }
 tracks/4/use_blend = true
 
-[sub_resource type="Animation" id="Animation_xdtsl"]
+[sub_resource type="Animation" id="Animation_1w4ee"]
 resource_name = "select"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -228,7 +406,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.433333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.14375, 0.14375), Vector2(0.21, 0.21), Vector2(0.14375, 0.14375)]
+"values": [Vector2(0.144, 0.144), Vector2(0.25, 0.25), Vector2(0.144, 0.144)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -245,20 +423,20 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_76t16"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtmy8"]
 _data = {
-"RESET": SubResource("Animation_yoox7"),
-"attack": SubResource("Animation_isd2l"),
-"hurt": SubResource("Animation_vgpti"),
-"select": SubResource("Animation_xdtsl")
+"RESET": SubResource("Animation_2uskb"),
+"attack": SubResource("Animation_jtqru"),
+"hurt": SubResource("Animation_2ilnw"),
+"select": SubResource("Animation_1w4ee")
 }
 
-[node name="FishMascot" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
+[node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_qcshh")
 BaseHealth = 100.0
 BaseSpeed = 10.0
-BaseArmour = 7.0
-BaseAttacks = Array[Resource]([ExtResource("2_hgdsa"), ExtResource("3_62qyv"), ExtResource("4_fjn4n"), ExtResource("5_oa3mr")])
+BaseArmour = 5.0
+BaseAttacks = Array[Resource]([ExtResource("2_ivgb3"), ExtResource("3_62qyv"), ExtResource("4_7ocq1"), ExtResource("5_oa3mr")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")
@@ -268,10 +446,25 @@ UnselectableColor = Color(0.392157, 0.392157, 0.392157, 1)
 [node name="CharacterSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pjrd5")
 position = Vector2(52, 27)
-scale = Vector2(0.14375, 0.14375)
+scale = Vector2(0.144, 0.144)
 texture = ExtResource("5_t0le5")
 flip_h = true
 script = ExtResource("6_0xpwx")
+
+[node name="Splash" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+z_as_relative = false
+material = SubResource("ShaderMaterial_r1lke")
+position = Vector2(50, 32)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("9_lp7v6")
+
+[node name="AttackingSprite" type="Sprite2D" parent="Splash"]
+z_index = -1
+material = SubResource("ShaderMaterial_2od85")
+position = Vector2(6, 5)
+texture = ExtResource("10_ojcu5")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 20.0
@@ -283,7 +476,7 @@ label_settings = SubResource("LabelSettings_epmww")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_76t16")
+"": SubResource("AnimationLibrary_mtmy8")
 }
 
 [node name="HitEffectPlayer" type="AudioStreamPlayer" parent="."]

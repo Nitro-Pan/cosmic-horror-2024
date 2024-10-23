@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_7plmn"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_43m4v"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_vrcix"]
-[ext_resource type="PackedScene" uid="uid://35cvejel8lda" path="res://resources/battle-system/characters/brain_sturgeon.tscn" id="3_3463d"]
+[ext_resource type="PackedScene" uid="uid://f0c0mwif0jcq" path="res://resources/battle-system/characters/brain_sturgeon.tscn" id="3_3463d"]
 [ext_resource type="PackedScene" uid="uid://ccl4lnlsamhn8" path="res://resources/battle-system/characters/fish_mascot.tscn" id="4_51kpf"]
 [ext_resource type="PackedScene" uid="uid://cyeoblyxn3tmb" path="res://resources/battle-system/characters/loveland_toad.tscn" id="5_7cga0"]
 [ext_resource type="PackedScene" uid="uid://cmdipi03t0j81" path="res://resources/battle-system/characters/spotted_snappie.tscn" id="6_5ceqx"]

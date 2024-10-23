@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyeoblyxn3tmb"]
+[gd_scene load_steps=21 format=3 uid="uid://c3fc5jwp0uubj"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_ayaqh"]
+[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_d63jv"]
 [ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="2_laugq"]
-[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="4_gy7n7"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="4_utyxx"]
 [ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_vw3nx"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_chmjm"]
 [ext_resource type="Texture2D" uid="uid://bh3hhe30thlrv" path="res://sprites/characters/idle/loveland frog.png" id="5_xwvg5"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="6_dew5x"]
+[ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_nbhu0"]
 [ext_resource type="AudioStream" uid="uid://vo4vwrp6py5n" path="res://sounds/attacks/hit_effect_squishy.ogg" id="9_rcnin"]
+[ext_resource type="Texture2D" uid="uid://b3y0mmoaw7yr7" path="res://sprites/characters/attacking/loveland toad attack.png" id="10_6p333"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjrd5"]
 resource_local_to_scene = true
@@ -26,13 +28,45 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1lke"]
+resource_local_to_scene = true
+shader = ExtResource("4_utyxx")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.051
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2od85"]
+resource_local_to_scene = true
+shader = ExtResource("4_utyxx")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.017
+shader_parameter/waveFrequency = 21.165
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 2.942
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_epmww"]
 font_size = 21
 font_color = Color(1, 0, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_ja0wx"]
+[sub_resource type="Animation" id="Animation_2uskb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -82,8 +116,80 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Splash:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 32)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Splash/AttackingSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Splash:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.17, 0.17)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Splash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Splash/AttackingSprite:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
-[sub_resource type="Animation" id="Animation_ds7du"]
+[sub_resource type="Animation" id="Animation_jtqru"]
 resource_name = "attack"
 length = 1.15
 tracks/0/type = "value"
@@ -96,7 +202,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.13333),
 "transitions": PackedFloat32Array(1, 0.42, 0.224),
 "update": 0,
-"values": [Vector2(160, 21), Vector2(210, 21), Vector2(44, 21)]
+"values": [Vector2(100, 36), Vector2(150, 36), Vector2(44, 21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -148,8 +254,80 @@ tracks/4/keys = {
 "method": &"ResetAttackAnimation"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Splash:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 32), Vector2(100, 32), Vector2(50, 32)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Splash/AttackingSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 5), Vector2(20, 5), Vector2(6, 5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Splash:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.45, 0.45), Vector2(0.17, 0.17)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Splash:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CharacterSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Splash/AttackingSprite:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.139626, 0.0]
+}
 
-[sub_resource type="Animation" id="Animation_mcolw"]
+[sub_resource type="Animation" id="Animation_2ilnw"]
 resource_name = "hurt"
 length = 1.15
 tracks/0/type = "value"
@@ -162,7 +340,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.13333),
 "transitions": PackedFloat32Array(1, 1, 0.224),
 "update": 0,
-"values": [Vector2(44, 21), Vector2(-4, 21), Vector2(44, 21)]
+"values": [Vector2(61, 36), Vector2(11, 36), Vector2(44, 21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -215,8 +393,19 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/4/use_blend = true
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
-[sub_resource type="Animation" id="Animation_y7s0j"]
+[sub_resource type="Animation" id="Animation_1w4ee"]
 resource_name = "select"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -245,20 +434,20 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yf8g"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtmy8"]
 _data = {
-"RESET": SubResource("Animation_ja0wx"),
-"attack": SubResource("Animation_ds7du"),
-"hurt": SubResource("Animation_mcolw"),
-"select": SubResource("Animation_y7s0j")
+"RESET": SubResource("Animation_2uskb"),
+"attack": SubResource("Animation_jtqru"),
+"hurt": SubResource("Animation_2ilnw"),
+"select": SubResource("Animation_1w4ee")
 }
 
-[node name="LovelandToad" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
+[node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_ayaqh")
 BaseHealth = 100.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
-BaseAttacks = Array[Resource]([ExtResource("2_laugq"), ExtResource("4_vw3nx"), ExtResource("4_gy7n7"), ExtResource("5_chmjm")])
+BaseAttacks = Array[Resource]([ExtResource("2_d63jv"), ExtResource("2_laugq"), ExtResource("4_vw3nx"), ExtResource("5_chmjm")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")
@@ -273,6 +462,21 @@ texture = ExtResource("5_xwvg5")
 flip_h = true
 script = ExtResource("6_dew5x")
 
+[node name="Splash" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+z_as_relative = false
+material = SubResource("ShaderMaterial_r1lke")
+position = Vector2(50, 32)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("9_nbhu0")
+
+[node name="AttackingSprite" type="Sprite2D" parent="Splash"]
+z_index = -1
+material = SubResource("ShaderMaterial_2od85")
+position = Vector2(6, 5)
+texture = ExtResource("10_6p333")
+
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 20.0
 offset_top = 55.0
@@ -283,7 +487,7 @@ label_settings = SubResource("LabelSettings_epmww")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3yf8g")
+"": SubResource("AnimationLibrary_mtmy8")
 }
 
 [node name="HitEffectPlayer" type="AudioStreamPlayer" parent="."]

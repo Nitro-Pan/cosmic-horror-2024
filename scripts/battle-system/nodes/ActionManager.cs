@@ -74,7 +74,11 @@ public partial class ActionManager : Node
 	[Export] private AnimationPlayer AttackAnimationPlayer { get; set; }
 	[Export] private AnimationPlayer StageAnimtationPlayer { get; set; }
 	[Export] private AudioStreamPlayer ClickEffectPlayer { get; set; }
-	[Export] private Godot.Collections.Array<BattleCharacter[]> AllFights { get; set; }
+	[Export] private Godot.Collections.Array<BattleCharacter> FightOne { get; set; }
+	[Export] private Godot.Collections.Array<BattleCharacter> FightTwo { get; set; }
+	[Export] private Godot.Collections.Array<BattleCharacter> FightThree { get; set; }
+
+
 	private int FightIndex { get; set; } = 0;
 
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
@@ -373,7 +377,31 @@ public partial class ActionManager : Node
 
 	private void SetNewCharacters(StringName name)
 	{
-		EnemyCharacters.Set(AllFights[++FightIndex]);
+		switch (FightIndex)
+		{
+		case 0:
+			{
+                EnemyCharacters.Set(FightOne);
+				FightIndex = 1;
+                break;
+			}
+		case 1:
+			{
+                EnemyCharacters.Set(FightTwo);
+				FightIndex = 2;
+                break;
+			}
+		case 2:
+			{
+				EnemyCharacters.Set(FightThree);
+				FightIndex = 3;
+				break;
+			}
+		default:
+			QueueFree();
+			break;
+		}
+		
 		StageAnimtationPlayer.AnimationFinished -= SetNewCharacters;
 		StageAnimtationPlayer.Play("enter");
 		ResetCharacters();

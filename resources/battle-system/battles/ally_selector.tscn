@@ -24,14 +24,13 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
-[node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite", "EffectPlayer")]
+[node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_e5egf")
 ActionList = [NodePath("Characters/Spotted Snappie"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Brain Sturgeon")]
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
 ReverseSelectionOrder = true
 SelectorSpeed = 10.0
-EffectPlayer = NodePath("")
 
 [node name="Selector" type="Sprite2D" parent="."]
 z_index = 10

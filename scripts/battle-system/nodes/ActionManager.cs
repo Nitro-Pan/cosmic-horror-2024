@@ -453,7 +453,7 @@ public partial class ActionManager : Node
 	private void OnCharacterDeath(BattleCharacter character)
 	{
 		Characters.Remove(character);
-		SelectedCharacterIndex = _selectedCharacterIndex;
+		// SelectedCharacterIndex = _selectedCharacterIndex;
 
 #if DEBUG
 		GD.Print($"Killed character:\n {character}");

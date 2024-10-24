@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2rnnoifb0m13"
+path="res://.godot/imported/Punch Crunch SFX [ ezmp3.cc ].mp3-5b6a8d82515d02f6b8d3417086eec6fc.mp3str"
+
+[deps]
+
+source_file="res://sounds/Punch Crunch SFX [ ezmp3.cc ].mp3"
+dest_files=["res://.godot/imported/Punch Crunch SFX [ ezmp3.cc ].mp3-5b6a8d82515d02f6b8d3417086eec6fc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

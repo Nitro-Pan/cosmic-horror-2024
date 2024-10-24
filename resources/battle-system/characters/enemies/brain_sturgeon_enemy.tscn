@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://dxwuvbjwklyo3"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_x4e16"]
-[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_ovloq"]
-[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_geu4e"]
+[ext_resource type="Resource" uid="uid://18up4hratsdk" path="res://resources/battle-system/resources/attacks/reel-attack.tres" id="2_ljtle"]
+[ext_resource type="Resource" uid="uid://dua5ja7sc4qxd" path="res://resources/battle-system/resources/attacks/heal_attack.tres" id="3_rtk6y"]
 [ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_b88ol"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_qi1wv"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_q0vs8"]
@@ -436,7 +436,7 @@ script = ExtResource("1_x4e16")
 BaseHealth = 30.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_ovloq"), ExtResource("3_geu4e"), ExtResource("4_b88ol"), ExtResource("5_qi1wv")])
+BaseAttacks = Array[Resource]([ExtResource("2_ljtle"), ExtResource("3_rtk6y"), ExtResource("4_b88ol"), ExtResource("5_qi1wv")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("Reverser/CharacterSprite")
 Animator = NodePath("AnimationPlayer")

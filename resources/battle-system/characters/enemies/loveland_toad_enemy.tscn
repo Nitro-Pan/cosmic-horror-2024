@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://b4qp3y2r6rmmo"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_moipr"]
-[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_73tca"]
+[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="2_ipuwi"]
 [ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_h6xd1"]
 [ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_0dkrs"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_wy04r"]
@@ -447,7 +447,7 @@ script = ExtResource("1_moipr")
 BaseHealth = 30.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_73tca"), ExtResource("3_h6xd1"), ExtResource("4_0dkrs"), ExtResource("5_wy04r")])
+BaseAttacks = Array[Resource]([ExtResource("2_ipuwi"), ExtResource("3_h6xd1"), ExtResource("4_0dkrs"), ExtResource("5_wy04r")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("Reverser/CharacterSprite")
 Animator = NodePath("AnimationPlayer")

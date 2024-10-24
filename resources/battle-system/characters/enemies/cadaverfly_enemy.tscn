@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_eut3j"]
 [ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="2_g0y1q"]
 [ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="3_vnutr"]
-[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_n8ex4"]
+[ext_resource type="Resource" uid="uid://dlmpf02o4wak1" path="res://resources/battle-system/resources/attacks/push_attack.tres" id="4_dn1t0"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_dnsos"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_kgdwj"]
 [ext_resource type="Texture2D" uid="uid://cckmoay8bbif1" path="res://sprites/characters/idle/cadaverfly.png" id="7_tkqxb"]
@@ -436,7 +436,7 @@ script = ExtResource("1_eut3j")
 BaseHealth = 40.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_g0y1q"), ExtResource("3_vnutr"), ExtResource("4_n8ex4"), ExtResource("5_dnsos")])
+BaseAttacks = Array[Resource]([ExtResource("2_g0y1q"), ExtResource("3_vnutr"), ExtResource("4_dn1t0"), ExtResource("5_dnsos")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("Reverser/CharacterSprite")
 Animator = NodePath("AnimationPlayer")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3fc5jwp0uubj"]
+[gd_scene load_steps=22 format=3 uid="uid://c3fc5jwp0uubj"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_gnfdw"]
 [ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_65mt7"]
 [ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_781yx"]
 [ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_2cdp8"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="4_qwv22"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_lbv4e"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_5u0we"]
 [ext_resource type="Texture2D" uid="uid://bh3hhe30thlrv" path="res://sprites/characters/idle/loveland frog.png" id="7_djuyg"]
@@ -447,7 +448,7 @@ script = ExtResource("1_gnfdw")
 BaseHealth = 30.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_65mt7"), ExtResource("3_781yx"), ExtResource("4_2cdp8"), ExtResource("5_lbv4e")])
+BaseAttacks = Array[Resource]([ExtResource("2_65mt7"), ExtResource("3_781yx"), ExtResource("4_qwv22"), ExtResource("4_2cdp8"), ExtResource("5_lbv4e")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")

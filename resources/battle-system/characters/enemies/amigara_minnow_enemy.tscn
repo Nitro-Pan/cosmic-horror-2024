@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://bm53cr53y7pwk"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_wsvwo"]
-[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_ndonk"]
-[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_qbccb"]
-[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_vhmk4"]
+[ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="2_4h7fc"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="3_48jio"]
+[ext_resource type="Resource" uid="uid://dlmpf02o4wak1" path="res://resources/battle-system/resources/attacks/push_attack.tres" id="4_xrv4c"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_v4nyv"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_u4x4l"]
 [ext_resource type="Texture2D" uid="uid://bgrhog7eee1jt" path="res://sprites/characters/idle/amigara minnow.png" id="7_cob3d"]
@@ -436,7 +436,7 @@ script = ExtResource("1_wsvwo")
 BaseHealth = 15.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_ndonk"), ExtResource("3_qbccb"), ExtResource("4_vhmk4"), ExtResource("5_v4nyv")])
+BaseAttacks = Array[Resource]([ExtResource("2_4h7fc"), ExtResource("3_48jio"), ExtResource("4_xrv4c"), ExtResource("5_v4nyv")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("Reverser/CharacterSprite")
 Animator = NodePath("AnimationPlayer")

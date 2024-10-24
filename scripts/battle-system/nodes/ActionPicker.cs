@@ -20,7 +20,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
         set
         {
             _selectedActionIndex = value % TotalActions < 0 ? TotalActions - 1 : value % TotalActions;
-            OnSelectedActionChanged.Invoke(_selectedActionIndex);
+            OnSelectedActionChanged?.Invoke(_selectedActionIndex);
         }
     }
 

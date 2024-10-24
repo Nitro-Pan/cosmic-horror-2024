@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cem65vxxrl4y0"]
+[gd_scene load_steps=19 format=3 uid="uid://cem65vxxrl4y0"]
 
 [ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="1_27xw4"]
 [ext_resource type="Script" path="res://scripts/ui/title/Title.cs" id="1_gq5to"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_mtu4l"]
 [ext_resource type="Script" path="res://scripts/ui/title/UiPicker.cs" id="3_1hals"]
-[ext_resource type="Texture2D" uid="uid://ddh85y4taj0nx" path="res://sprites/attacks/square-fish.png" id="4_yf3nm"]
+[ext_resource type="Texture2D" uid="uid://bwwdnqbtv7eia" path="res://sprites/fish-button.png" id="5_m06a6"]
 [ext_resource type="Script" path="res://scripts/ui/title/UiAction.cs" id="5_vlky2"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="6_ub6iq"]
+[ext_resource type="Texture2D" uid="uid://b37nfl3rgafch" path="res://sprites/level select fish.png" id="8_b1k2b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etfid"]
 shader = ExtResource("2_mtu4l")
@@ -22,6 +23,10 @@ shader_parameter/startOffset = 1.029
 shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s1vip"]
+font_size = 56
+font_color = Color(0.868347, 0.949317, 0.854419, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6c7hg"]
 shader = ExtResource("2_mtu4l")
@@ -68,43 +73,106 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_02r1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BaseContainer/Actions/PlayAction:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(455, 700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BaseContainer/Actions/CreditsAction:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(455, 700)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaseContainer/Actions/ExitAction:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(455, 700)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BaseContainer/Title:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.117647)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelSelectContainer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(563, 832)]
+}
+
 [sub_resource type="Animation" id="Animation_771aq"]
 resource_name = "enter_title"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Actions/PlayAction:position")
+tracks/0/path = NodePath("BaseContainer/Actions/PlayAction:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 0.1),
 "update": 0,
-"values": [Vector2(515, 700), Vector2(515, 318)]
+"values": [Vector2(600, 700), Vector2(455, 318)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Actions/CreditsAction:position")
+tracks/1/path = NodePath("BaseContainer/Actions/CreditsAction:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 0.1),
 "update": 0,
-"values": [Vector2(515, 700), Vector2(515, 402)]
+"values": [Vector2(-600, 700), Vector2(455, 402)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Actions/ExitAction:position")
+tracks/2/path = NodePath("BaseContainer/Actions/ExitAction:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.2, 1),
 "transitions": PackedFloat32Array(1, 0.1),
 "update": 0,
-"values": [Vector2(515, 700), Vector2(515, 490)]
+"values": [Vector2(455, 700), Vector2(455, 490)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -120,57 +188,138 @@ tracks/3/keys = {
 "method": &"OnEnterAnimationFinished"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BaseContainer/Title:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.766667, 0.833333, 0.866667, 0.866767, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0.117647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.117647), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.117647), Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_02r1q"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_7nj6e"]
+resource_name = "enter_levels"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Actions/PlayAction:position")
-tracks/0/interp = 1
+tracks/0/path = NodePath("LevelSelectContainer:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 5.85635),
 "update": 0,
-"values": [Vector2(515, 700)]
+"values": [Vector2(563, 832), Vector2(573, 422)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Actions/CreditsAction:position")
-tracks/1/interp = 1
+tracks/1/path = NodePath("BaseContainer/Actions/PlayAction:position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(515, 700)]
+"values": [Vector2(455, 318), Vector2(-307, 280)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Actions/ExitAction:position")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BaseContainer/Actions/CreditsAction:position")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(515, 700)]
+"values": [Vector2(455, 402), Vector2(1231, 408)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BaseContainer/Actions/ExitAction:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(455, 490), Vector2(-78, 780)]
+}
+
+[sub_resource type="Animation" id="Animation_1kjdb"]
+resource_name = "return_title_from_levels"
+length = 0.2667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BaseContainer/Actions/PlayAction:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-319, 297), Vector2(455, 318)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BaseContainer/Actions/CreditsAction:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1246, 423), Vector2(455, 402)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaseContainer/Actions/ExitAction:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(48, 749), Vector2(455, 490)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelSelectContainer:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(573, 422), Vector2(573, 836)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4n2o6"]
 _data = {
 "RESET": SubResource("Animation_02r1q"),
-"enter_title": SubResource("Animation_771aq")
+"enter_levels": SubResource("Animation_7nj6e"),
+"enter_title": SubResource("Animation_771aq"),
+"return_title_from_levels": SubResource("Animation_1kjdb")
 }
 
-[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("Actions", "ActionAnimations")]
+[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("TitleActions", "LevelSelectActions", "ActionAnimations", "PlayLabel")]
 z_index = 100
 script = ExtResource("1_gq5to")
-Actions = NodePath("Actions")
-ActionAnimations = NodePath("ActionAnimationPlayer")
+TitleActions = NodePath("BaseContainer/Actions")
+LevelSelectActions = NodePath("LevelSelectContainer/Levels")
+ActionAnimations = NodePath("BaseContainer/ActionAnimationPlayer")
+PlayLabel = NodePath("BaseContainer/Actions/PlayAction/Label")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.099986, 0.099986, 0.099986, 1)
@@ -178,40 +327,77 @@ position = Vector2(574, 326)
 scale = Vector2(0.613889, 0.613889)
 texture = ExtResource("1_27xw4")
 
-[node name="Actions" type="Node2D" parent="." node_paths=PackedStringArray("ActionList", "SelectorSprite")]
+[node name="BaseContainer" type="Node2D" parent="."]
+
+[node name="Actions" type="Node2D" parent="BaseContainer" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("3_1hals")
 ActionList = [NodePath("PlayAction"), NodePath("CreditsAction"), NodePath("ExitAction")]
 SelectorSprite = NodePath("Selector")
 SelectorSpeed = 10.0
 
-[node name="PlayAction" type="Sprite2D" parent="Actions"]
+[node name="PlayAction" type="Sprite2D" parent="BaseContainer/Actions"]
 material = SubResource("ShaderMaterial_etfid")
-position = Vector2(515, 700)
-texture = ExtResource("4_yf3nm")
-offset = Vector2(65, 20)
+position = Vector2(455, 700)
+scale = Vector2(0.606667, 0.606667)
+texture = ExtResource("5_m06a6")
+offset = Vector2(165, 20)
 script = ExtResource("5_vlky2")
 
-[node name="CreditsAction" type="Sprite2D" parent="Actions"]
+[node name="Label" type="Label" parent="BaseContainer/Actions/PlayAction"]
+z_index = 1
+offset_top = -18.0
+offset_right = 333.0
+offset_bottom = 59.0
+text = "PLAY"
+label_settings = SubResource("LabelSettings_s1vip")
+horizontal_alignment = 1
+
+[node name="CreditsAction" type="Sprite2D" parent="BaseContainer/Actions"]
 material = SubResource("ShaderMaterial_6c7hg")
-position = Vector2(515, 700)
-texture = ExtResource("4_yf3nm")
-offset = Vector2(65, 20)
+position = Vector2(455, 700)
+scale = Vector2(0.607, 0.607)
+texture = ExtResource("5_m06a6")
+offset = Vector2(165, 20)
 script = ExtResource("5_vlky2")
 
-[node name="ExitAction" type="Sprite2D" parent="Actions"]
+[node name="Label" type="Label" parent="BaseContainer/Actions/CreditsAction"]
+z_index = 1
+offset_left = -5.0
+offset_top = -18.0
+offset_right = 334.0
+offset_bottom = 59.0
+text = "CREDITS
+"
+label_settings = SubResource("LabelSettings_s1vip")
+horizontal_alignment = 1
+
+[node name="ExitAction" type="Sprite2D" parent="BaseContainer/Actions"]
 material = SubResource("ShaderMaterial_vv3ou")
-position = Vector2(515, 700)
-texture = ExtResource("4_yf3nm")
-offset = Vector2(65, 20)
+position = Vector2(455, 700)
+scale = Vector2(0.607, 0.607)
+texture = ExtResource("5_m06a6")
+offset = Vector2(165, 20)
 script = ExtResource("5_vlky2")
 
-[node name="Selector" type="Sprite2D" parent="Actions"]
+[node name="Label" type="Label" parent="BaseContainer/Actions/ExitAction"]
+z_index = 1
+offset_left = -3.0
+offset_top = -18.0
+offset_right = 334.0
+offset_bottom = 59.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_s1vip")
+horizontal_alignment = 1
+
+[node name="Selector" type="Sprite2D" parent="BaseContainer/Actions"]
+z_index = 2
 material = SubResource("ShaderMaterial_spx3m")
 position = Vector2(518, 318)
 scale = Vector2(0.365, 0.365)
 texture = ExtResource("6_ub6iq")
 
-[node name="Title" type="RichTextLabel" parent="."]
+[node name="Title" type="RichTextLabel" parent="BaseContainer"]
+modulate = Color(1, 1, 1, 0.117647)
 offset_left = 373.0
 offset_top = 93.0
 offset_right = 776.0
@@ -219,7 +405,42 @@ offset_bottom = 248.0
 bbcode_enabled = true
 text = "[wave][font_size=100]BREACH"
 
-[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="BaseContainer"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_4n2o6")
 }
+
+[node name="LevelSelectContainer" type="Node2D" parent="."]
+position = Vector2(563, 832)
+
+[node name="Levels" type="Node2D" parent="LevelSelectContainer" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
+position = Vector2(-3, 2)
+script = ExtResource("3_1hals")
+ActionList = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3")]
+SelectorSprite = NodePath("Selector")
+ReverseSelectionOrder = true
+SelectorSpeed = 10.0
+
+[node name="Selector" type="Sprite2D" parent="LevelSelectContainer/Levels"]
+z_index = 2
+position = Vector2(-79.5, -111.646)
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("6_ub6iq")
+
+[node name="LevelSelector" type="Sprite2D" parent="LevelSelectContainer/Levels"]
+position = Vector2(-1.5, 2.35413)
+scale = Vector2(0.461667, 0.461667)
+texture = ExtResource("8_b1k2b")
+
+[node name="Level1" type="Sprite2D" parent="LevelSelectContainer/Levels"]
+position = Vector2(-17.025, 113.354)
+script = ExtResource("5_vlky2")
+
+[node name="Level2" type="Sprite2D" parent="LevelSelectContainer/Levels"]
+position = Vector2(-17.025, -14.2159)
+script = ExtResource("5_vlky2")
+
+[node name="Level3" type="Sprite2D" parent="LevelSelectContainer/Levels"]
+position = Vector2(-17.025, -126.031)
+script = ExtResource("5_vlky2")

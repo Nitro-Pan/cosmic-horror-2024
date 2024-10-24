@@ -1,23 +1,32 @@
 using Godot;
 using System;
-using static ActionManager;
 
 public partial class Title : Node2D
 {
-	[Export] private UiPicker Actions { get; set; }
+	private enum TitleState
+	{
+		Title,
+		Credits,
+		Levels
+	}
+
+	[Export] private UiPicker TitleActions { get; set; }
+	[Export] private UiPicker LevelSelectActions { get; set; }
 	[Export] private AnimationPlayer ActionAnimations { get; set; }
+	[Export] private Label PlayLabel { get; set; }
 
 	private Node BattleScene { get; set; }
 	private bool HasEntered { get; set; }
+	private TitleState CurrentState { get; set; } = TitleState.Title;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var actions = Actions.GetAllActions();
+		var titleActions = TitleActions.GetAllActions();
 
-		actions[ 0 ].OnClick += OnPlayButtonPressed;
-		actions[ 1 ].OnClick += OnCreditsButtonPressed;
-		actions[ 2 ].OnClick += OnExitButtonPressed;
+		titleActions[ 0 ].OnClick += OnPlayButtonPressed;
+		titleActions[ 1 ].OnClick += OnCreditsButtonPressed;
+		titleActions[ 2 ].OnClick += OnExitButtonPressed;
 
 		base._Ready();
 	}
@@ -37,32 +46,98 @@ public partial class Title : Node2D
 
         if (@event.IsActionPressed("ui_forward"))
         {
-			if (HasEntered)
+			switch (CurrentState)
 			{
-                Actions.ConfirmAction();
-            }
-            else
-			{
-				if (ActionAnimations.IsPlaying())
+			case TitleState.Title:
 				{
-					ActionAnimations.Advance(5);
-				}
-				else
-				{
-                    ActionAnimations.Play("enter_title");
+                    if (HasEntered)
+                    {
+                        TitleActions.ConfirmAction();
+                    }
+                    else
+                    {
+                        if (ActionAnimations.IsPlaying())
+                        {
+                            ActionAnimations.Advance(5);
+                        }
+                        else
+                        {
+                            ActionAnimations.Play("enter_title");
+                        }
+                    }
+					break;
                 }
+			case TitleState.Levels:
+				{
+					LevelSelectActions.ConfirmAction();
+					break;
+				}
+			case TitleState.Credits:
+			default:
+				break;
 			}
+			
 			
         }
 
+		if (@event.IsActionPressed("ui_back"))
+		{
+			switch (CurrentState)
+			{
+			case TitleState.Title:
+				{
+					break;
+				}
+			case TitleState.Credits:
+				{
+					break;
+				}
+			case TitleState.Levels:
+				{
+					TitleActions.ToggleSelector(true);
+                    ActionAnimations.Play("return_title_from_levels");
+					CurrentState = TitleState.Title;
+                    break;
+				}
+			}
+		}
+
         if (@event.IsActionPressed("ui_up") && @event.GetActionStrength("ui_up") == 1.0)
         {
-			Actions.ChangeSelectedAction(-1);
+			switch (CurrentState)
+			{
+			case TitleState.Title:
+				{
+                    TitleActions.ChangeSelectedAction(-1);
+                    break;
+				}
+			case TitleState.Levels:
+				{
+					LevelSelectActions.ChangeSelectedAction(-1);
+					break;
+				}
+			default:
+				break;
+			}
         }
 
         if (@event.IsActionPressed("ui_down") && @event.GetActionStrength("ui_down") == 1.0)
         {
-			Actions.ChangeSelectedAction(1);
+            switch (CurrentState)
+            {
+            case TitleState.Title:
+                {
+                    TitleActions.ChangeSelectedAction(1);
+                    break;
+                }
+            case TitleState.Levels:
+                {
+					LevelSelectActions.ChangeSelectedAction(1);
+                    break;
+                }
+            default:
+                break;
+            }
         }
 
         base._Input(@event);
@@ -71,7 +146,7 @@ public partial class Title : Node2D
 	private void OnEnterAnimationFinished()
 	{
 		HasEntered = true;
-		Actions.Reset();
+		TitleActions.Reset();
 	}
 
 	private void OnContinueButtonPressed()
@@ -83,15 +158,24 @@ public partial class Title : Node2D
 
 	private void OnPlayButtonPressed()
 	{
-		if (!IsInstanceValid(BattleScene))
-		{
+		CurrentState = TitleState.Levels;
+		LevelSelectActions.ToggleSelector(true);
+        LevelSelectActions.SelectedActionIndex = 0;
+		TitleActions.ToggleSelector(false);
+		ActionAnimations.Play("enter_levels");
+    }
+
+	private void OnLevelSelect()
+	{
+        if (!IsInstanceValid(BattleScene))
+        {
             BattleScene = ResourceLoader.Load<PackedScene>("res://resources/battle-system/battles/first_battle.tscn").Instantiate();
             GetTree().Root.AddChild(BattleScene);
         }
 
-		this.Visible = false;
-		SetProcessInput(false);
-		BattleScene.SetProcessInput(true);
+        this.Visible = false;
+        SetProcessInput(false);
+        BattleScene.SetProcessInput(true);
     }
 
 	private void OnCreditsButtonPressed() 
@@ -106,10 +190,17 @@ public partial class Title : Node2D
 
 	public void SetToContinue()
 	{
-        var actions = Actions.GetAllActions();
+        var actions = TitleActions.GetAllActions();
 
 		actions[ 0 ].OnClick -= OnPlayButtonPressed;
 		actions[ 0 ].OnClick -= OnContinueButtonPressed;
 		actions[ 0 ].OnClick += OnContinueButtonPressed;
+
+		PlayLabel.Text = "CONTINUE";
     }
+
+	private void SetTitleState(TitleState state)
+	{
+		CurrentState = state;
+	}
 }

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dlmpf02o4wak1"]
+
+[ext_resource type="Resource" uid="uid://bcc0api7xecpp" path="res://resources/battle-system/resources/status-effects/push_effect_2.tres" id="1_8urok"]
+[ext_resource type="Texture2D" uid="uid://c53uvvny6wx56" path="res://sprites/attacks/push-icon.png" id="2_n3xjc"]
+[ext_resource type="Script" path="res://scripts/battle-system/resources/AttackAction.cs" id="2_un12v"]
+
+[resource]
+script = ExtResource("2_un12v")
+CanHitSlots = PackedInt32Array(0, 1)
+UsableFromSlots = PackedInt32Array(0, 1)
+IsFriendly = false
+Damage = 5.0
+Accuracy = 110.0
+StatusEffects = [ExtResource("1_8urok")]
+Texture = ExtResource("2_n3xjc")

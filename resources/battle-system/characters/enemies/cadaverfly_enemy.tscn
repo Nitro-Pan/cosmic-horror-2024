@@ -433,8 +433,8 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="Cadaverfly" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_eut3j")
-BaseHealth = 100.0
-BaseSpeed = 10.0
+BaseHealth = 40.0
+BaseSpeed = 1.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_g0y1q"), ExtResource("3_vnutr"), ExtResource("4_n8ex4"), ExtResource("5_dnsos")])
 HealthLabel = NodePath("HealthLabel")

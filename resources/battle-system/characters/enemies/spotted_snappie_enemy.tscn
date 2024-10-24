@@ -433,8 +433,8 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_3crgx")
-BaseHealth = 100.0
-BaseSpeed = 10.0
+BaseHealth = 20.0
+BaseSpeed = 1.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_1vr3k"), ExtResource("3_4jylq"), ExtResource("4_gfb4a"), ExtResource("5_lu0nv")])
 HealthLabel = NodePath("HealthLabel")

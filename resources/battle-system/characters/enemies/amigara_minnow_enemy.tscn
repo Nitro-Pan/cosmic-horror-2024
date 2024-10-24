@@ -433,7 +433,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="AmigaraMinnow" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_wsvwo")
-BaseHealth = 100.0
+BaseHealth = 15.0
 BaseSpeed = 10.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_ndonk"), ExtResource("3_qbccb"), ExtResource("4_vhmk4"), ExtResource("5_v4nyv")])

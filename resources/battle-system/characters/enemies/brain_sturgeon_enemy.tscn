@@ -433,8 +433,8 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="BrainSturgeon" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_x4e16")
-BaseHealth = 100.0
-BaseSpeed = 10.0
+BaseHealth = 30.0
+BaseSpeed = 1.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_ovloq"), ExtResource("3_geu4e"), ExtResource("4_b88ol"), ExtResource("5_qi1wv")])
 HealthLabel = NodePath("HealthLabel")

@@ -433,9 +433,9 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="FishMascot" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_l3sho")
-BaseHealth = 100.0
-BaseSpeed = 10.0
-BaseArmour = 5.0
+BaseHealth = 25.0
+BaseSpeed = 1.0
+BaseArmour = 1.0
 BaseAttacks = Array[Resource]([ExtResource("2_6ighf"), ExtResource("3_ke65n"), ExtResource("4_vak0o"), ExtResource("5_f7l88")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("Reverser/CharacterSprite")

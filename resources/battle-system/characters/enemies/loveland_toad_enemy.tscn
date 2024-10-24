@@ -444,8 +444,8 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="LovelandToad" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_moipr")
-BaseHealth = 100.0
-BaseSpeed = 10.0
+BaseHealth = 30.0
+BaseSpeed = 1.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_73tca"), ExtResource("3_h6xd1"), ExtResource("4_0dkrs"), ExtResource("5_wy04r")])
 HealthLabel = NodePath("HealthLabel")

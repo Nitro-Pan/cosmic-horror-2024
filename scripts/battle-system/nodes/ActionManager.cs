@@ -73,7 +73,8 @@ public partial class ActionManager : Node
 	[Export] public AttackPicker AttackPicker { get; set; }
 	[Export] private AnimationPlayer AttackAnimationPlayer { get; set; }
 	[Export] private AnimationPlayer StageAnimtationPlayer { get; set; }
-	[Export] private BattleCharacter[][] AllFights { get; set; }
+	[Export] private AudioStreamPlayer ClickEffectPlayer { get; set; }
+	[Export] private Godot.Collections.Array<BattleCharacter[]> AllFights { get; set; }
 	private int FightIndex { get; set; } = 0;
 
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
@@ -124,21 +125,24 @@ public partial class ActionManager : Node
 			{
 				PreviousPickStates.Clear();
 			}
-		}
+        }
 
         if (@event.IsActionPressed("ui_back"))
         {
 			GoToPreviousPickState();
+            ClickEffectPlayer.Play();
         }
 
         if (@event.IsActionPressed("ui_left") && @event.GetActionStrength("ui_left") == 1.0)
         {
 			TraverseCurrentPickOption(-1);
+            ClickEffectPlayer.Play();
         }
 
         if (@event.IsActionPressed("ui_right") && @event.GetActionStrength("ui_right") == 1.0)
         {
 			TraverseCurrentPickOption(1);
+            ClickEffectPlayer.Play();
         }
 
 		if (@event.IsActionPressed("ui_cancel"))
@@ -355,6 +359,7 @@ public partial class ActionManager : Node
 #if DEBUG
 			GD.Print("~~~~~~Lose!~~~~~~");
 #endif
+			StageAnimtationPlayer.AnimationFinished += ReturnToMenu;
 			StageAnimtationPlayer.PlayBackwards("enter");
         }
 
@@ -368,8 +373,15 @@ public partial class ActionManager : Node
 
 	private void SetNewCharacters(StringName name)
 	{
+		EnemyCharacters.Set(AllFights[++FightIndex]);
 		StageAnimtationPlayer.AnimationFinished -= SetNewCharacters;
 		StageAnimtationPlayer.Play("enter");
+		ResetCharacters();
+	}
+
+	private void ReturnToMenu(StringName name)
+	{
+		StageAnimtationPlayer.AnimationFinished -= ReturnToMenu;
 	}
 
 	private void DoEnemyTurn()

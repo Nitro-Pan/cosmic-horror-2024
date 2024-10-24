@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cem65vxxrl4y0"]
+[gd_scene load_steps=30 format=3 uid="uid://cem65vxxrl4y0"]
 
 [ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="1_27xw4"]
 [ext_resource type="Script" path="res://scripts/ui/title/Title.cs" id="1_gq5to"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ytc2ruc0vmnc" path="res://sounds/Splash Sound Effect [ ezmp3.cc ](1).mp3" id="9_qg1p8"]
 [ext_resource type="AudioStream" uid="uid://cfvmxkav8rrxq" path="res://sounds/Fluorescent Light Hum Sound Effect - Copyright Free [ ezmp3.cc ]audacity.mp3" id="11_ag3s8"]
 [ext_resource type="AudioStream" uid="uid://bvxusjavd48bx" path="res://sounds/Jelsonic - The Last Whale [ ezmp3.cc ].mp3" id="12_h63k8"]
+[ext_resource type="AudioStream" uid="uid://noggmfmapmr6" path="res://sounds/Blip.wav" id="15_eg7wc"]
 [ext_resource type="Texture2D" uid="uid://ish2ig3crrw3" path="res://sprites/instruction-text-fish.png" id="15_oqrgx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etfid"]
@@ -612,7 +613,7 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
-[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("TitleActions", "LevelSelectActions", "ActionAnimations", "PlayLabel", "Fader")]
+[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("TitleActions", "LevelSelectActions", "ActionAnimations", "PlayLabel", "Fader", "ClickEffectPlayer")]
 z_index = 100
 script = ExtResource("1_gq5to")
 TitleActions = NodePath("BaseContainer/Actions")
@@ -620,6 +621,7 @@ LevelSelectActions = NodePath("LevelSelectContainer/Levels")
 ActionAnimations = NodePath("BaseContainer/ActionAnimationPlayer")
 PlayLabel = NodePath("BaseContainer/Actions/PlayAction/Label")
 Fader = NodePath("Fader")
+ClickEffectPlayer = NodePath("ClickEffectPlayer")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.099986, 0.099986, 0.099986, 1)
@@ -762,6 +764,10 @@ bus = &"Music"
 
 [node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -18.379
+bus = &"Sound Effects"
+
+[node name="ClickEffectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_eg7wc")
 bus = &"Sound Effects"
 
 [node name="Fader" type="Polygon2D" parent="."]

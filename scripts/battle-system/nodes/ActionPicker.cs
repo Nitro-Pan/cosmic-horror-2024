@@ -9,6 +9,7 @@ public abstract partial class ActionPicker<[MustBeVariant] T> : Node where T : G
     [Export] protected Sprite2D SelectorSprite;
     [Export] private bool ReverseSelectionOrder { get; set; }
     [Export] private float SelectorSpeed { get; set; }
+    [Export] protected AudioStreamPlayer EffectPlayer { get; set; }
     protected abstract Godot.Collections.Array<T> ActionList { get; set; }
     protected Vector2 SelectorTargetPosition { get; set; }
     protected int TotalActions => ActionList.Count;

@@ -16,8 +16,9 @@ public partial class Title : Node2D
 	[Export] private AnimationPlayer ActionAnimations { get; set; }
 	[Export] private Label PlayLabel { get; set; }
 	[Export] private Polygon2D Fader { get; set; }
+	[Export] private AudioStreamPlayer ClickEffectPlayer { get; set; }
 
-	private Node BattleScene { get; set; }
+    private Node BattleScene { get; set; }
 	private bool HasEntered { get; set; }
 	private TitleState CurrentState { get; set; } = TitleState.Title;
 
@@ -82,8 +83,8 @@ public partial class Title : Node2D
 			default:
 				break;
 			}
-			
-			
+
+            ClickEffectPlayer.Play();
         }
 
 		if (@event.IsActionPressed("ui_back"))
@@ -106,7 +107,9 @@ public partial class Title : Node2D
                     break;
 				}
 			}
-		}
+
+            ClickEffectPlayer.Play();
+        }
 
         if (@event.IsActionPressed("ui_up") && @event.GetActionStrength("ui_up") == 1.0)
         {
@@ -125,6 +128,8 @@ public partial class Title : Node2D
 			default:
 				break;
 			}
+
+            ClickEffectPlayer.Play();
         }
 
         if (@event.IsActionPressed("ui_down") && @event.GetActionStrength("ui_down") == 1.0)
@@ -144,6 +149,8 @@ public partial class Title : Node2D
             default:
                 break;
             }
+
+            ClickEffectPlayer.Play();
         }
 
         base._Input(@event);

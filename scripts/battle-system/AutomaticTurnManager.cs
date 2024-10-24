@@ -21,6 +21,13 @@ public class AutomaticTurnManager
     public void ProcessTurn()
     {
         SelectedAttack = GetAttackAction();
+
+        if (SelectedAttack.ContainsStatus(BattleUtils.StatusType.Passing))
+        {
+            ShouldProgressTurnState = true;
+            return;
+        }
+
         CharacterPicker targets = SelectedAttack.IsFriendly ? FriendlyCharacters : EnemyCharacters;
         IReadOnlyList<BattleCharacter> validTargets = targets.GetValidCharactersForAttack(SelectedAttack);
 
@@ -40,7 +47,20 @@ public class AutomaticTurnManager
 
     private AttackAction GetAttackAction()
     {
-        IReadOnlyList<AttackAction> attacks = AttackingCharacter.GetValidAttacks();
+        IList<AttackAction> attacks = AttackingCharacter.GetValidAttacks();
+
+        if (attacks.Count > 1)
+        {
+            for (int i = 0; i < attacks.Count; i++)
+            {
+                if (attacks[i].ContainsStatus(BattleUtils.StatusType.Passing))
+                {
+                    attacks.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
         return attacks[ GD.RandRange(0, attacks.Count - 1) ];
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://jc4af7ys8qs1"]
+[gd_scene load_steps=18 format=3 uid="uid://jc4af7ys8qs1"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/ActionManager.cs" id="1_ceyor"]
 [ext_resource type="PackedScene" uid="uid://ykirsocqtb2y" path="res://resources/battle-system/battles/attack_selector.tscn" id="2_1u40j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_11agx"]
 [ext_resource type="Texture2D" uid="uid://dhkwatypkpjbx" path="res://sprites/attacks/splash line.png" id="6_upmkc"]
 [ext_resource type="AudioStream" uid="uid://bfh32nwqckyn1" path="res://sounds/ROZKOL - Roadside Picnic [ ezmp3.cc ].mp3" id="8_4qmux"]
+[ext_resource type="AudioStream" uid="uid://noggmfmapmr6" path="res://sounds/Blip.wav" id="9_gjt13"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rho38"]
 shader = ExtResource("6_11agx")
@@ -367,12 +368,15 @@ _data = {
 "enter": SubResource("Animation_fcqlr")
 }
 
-[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer")]
+[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer", "StageAnimtationPlayer", "ClickEffectPlayer")]
 script = ExtResource("1_ceyor")
 EnemyCharacters = NodePath("EnemySelector")
 AllyCharacters = NodePath("AllySelector")
 AttackPicker = NodePath("AttackSelector")
 AttackAnimationPlayer = NodePath("AttackSmear/SmearAnimationPlayer")
+StageAnimtationPlayer = NodePath("StageAnimationPlayer")
+ClickEffectPlayer = NodePath("EffectPlayer")
+AllFights = Array[Array]([[]])
 
 [node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
 position = Vector2(576, 578)
@@ -415,6 +419,10 @@ stream = ExtResource("8_4qmux")
 volume_db = -15.0
 bus = &"Music"
 parameters/looping = true
+
+[node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gjt13")
+bus = &"Sound Effects"
 
 [node name="Fader" type="Polygon2D" parent="."]
 z_index = 20

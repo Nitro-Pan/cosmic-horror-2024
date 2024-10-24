@@ -144,7 +144,7 @@ public abstract partial class BattleCharacter : Node2D
 		TargetPosition = position;
 	}
 
-	public IReadOnlyList<AttackAction> GetValidAttacks()
+	public IList<AttackAction> GetValidAttacks()
 	{
 		List<AttackAction> validAttacks = new List<AttackAction>();
 

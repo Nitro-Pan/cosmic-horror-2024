@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://jc4af7ys8qs1"]
+[gd_scene load_steps=17 format=3 uid="uid://jc4af7ys8qs1"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/ActionManager.cs" id="1_ceyor"]
 [ext_resource type="PackedScene" uid="uid://ykirsocqtb2y" path="res://resources/battle-system/battles/attack_selector.tscn" id="2_1u40j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bc0vr280bcuid" path="res://resources/battle-system/battles/enemy_selector.tscn" id="4_rl5l5"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_11agx"]
 [ext_resource type="Texture2D" uid="uid://dhkwatypkpjbx" path="res://sprites/attacks/splash line.png" id="6_upmkc"]
+[ext_resource type="AudioStream" uid="uid://bfh32nwqckyn1" path="res://sounds/ROZKOL - Roadside Picnic [ ezmp3.cc ].mp3" id="8_4qmux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rho38"]
 shader = ExtResource("6_11agx")
@@ -185,46 +186,6 @@ _data = {
 "slide_out_right": SubResource("Animation_pp2nx")
 }
 
-[sub_resource type="Animation" id="Animation_fcqlr"]
-resource_name = "enter"
-length = 0.44
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AttackSelector:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(576, 715), Vector2(576, 579)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AllySelector:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-467, 350), Vector2(80, 353)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EnemySelector:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1231, 350), Vector2(682, 353)]
-}
-
 [sub_resource type="Animation" id="Animation_b41y0"]
 length = 0.001
 tracks/0/type = "value"
@@ -263,6 +224,142 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(700, 350)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MusicPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fader:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Fader:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fcqlr"]
+resource_name = "enter"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackSelector:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 715), Vector2(576, 579)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AllySelector:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-467, 350), Vector2(80, 353)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySelector:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1231, 350), Vector2(682, 353)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 1.36667),
+"transitions": PackedFloat32Array(0.840897, 1),
+"update": 0,
+"values": [-80.0, -20.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MusicPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fader:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Fader:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bl6go"]
 _data = {
@@ -288,7 +385,7 @@ position = Vector2(75, 350)
 position = Vector2(700, 350)
 
 [node name="Background" type="Sprite2D" parent="."]
-z_index = -2
+z_index = -10
 position = Vector2(573, 324)
 scale = Vector2(0.611111, 0.611111)
 texture = ExtResource("4_pvc1j")
@@ -313,3 +410,16 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_bl6go")
 }
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4qmux")
+volume_db = -15.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="Fader" type="Polygon2D" parent="."]
+z_index = 20
+position = Vector2(-19.5987, 1.98225)
+scale = Vector2(1.01672, 0.997041)
+color = Color(0, 0, 0, 0)
+polygon = PackedVector2Array(2.55592, -10.0119, 1170, -6, 1172, 670, 5.50658, 668.997)

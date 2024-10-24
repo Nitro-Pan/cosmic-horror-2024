@@ -29,6 +29,20 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
         OnActionChanged(SelectedActionIndex);
     }
 
+    public void Set(Godot.Collections.Array<BattleCharacter> actionList)
+    {
+        base.Set(actionList);
+
+        SettledPositions.Clear();
+        for (int i = 0; i < ActionList.Count; i++)
+        {
+            ActionList[ i ].SetBattlePosition(i);
+            SettledPositions.Add(actionList[ i ].Position);
+        }
+
+        OnActionChanged(SelectedActionIndex);
+    }
+
     public void HighlightValidOptions(AttackAction attack)
     {
         foreach (BattleCharacter character in ActionList)

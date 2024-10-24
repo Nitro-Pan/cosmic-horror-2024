@@ -73,6 +73,8 @@ public partial class ActionManager : Node
 	[Export] public AttackPicker AttackPicker { get; set; }
 	[Export] private AnimationPlayer AttackAnimationPlayer { get; set; }
 	[Export] private AnimationPlayer StageAnimtationPlayer { get; set; }
+	[Export] private BattleCharacter[][] AllFights { get; set; }
+	private int FightIndex { get; set; } = 0;
 
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
 
@@ -82,19 +84,7 @@ public partial class ActionManager : Node
 
 	public override void _Ready()
 	{
-        foreach (BattleCharacter character in AllyCharacters.GetAllActions())
-        {
-            Characters.Add(character);
-			character.OnCharacterDead += OnCharacterDeath;
-        }
-
-        foreach (BattleCharacter character in EnemyCharacters.GetAllActions())
-		{
-			Characters.Add(character);
-			character.OnCharacterDead += OnCharacterDeath;
-		}
-
-		Characters.Sort((a, b) => a.Speed.CompareTo(b.Speed)); // Sort by speed to determine turn order
+		ResetCharacters();
 
 		OnPickStateChangedForward += PickStateChangedForward;
 		OnPickStateChangedBackward += PickStateChangedBackward;
@@ -164,6 +154,25 @@ public partial class ActionManager : Node
 		}
 
         base._Input(@event);
+    }
+
+	private void ResetCharacters()
+	{
+        foreach (BattleCharacter character in AllyCharacters.GetAllActions())
+        {
+            Characters.Add(character);
+            character.OnCharacterDead -= OnCharacterDeath;
+            character.OnCharacterDead += OnCharacterDeath;
+        }
+
+        foreach (BattleCharacter character in EnemyCharacters.GetAllActions())
+        {
+            Characters.Add(character);
+            character.OnCharacterDead -= OnCharacterDeath;
+            character.OnCharacterDead += OnCharacterDeath;
+        }
+
+        Characters.Sort((a, b) => a.Speed.CompareTo(b.Speed)); // Sort by speed to determine turn order
     }
 
 	private void TraverseCurrentPickOption(int direction)
@@ -337,6 +346,7 @@ public partial class ActionManager : Node
 #if DEBUG
             GD.Print("~~~~~~Win!~~~~~~");
 #endif
+			StageAnimtationPlayer.AnimationFinished += SetNewCharacters;
             StageAnimtationPlayer.PlayBackwards("enter");
         }
 
@@ -354,6 +364,12 @@ public partial class ActionManager : Node
 		GD.Print("-----BEGINNING OF TURN-----");
 #endif
 		TraverseCurrentPickOption(0);
+	}
+
+	private void SetNewCharacters(StringName name)
+	{
+		StageAnimtationPlayer.AnimationFinished -= SetNewCharacters;
+		StageAnimtationPlayer.Play("enter");
 	}
 
 	private void DoEnemyTurn()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cem65vxxrl4y0"]
+[gd_scene load_steps=29 format=3 uid="uid://cem65vxxrl4y0"]
 
 [ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="1_27xw4"]
 [ext_resource type="Script" path="res://scripts/ui/title/Title.cs" id="1_gq5to"]
@@ -9,7 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="6_ub6iq"]
 [ext_resource type="Texture2D" uid="uid://dfchx7aucrhlr" path="res://sprites/breach-title-on.png" id="8_8pytm"]
 [ext_resource type="Texture2D" uid="uid://b37nfl3rgafch" path="res://sprites/level select fish.png" id="8_b1k2b"]
+[ext_resource type="AudioStream" uid="uid://cyn4aa11eos8w" path="res://sounds/one singular flick.mp3" id="8_hxd5e"]
 [ext_resource type="Texture2D" uid="uid://c7fgotcrpaor5" path="res://sprites/breach-title-off.png" id="9_lpj2s"]
+[ext_resource type="AudioStream" uid="uid://ytc2ruc0vmnc" path="res://sounds/Splash Sound Effect [ ezmp3.cc ](1).mp3" id="9_qg1p8"]
+[ext_resource type="AudioStream" uid="uid://cfvmxkav8rrxq" path="res://sounds/Fluorescent Light Hum Sound Effect - Copyright Free [ ezmp3.cc ]audacity.mp3" id="11_ag3s8"]
+[ext_resource type="AudioStream" uid="uid://bvxusjavd48bx" path="res://sounds/Jelsonic - The Last Whale [ ezmp3.cc ].mp3" id="12_h63k8"]
+[ext_resource type="Texture2D" uid="uid://ish2ig3crrw3" path="res://sprites/instruction-text-fish.png" id="15_oqrgx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etfid"]
 shader = ExtResource("2_mtu4l")
@@ -149,6 +154,78 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AmbientHum:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicPlayer:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AmbientHum:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MusicPlayer:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-13.2]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Fader:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Fader:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_7nj6e"]
 resource_name = "enter_levels"
@@ -204,6 +281,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_771aq"]
 resource_name = "enter_title"
+length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -278,6 +356,65 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false, true, false, true, false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AmbientHum:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicPlayer:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2.07053),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EffectPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.122,
+"start_offset": 0.029,
+"stream": ExtResource("8_hxd5e")
+}, {
+"end_offset": 0.1239,
+"start_offset": 0.0305,
+"stream": ExtResource("8_hxd5e")
+}, {
+"end_offset": 0.125,
+"start_offset": 0.0319,
+"stream": ExtResource("8_hxd5e")
+}],
+"times": PackedFloat32Array(0.7, 0.833333, 1)
+}
+tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("LevelSelectContainer:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(563, 832)]
+}
 
 [sub_resource type="Animation" id="Animation_1kjdb"]
 resource_name = "return_title_from_levels"
@@ -331,12 +468,118 @@ tracks/3/keys = {
 "values": [Vector2(573, 422), Vector2(573, 836)]
 }
 
+[sub_resource type="Animation" id="Animation_syerh"]
+resource_name = "stop_menu_sound"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmbientHum:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1.68179),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AmbientHum:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-7.0, -80.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-13.2, -80.0]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EffectPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.1257,
+"stream": ExtResource("9_qg1p8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fader:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Fader:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.16667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnLevelTransitionFinish"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4n2o6"]
 _data = {
 "RESET": SubResource("Animation_02r1q"),
 "enter_levels": SubResource("Animation_7nj6e"),
 "enter_title": SubResource("Animation_771aq"),
-"return_title_from_levels": SubResource("Animation_1kjdb")
+"return_title_from_levels": SubResource("Animation_1kjdb"),
+"stop_menu_sound": SubResource("Animation_syerh")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_143m7"]
@@ -369,13 +612,14 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
-[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("TitleActions", "LevelSelectActions", "ActionAnimations", "PlayLabel")]
+[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("TitleActions", "LevelSelectActions", "ActionAnimations", "PlayLabel", "Fader")]
 z_index = 100
 script = ExtResource("1_gq5to")
 TitleActions = NodePath("BaseContainer/Actions")
 LevelSelectActions = NodePath("LevelSelectContainer/Levels")
 ActionAnimations = NodePath("BaseContainer/ActionAnimationPlayer")
 PlayLabel = NodePath("BaseContainer/Actions/PlayAction/Label")
+Fader = NodePath("Fader")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.099986, 0.099986, 0.099986, 1)
@@ -504,3 +748,32 @@ script = ExtResource("5_vlky2")
 [node name="Level3" type="Sprite2D" parent="LevelSelectContainer/Levels"]
 position = Vector2(-17.025, -126.031)
 script = ExtResource("5_vlky2")
+
+[node name="AmbientHum" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ag3s8")
+volume_db = -7.0
+bus = &"Ambient"
+parameters/looping = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_h63k8")
+volume_db = -13.2
+bus = &"Music"
+
+[node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -18.379
+bus = &"Sound Effects"
+
+[node name="Fader" type="Polygon2D" parent="."]
+visible = false
+z_index = 20
+position = Vector2(-19.5987, 1.98225)
+scale = Vector2(1.01672, 0.997041)
+color = Color(0, 0, 0, 0)
+polygon = PackedVector2Array(2.55592, -10.0119, 1170, -6, 1172, 670, 5.50658, 668.997)
+
+[node name="Instruction-text-fish" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(938, 515)
+scale = Vector2(0.266667, 0.266667)
+texture = ExtResource("15_oqrgx")

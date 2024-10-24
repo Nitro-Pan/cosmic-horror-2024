@@ -15,6 +15,7 @@ public partial class Title : Node2D
 	[Export] private UiPicker LevelSelectActions { get; set; }
 	[Export] private AnimationPlayer ActionAnimations { get; set; }
 	[Export] private Label PlayLabel { get; set; }
+	[Export] private Polygon2D Fader { get; set; }
 
 	private Node BattleScene { get; set; }
 	private bool HasEntered { get; set; }
@@ -29,9 +30,9 @@ public partial class Title : Node2D
 		titleActions[ 2 ].OnClick += OnExitButtonPressed;
 
 		IReadOnlyList<UiAction> levelActions = LevelSelectActions.GetAllActions();
-		levelActions[ 0 ].OnClick += () => { };
-		levelActions[ 1 ].OnClick += () => { };
-		levelActions[ 2 ].OnClick += () => { };
+		levelActions[ 0 ].OnClick += OnLevelSelect;
+		levelActions[ 1 ].OnClick += OnLevelSelect;
+		levelActions[ 2 ].OnClick += OnLevelSelect;
 
 		base._Ready();
 	}
@@ -175,11 +176,21 @@ public partial class Title : Node2D
         if (!IsInstanceValid(BattleScene))
         {
             BattleScene = ResourceLoader.Load<PackedScene>("res://resources/battle-system/battles/first_battle.tscn").Instantiate();
+            
+        }
+
+		ActionAnimations.Play("stop_menu_sound");
+		SetProcessInput(false);
+    }
+
+	private void OnLevelTransitionFinish()
+	{
+		if (IsInstanceValid(BattleScene))
+		{
             GetTree().Root.AddChild(BattleScene);
         }
 
         this.Visible = false;
-        SetProcessInput(false);
         BattleScene.SetProcessInput(true);
     }
 
@@ -195,13 +206,18 @@ public partial class Title : Node2D
 
 	public void SetToContinue()
 	{
-        var actions = TitleActions.GetAllActions();
+        IReadOnlyList<UiAction> actions = TitleActions.GetAllActions();
 
 		actions[ 0 ].OnClick -= OnPlayButtonPressed;
 		actions[ 0 ].OnClick -= OnContinueButtonPressed;
 		actions[ 0 ].OnClick += OnContinueButtonPressed;
 
+		TitleActions.ToggleSelector(true);
+		CurrentState = TitleState.Title;
 		PlayLabel.Text = "CONTINUE";
+		Fader.Visible = false;
+		ActionAnimations.Play("enter_title");
+		ActionAnimations.Advance(1000);
     }
 
 	private void SetTitleState(TitleState state)

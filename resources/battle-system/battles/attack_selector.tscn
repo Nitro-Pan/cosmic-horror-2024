@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ykirsocqtb2y"]
+[gd_scene load_steps=10 format=3 uid="uid://ykirsocqtb2y"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AttackPicker.cs" id="1_dxwbr"]
 [ext_resource type="Resource" uid="uid://dfu8r01p8gj1e" path="res://resources/battle-system/resources/attacks/basic_attack.tres" id="2_lr75t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://be5wwgad6o4x2" path="res://sprites/attacks/bite-icon.png" id="4_1swdw"]
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AttackDisplay.cs" id="6_ltv6m"]
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/HitFiller.cs" id="7_voxhx"]
+[ext_resource type="Texture2D" uid="uid://c6bscol7ymo2a" path="res://sprites/fish-menu-ui.png" id="8_hop7e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hedru"]
 resource_local_to_scene = true
@@ -27,7 +28,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 [node name="AttackSelector" type="Node2D" node_paths=PackedStringArray("Buttons", "Display", "SelectorSprite")]
 script = ExtResource("1_dxwbr")
 ActionList = Array[Resource]([ExtResource("2_lr75t"), ExtResource("2_lr75t")])
-Buttons = [NodePath("Node2D/Attack1"), NodePath("Node2D/Attack2"), NodePath("Node2D/Attack3"), NodePath("Node2D/Attack4")]
+Buttons = [NodePath("Attacks/Attack1"), NodePath("Attacks/Attack2"), NodePath("Attacks/Attack3"), NodePath("Attacks/Attack4"), NodePath("Attacks/Attack5")]
 Display = NodePath("AttackDisplay")
 DisabledColour = Color(0.6902, 0.178196, 0.177362, 1)
 SelectorSprite = NodePath("Selector")
@@ -40,33 +41,41 @@ position = Vector2(-150, 1)
 scale = Vector2(0.3675, 0.3675)
 texture = ExtResource("3_3s05u")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Attacks" type="Node2D" parent="."]
 
-[node name="Attack1" type="Sprite2D" parent="Node2D"]
-position = Vector2(-150, 0)
+[node name="Attack1" type="Sprite2D" parent="Attacks"]
+position = Vector2(-215, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("4_1swdw")
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="Attack2" type="Sprite2D" parent="Node2D"]
-position = Vector2(-50, 0)
+[node name="Attack2" type="Sprite2D" parent="Attacks"]
+position = Vector2(-122, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("4_1swdw")
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="Attack3" type="Sprite2D" parent="Node2D"]
-position = Vector2(50, 0)
+[node name="Attack3" type="Sprite2D" parent="Attacks"]
+position = Vector2(-28, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("4_1swdw")
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="Attack4" type="Sprite2D" parent="Node2D"]
-position = Vector2(150, 0)
+[node name="Attack4" type="Sprite2D" parent="Attacks"]
+position = Vector2(66, 0)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("4_1swdw")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="Attack5" type="Sprite2D" parent="Attacks"]
+position = Vector2(160, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("4_1swdw")
 region_rect = Rect2(0, 0, 128, 128)
 
 [node name="AttackDisplay" type="Node2D" parent="." node_paths=PackedStringArray("HitSlotsDisplay", "DamageLabel", "AccuracyLabel", "EffectLabel")]
+z_index = 1
+position = Vector2(124, -6)
 script = ExtResource("6_ltv6m")
 HitSlotsDisplay = NodePath("HitFiller")
 DamageLabel = NodePath("Damage")
@@ -124,3 +133,7 @@ offset_top = 38.0
 offset_right = 325.0
 offset_bottom = 61.0
 text = "EFFECT"
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("8_hop7e")

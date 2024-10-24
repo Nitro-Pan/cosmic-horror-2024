@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_7plmn"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_43m4v"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_vrcix"]
-[ext_resource type="PackedScene" uid="uid://f0c0mwif0jcq" path="res://resources/battle-system/characters/allies/brain_sturgeon.tscn" id="3_3463d"]
-[ext_resource type="PackedScene" uid="uid://ch2htfgcenmhv" path="res://resources/battle-system/characters/allies/fish_mascot.tscn" id="4_51kpf"]
-[ext_resource type="PackedScene" uid="uid://c3fc5jwp0uubj" path="res://resources/battle-system/characters/allies/loveland_toad.tscn" id="5_7cga0"]
-[ext_resource type="PackedScene" uid="uid://cmdipi03t0j81" path="res://resources/battle-system/characters/allies/spotted_snappie.tscn" id="6_5ceqx"]
+[ext_resource type="PackedScene" uid="uid://bm53cr53y7pwk" path="res://resources/battle-system/characters/enemies/amigara_minnow_enemy.tscn" id="8_vs8as"]
+[ext_resource type="PackedScene" uid="uid://dxwuvbjwklyo3" path="res://resources/battle-system/characters/enemies/brain_sturgeon_enemy.tscn" id="9_rnjvh"]
+[ext_resource type="PackedScene" uid="uid://dpq40t6i3bpyr" path="res://resources/battle-system/characters/enemies/necromoniclam_enemy.tscn" id="10_ayb7d"]
+[ext_resource type="PackedScene" uid="uid://b87f81o1hbxmd" path="res://resources/battle-system/characters/enemies/cadaverfly_enemy.tscn" id="11_l0exq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_um12x"]
 resource_local_to_scene = true
@@ -26,7 +26,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_7plmn")
-ActionList = [NodePath("Characters/Brain Sturgeon"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Spotted Snappie")]
+ActionList = [NodePath("Characters/Cadaverfly"), NodePath("Characters/Necronomiclam"), NodePath("Characters/BrainSturgeon"), NodePath("Characters/AmigaraMinnow")]
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
 SelectorSpeed = 10.0
@@ -40,13 +40,13 @@ texture = ExtResource("2_vrcix")
 
 [node name="Characters" type="Node2D" parent="."]
 
-[node name="Brain Sturgeon" parent="Characters" instance=ExtResource("3_3463d")]
+[node name="AmigaraMinnow" parent="Characters" instance=ExtResource("8_vs8as")]
+position = Vector2(300, 0)
 
-[node name="Fish Mascot" parent="Characters" instance=ExtResource("4_51kpf")]
-position = Vector2(100, 0)
-
-[node name="Loveland Toad" parent="Characters" instance=ExtResource("5_7cga0")]
+[node name="BrainSturgeon" parent="Characters" instance=ExtResource("9_rnjvh")]
 position = Vector2(200, 0)
 
-[node name="Spotted Snappie" parent="Characters" instance=ExtResource("6_5ceqx")]
-position = Vector2(300, 0)
+[node name="Necronomiclam" parent="Characters" instance=ExtResource("10_ayb7d")]
+position = Vector2(100, 0)
+
+[node name="Cadaverfly" parent="Characters" instance=ExtResource("11_l0exq")]

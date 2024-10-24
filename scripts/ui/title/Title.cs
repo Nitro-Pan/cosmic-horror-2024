@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Title : Node2D
 {
@@ -22,11 +23,15 @@ public partial class Title : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var titleActions = TitleActions.GetAllActions();
-
+        IReadOnlyList<UiAction> titleActions = TitleActions.GetAllActions();
 		titleActions[ 0 ].OnClick += OnPlayButtonPressed;
 		titleActions[ 1 ].OnClick += OnCreditsButtonPressed;
 		titleActions[ 2 ].OnClick += OnExitButtonPressed;
+
+		IReadOnlyList<UiAction> levelActions = LevelSelectActions.GetAllActions();
+		levelActions[ 0 ].OnClick += () => { };
+		levelActions[ 1 ].OnClick += () => { };
+		levelActions[ 2 ].OnClick += () => { };
 
 		base._Ready();
 	}

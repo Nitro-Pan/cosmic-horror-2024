@@ -72,6 +72,7 @@ public partial class ActionManager : Node
 
 	[Export] public AttackPicker AttackPicker { get; set; }
 	[Export] private AnimationPlayer AttackAnimationPlayer { get; set; }
+	[Export] private AnimationPlayer StageAnimtationPlayer { get; set; }
 
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
 
@@ -100,6 +101,8 @@ public partial class ActionManager : Node
 		OnCharacterChanged += CharacterChanged;
 
 		SelectedPickState = PickState.PickingAttack;
+
+		StageAnimtationPlayer.Play("enter");
 
 		base._Ready();
 	}
@@ -334,6 +337,7 @@ public partial class ActionManager : Node
 #if DEBUG
             GD.Print("~~~~~~Win!~~~~~~");
 #endif
+            StageAnimtationPlayer.PlayBackwards("enter");
         }
 
 		if (AllyCharacters.IsAllDead())
@@ -341,6 +345,7 @@ public partial class ActionManager : Node
 #if DEBUG
 			GD.Print("~~~~~~Lose!~~~~~~");
 #endif
+			StageAnimtationPlayer.PlayBackwards("enter");
         }
 
         PreviousPickStates.Clear();

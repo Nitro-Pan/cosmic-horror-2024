@@ -368,15 +368,13 @@ _data = {
 "enter": SubResource("Animation_fcqlr")
 }
 
-[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer", "StageAnimtationPlayer", "ClickEffectPlayer")]
+[node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer", "StageAnimtationPlayer")]
 script = ExtResource("1_ceyor")
 EnemyCharacters = NodePath("EnemySelector")
 AllyCharacters = NodePath("AllySelector")
 AttackPicker = NodePath("AttackSelector")
 AttackAnimationPlayer = NodePath("AttackSmear/SmearAnimationPlayer")
 StageAnimtationPlayer = NodePath("StageAnimationPlayer")
-ClickEffectPlayer = NodePath("EffectPlayer")
-AllFights = Array[Array]([[]])
 
 [node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
 position = Vector2(576, 578)
@@ -417,7 +415,6 @@ libraries = {
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_4qmux")
 volume_db = -15.0
-bus = &"Music"
 parameters/looping = true
 
 [node name="EffectPlayer" type="AudioStreamPlayer" parent="."]

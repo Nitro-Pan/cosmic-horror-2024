@@ -433,9 +433,9 @@ _data = {
 
 [node name="BrainSturgeon" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_vjps4")
-BaseHealth = 100.0
+BaseHealth = 30.0
 BaseSpeed = 10.0
-BaseArmour = 5.0
+BaseArmour = 1.0
 BaseAttacks = Array[Resource]([ExtResource("2_iysss"), ExtResource("3_t26yi"), ExtResource("4_54je3"), ExtResource("5_21aww")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")

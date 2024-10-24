@@ -433,9 +433,9 @@ _data = {
 
 [node name="SpottedSnappie" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_0epft")
-BaseHealth = 100.0
+BaseHealth = 40.0
 BaseSpeed = 10.0
-BaseArmour = 5.0
+BaseArmour = 1.0
 BaseAttacks = Array[Resource]([ExtResource("2_131oy"), ExtResource("3_vynaf"), ExtResource("4_wwfy3"), ExtResource("5_rfndp")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")

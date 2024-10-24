@@ -434,8 +434,8 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 [node name="Necronomiclam" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_t1ush")
 BaseHealth = 40.0
-BaseSpeed = 1.0
-BaseArmour = 5.0
+BaseSpeed = 10.0
+BaseArmour = 1.0
 BaseAttacks = Array[Resource]([ExtResource("2_pbr60"), ExtResource("3_j834p"), ExtResource("4_goqdv"), ExtResource("5_6wecs")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("Reverser/CharacterSprite")

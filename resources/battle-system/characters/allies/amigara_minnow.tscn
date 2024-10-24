@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdrqyf7m3dint"]
+[gd_scene load_steps=21 format=3 uid="uid://c8r1wlucdcwio"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_m0pfv"]
 [ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_7iiov"]
@@ -433,8 +433,8 @@ _data = {
 
 [node name="AmigaraMinnow" type="Node2D" node_paths=PackedStringArray("HealthLabel", "CharacterSprite", "Animator")]
 script = ExtResource("1_m0pfv")
-BaseHealth = 100.0
-BaseSpeed = 10.0
+BaseHealth = 15.0
+BaseSpeed = 1.0
 BaseArmour = 5.0
 BaseAttacks = Array[Resource]([ExtResource("2_7iiov"), ExtResource("3_3ofxc"), ExtResource("4_k304x"), ExtResource("5_aqnkl")])
 HealthLabel = NodePath("HealthLabel")

@@ -85,7 +85,6 @@ public partial class ActionManager : Node
 	[Export] private Godot.Collections.Array<BattleCharacter> FightTwo { get; set; }
 	[Export] private Godot.Collections.Array<BattleCharacter> FightThree { get; set; }
 
-
 	private int FightIndex { get; set; } = 0;
 
 	private WinState CurrentWinState { get; set; } = WinState.None;
@@ -116,7 +115,17 @@ public partial class ActionManager : Node
 		if (EnemyTurnManager.ShouldProgressTurnState)
 		{
 			EnemyTurnManager.TurnStateHandled();
-			SelectedCharacterIndex++;
+
+			if (AllyCharacters.IsAllDead())
+			{
+				CurrentWinState = WinState.Lose;
+                StageAnimtationPlayer.Play("lose");
+				SetProcessInput(true);
+            }
+			else
+			{
+                SelectedCharacterIndex++;
+            }
         }
 
 		base._Process(delta);
@@ -375,8 +384,8 @@ public partial class ActionManager : Node
 #if DEBUG
             GD.Print("~~~~~~Win!~~~~~~");
 #endif
-			StageAnimtationPlayer.AnimationFinished += SetNewCharacters;
-            StageAnimtationPlayer.PlayBackwards("enter");
+            StageAnimtationPlayer.Play("win");
+			CurrentWinState = WinState.Win;
         }
 
 		if (AllyCharacters.IsAllDead())
@@ -384,8 +393,7 @@ public partial class ActionManager : Node
 #if DEBUG
 			GD.Print("~~~~~~Lose!~~~~~~");
 #endif
-			StageAnimtationPlayer.AnimationFinished += ReturnToMenu;
-			StageAnimtationPlayer.PlayBackwards("enter");
+			StageAnimtationPlayer.Play("lose");
 			CurrentWinState = WinState.Lose;
         }
 
@@ -399,23 +407,29 @@ public partial class ActionManager : Node
 
 	private void SetNewCharacters(StringName name)
 	{
+        StageAnimtationPlayer.AnimationFinished -= SetNewCharacters;
+		SetNewCharacters();
+	}
+
+	private void SetNewCharacters()
+	{
 		switch (FightIndex)
 		{
 		case 0:
 			{
-                EnemyCharacters.Set(FightOne);
+				EnemyCharacters.Reset(FightOne);
 				FightIndex = 1;
-                break;
+				break;
 			}
 		case 1:
 			{
-                EnemyCharacters.Set(FightTwo);
+				EnemyCharacters.Reset(FightTwo);
 				FightIndex = 2;
-                break;
+				break;
 			}
 		case 2:
 			{
-				EnemyCharacters.Set(FightThree);
+				EnemyCharacters.Reset(FightThree);
 				FightIndex = 3;
 				break;
 			}
@@ -423,15 +437,10 @@ public partial class ActionManager : Node
 			QueueFree();
 			break;
 		}
-		
-		StageAnimtationPlayer.AnimationFinished -= SetNewCharacters;
+
+
 		StageAnimtationPlayer.Play("enter");
 		ResetCharacters();
-	}
-
-	private void ReturnToMenu(StringName name)
-	{
-		StageAnimtationPlayer.AnimationFinished -= ReturnToMenu;
 	}
 
 	private void DoEnemyTurn()

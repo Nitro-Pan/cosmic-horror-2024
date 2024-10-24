@@ -97,6 +97,10 @@ public partial class Title : Node2D
 				}
 			case TitleState.Credits:
 				{
+					ActionAnimations.Play("RESET");
+					ActionAnimations.Advance(500000);
+					ActionAnimations.Play("enter_title");
+					CurrentState = TitleState.Title;
 					break;
 				}
 			case TitleState.Levels:
@@ -203,7 +207,8 @@ public partial class Title : Node2D
 
 	private void OnCreditsButtonPressed() 
 	{
-		
+		ActionAnimations.Play("enter_credits");
+		CurrentState = TitleState.Credits;
 	}
 
 	private void OnExitButtonPressed() 
@@ -235,7 +240,20 @@ public partial class Title : Node2D
 	public void Reset()
 	{
 		Visible = true;
-		ActionAnimations.Play("enter_title");
 		SetProcessInput(true);
+		LevelSelectActions.ToggleSelector(false);
+
+        IReadOnlyList<UiAction> actions = TitleActions.GetAllActions();
+
+        actions[ 0 ].OnClick -= OnContinueButtonPressed;
+        actions[ 0 ].OnClick -= OnPlayButtonPressed;
+        actions[ 0 ].OnClick += OnPlayButtonPressed;
+
+        TitleActions.ToggleSelector(true);
+        CurrentState = TitleState.Title;
+        PlayLabel.Text = "PLAY";
+        Fader.Visible = false;
+		HasEntered = false;
+		ActionAnimations.Play("RESET");
 	}
 }

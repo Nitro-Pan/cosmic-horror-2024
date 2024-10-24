@@ -1,11 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://ch2htfgcenmhv"]
+[gd_scene load_steps=22 format=3 uid="uid://ch2htfgcenmhv"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_xikup"]
 [ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_b6csx"]
 [ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_kwk8e"]
 [ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="4_lv4gc"]
-[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_fnpk8"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="5_7j5eq"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="6_chv1p"]
+[ext_resource type="Resource" uid="uid://dlmpf02o4wak1" path="res://resources/battle-system/resources/attacks/push_attack.tres" id="6_e7ehp"]
 [ext_resource type="Texture2D" uid="uid://d0xoygswtyvvk" path="res://sprites/characters/idle/fish!.png" id="7_ebmt0"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterAnimation.cs" id="8_m28ay"]
 [ext_resource type="Texture2D" uid="uid://cy75tc3d8vdqv" path="res://sprites/attacks/splash.png" id="9_vjvfl"]
@@ -436,7 +437,7 @@ script = ExtResource("1_xikup")
 BaseHealth = 25.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_b6csx"), ExtResource("3_kwk8e"), ExtResource("4_lv4gc"), ExtResource("5_fnpk8")])
+BaseAttacks = Array[Resource]([ExtResource("2_b6csx"), ExtResource("3_kwk8e"), ExtResource("4_lv4gc"), ExtResource("5_7j5eq"), ExtResource("6_e7ehp")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")

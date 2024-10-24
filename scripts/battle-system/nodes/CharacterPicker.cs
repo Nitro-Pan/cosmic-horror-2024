@@ -43,6 +43,19 @@ public partial class CharacterPicker : ActionPicker<BattleCharacter>
         OnActionChanged(SelectedActionIndex);
     }
 
+    public void Reset(IList<BattleCharacter> actionList)
+    {
+        base.Set(actionList);
+
+        for (int i = 0; i < ActionList.Count; i++)
+        {
+            ActionList[ i ].SetBattlePosition(i);
+            ActionList[ i ].Position = SettledPositions[ i ];
+        }
+
+        OnActionChanged(SelectedActionIndex);
+    }
+
     public void HighlightValidOptions(AttackAction attack)
     {
         foreach (BattleCharacter character in ActionList)

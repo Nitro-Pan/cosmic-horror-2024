@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cem65vxxrl4y0"]
+[gd_scene load_steps=32 format=3 uid="uid://cem65vxxrl4y0"]
 
 [ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="1_27xw4"]
 [ext_resource type="Script" path="res://scripts/ui/title/Title.cs" id="1_gq5to"]
@@ -227,6 +227,82 @@ tracks/11/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CreditsContainer:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1087, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("BaseContainer:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("LevelSelectContainer:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nb5xr"]
+resource_name = "enter_credits"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CreditsContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -593), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BaseContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelectContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_7nj6e"]
 resource_name = "enter_levels"
@@ -416,6 +492,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(563, 832)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CreditsContainer:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1087, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Fader:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1kjdb"]
 resource_name = "return_title_from_levels"
@@ -577,6 +677,7 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4n2o6"]
 _data = {
 "RESET": SubResource("Animation_02r1q"),
+"enter_credits": SubResource("Animation_nb5xr"),
 "enter_levels": SubResource("Animation_7nj6e"),
 "enter_title": SubResource("Animation_771aq"),
 "return_title_from_levels": SubResource("Animation_1kjdb"),
@@ -612,6 +713,9 @@ shader_parameter/startOffset = 0.0
 shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xwh0v"]
+font_size = 21
 
 [node name="TitleScene" type="Node2D" node_paths=PackedStringArray("TitleActions", "LevelSelectActions", "ActionAnimations", "PlayLabel", "Fader", "ClickEffectPlayer")]
 z_index = 100
@@ -783,3 +887,25 @@ modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(938, 515)
 scale = Vector2(0.266667, 0.266667)
 texture = ExtResource("15_oqrgx")
+
+[node name="CreditsContainer" type="Node2D" parent="."]
+position = Vector2(-1087, 0)
+
+[node name="Label" type="Label" parent="CreditsContainer"]
+offset_left = 85.0
+offset_top = 154.0
+offset_right = 1015.0
+offset_bottom = 523.0
+text = "Squish Hit Effect - https://opengameart.org/content/2-wooden-squish-splatter-sequences
+Wavey Shader - https://godotshaders.com/shader/wavy-texture/
+Title Theme - https://www.youtube.com/watch?v=4Qb6wRMo8Nk
+Flourescent Hum - https://www.youtube.com/watch?v=hJUUgYUPL30
+Crunch hit Effect - https://www.youtube.com/watch?v=UkAKaLigJV8
+Light Flicker Sound - https://www.youtube.com/watch?v=PA11z_6k2h0
+Splash Sound - https://www.youtube.com/watch?v=bpBLyDZRJDU
+Battle Theme - https://www.youtube.com/watch?v=zeCXLfWAxWI
+
+Programming - Tate Smith
+Art - Sophie L
+"
+label_settings = SubResource("LabelSettings_xwh0v")

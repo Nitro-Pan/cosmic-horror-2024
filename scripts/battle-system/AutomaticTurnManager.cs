@@ -22,14 +22,14 @@ public class AutomaticTurnManager
     {
         SelectedAttack = GetAttackAction();
 
-        if (SelectedAttack.ContainsStatus(BattleUtils.StatusType.Passing))
+        CharacterPicker targets = SelectedAttack.IsFriendly ? FriendlyCharacters : EnemyCharacters;
+        IReadOnlyList<BattleCharacter> validTargets = targets.GetValidCharactersForAttack(SelectedAttack);
+
+        if (validTargets.Count < 1)
         {
             ShouldProgressTurnState = true;
             return;
         }
-
-        CharacterPicker targets = SelectedAttack.IsFriendly ? FriendlyCharacters : EnemyCharacters;
-        IReadOnlyList<BattleCharacter> validTargets = targets.GetValidCharactersForAttack(SelectedAttack);
 
         DefendingCharacter = validTargets[ GD.RandRange(0, validTargets.Count - 1) ];
         DefendingCharacter.ApplyHit(SelectedAttack);

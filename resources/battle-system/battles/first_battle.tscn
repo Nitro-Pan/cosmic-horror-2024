@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jc4af7ys8qs1"]
+[gd_scene load_steps=29 format=3 uid="uid://jc4af7ys8qs1"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/ActionManager.cs" id="1_ceyor"]
 [ext_resource type="PackedScene" uid="uid://ykirsocqtb2y" path="res://resources/battle-system/battles/attack_selector.tscn" id="2_1u40j"]
@@ -9,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://dhkwatypkpjbx" path="res://sprites/attacks/splash line.png" id="6_upmkc"]
 [ext_resource type="AudioStream" uid="uid://bfh32nwqckyn1" path="res://sounds/ROZKOL - Roadside Picnic [ ezmp3.cc ].mp3" id="8_4qmux"]
 [ext_resource type="AudioStream" uid="uid://noggmfmapmr6" path="res://sounds/Blip.wav" id="9_gjt13"]
+[ext_resource type="PackedScene" uid="uid://bm53cr53y7pwk" path="res://resources/battle-system/characters/enemies/amigara_minnow_enemy.tscn" id="10_l6oa4"]
+[ext_resource type="PackedScene" uid="uid://bqbakgwlxeshj" path="res://resources/battle-system/characters/enemies/spotted_snappie_enemy.tscn" id="11_xf65n"]
+[ext_resource type="PackedScene" uid="uid://dpq40t6i3bpyr" path="res://resources/battle-system/characters/enemies/necromoniclam_enemy.tscn" id="12_5r8t6"]
+[ext_resource type="PackedScene" uid="uid://b87f81o1hbxmd" path="res://resources/battle-system/characters/enemies/cadaverfly_enemy.tscn" id="13_ipaps"]
+[ext_resource type="PackedScene" uid="uid://bahid4xcbgss" path="res://resources/battle-system/characters/enemies/fish_mascot_enemy.tscn" id="14_y6m0n"]
+[ext_resource type="PackedScene" uid="uid://dxwuvbjwklyo3" path="res://resources/battle-system/characters/enemies/brain_sturgeon_enemy.tscn" id="15_1f012"]
+[ext_resource type="PackedScene" uid="uid://b4qp3y2r6rmmo" path="res://resources/battle-system/characters/enemies/loveland_toad_enemy.tscn" id="16_rs2i7"]
+[ext_resource type="Texture2D" uid="uid://d0e2qj5op3vef" path="res://sprites/fish-lose.png" id="17_cx0w8"]
+[ext_resource type="Texture2D" uid="uid://b0ld08rueu0sh" path="res://sprites/fish-win.png" id="18_3ioag"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rho38"]
 shader = ExtResource("6_11agx")
@@ -273,6 +282,54 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Fish-lose:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Fish-lose:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Fish-win:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Fish-win:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_fcqlr"]
 resource_name = "enter"
@@ -362,10 +419,66 @@ tracks/6/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_7ib1n"]
+resource_name = "lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fish-lose:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fish-lose:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.406126, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o8o3q"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fish-win:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fish-win:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bl6go"]
 _data = {
 "RESET": SubResource("Animation_b41y0"),
-"enter": SubResource("Animation_fcqlr")
+"enter": SubResource("Animation_fcqlr"),
+"lose": SubResource("Animation_7ib1n"),
+"win": SubResource("Animation_o8o3q")
 }
 
 [node name="FirstBattle" type="Node2D" node_paths=PackedStringArray("EnemyCharacters", "AllyCharacters", "AttackPicker", "AttackAnimationPlayer", "StageAnimtationPlayer", "ClickEffectPlayer", "FightOne", "FightTwo", "FightThree")]
@@ -376,9 +489,9 @@ AttackPicker = NodePath("AttackSelector")
 AttackAnimationPlayer = NodePath("AttackSmear/SmearAnimationPlayer")
 StageAnimtationPlayer = NodePath("StageAnimationPlayer")
 ClickEffectPlayer = NodePath("EffectPlayer")
-FightOne = []
-FightTwo = []
-FightThree = []
+FightOne = [NodePath("AmigaraMinnow"), NodePath("AmigaraMinnow2"), NodePath("AmigaraMinnow3"), NodePath("SpottedSnappie")]
+FightTwo = [NodePath("Necronomiclam"), NodePath("Cadaverfly"), NodePath("FishMascot"), NodePath("AmigaraMinnow4")]
+FightThree = [NodePath("Necronomiclam2"), NodePath("FishMascot2"), NodePath("LovelandToad"), NodePath("BrainSturgeon")]
 
 [node name="AttackSelector" parent="." instance=ExtResource("2_1u40j")]
 position = Vector2(576, 578)
@@ -431,3 +544,49 @@ position = Vector2(-19.5987, 1.98225)
 scale = Vector2(1.01672, 0.997041)
 color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(2.55592, -10.0119, 1170, -6, 1172, 670, 5.50658, 668.997)
+
+[node name="AmigaraMinnow" parent="." instance=ExtResource("10_l6oa4")]
+position = Vector2(851, -138)
+
+[node name="AmigaraMinnow2" parent="." instance=ExtResource("10_l6oa4")]
+position = Vector2(975, -138)
+
+[node name="AmigaraMinnow3" parent="." instance=ExtResource("10_l6oa4")]
+position = Vector2(1080, -144)
+
+[node name="SpottedSnappie" parent="." instance=ExtResource("11_xf65n")]
+position = Vector2(1202, -141)
+
+[node name="Necronomiclam" parent="." instance=ExtResource("12_5r8t6")]
+position = Vector2(865, -243)
+
+[node name="Cadaverfly" parent="." instance=ExtResource("13_ipaps")]
+position = Vector2(971, -251)
+
+[node name="FishMascot" parent="." instance=ExtResource("14_y6m0n")]
+position = Vector2(1209, -235)
+
+[node name="AmigaraMinnow4" parent="." instance=ExtResource("10_l6oa4")]
+position = Vector2(1082, -244)
+
+[node name="BrainSturgeon" parent="." instance=ExtResource("15_1f012")]
+position = Vector2(1200, -328)
+
+[node name="LovelandToad" parent="." instance=ExtResource("16_rs2i7")]
+position = Vector2(1088, -325)
+
+[node name="FishMascot2" parent="." instance=ExtResource("14_y6m0n")]
+position = Vector2(979, -335)
+
+[node name="Necronomiclam2" parent="." instance=ExtResource("12_5r8t6")]
+position = Vector2(860, -344)
+
+[node name="Fish-lose" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(565, 265)
+texture = ExtResource("17_cx0w8")
+
+[node name="Fish-win" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(552, 282)
+texture = ExtResource("18_3ioag")

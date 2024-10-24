@@ -122,7 +122,7 @@ public partial class ActionManager : Node
 			return;
 		}
 
-		if (@event.IsActionPressed("ui_select"))
+		if (@event.IsActionPressed("ui_forward"))
 		{
 			PreviousPickStates.Push(SelectedPickState);
             SelectedPickState++;
@@ -133,20 +133,32 @@ public partial class ActionManager : Node
 			}
 		}
 
-        if (@event.IsActionPressed("ui_cancel"))
+        if (@event.IsActionPressed("ui_back"))
         {
 			GoToPreviousPickState();
         }
 
-        if (@event.IsActionPressed("ui_left"))
+        if (@event.IsActionPressed("ui_left") && @event.GetActionStrength("ui_left") == 1.0)
         {
 			TraverseCurrentPickOption(-1);
         }
 
-        if (@event.IsActionPressed("ui_right"))
+        if (@event.IsActionPressed("ui_right") && @event.GetActionStrength("ui_right") == 1.0)
         {
 			TraverseCurrentPickOption(1);
         }
+
+		if (@event.IsActionPressed("ui_cancel"))
+		{
+			Title pauseNode = GetNode<Title>("/root/TitleScene");
+			if (IsInstanceValid(pauseNode))
+			{
+				pauseNode.Visible = true;
+				pauseNode.SetProcessInput(true);
+				pauseNode.SetToContinue();
+                this.SetProcessInput(false);
+			}
+		}
 
         base._Input(@event);
     }

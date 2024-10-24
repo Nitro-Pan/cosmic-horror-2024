@@ -1,13 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://cem65vxxrl4y0"]
+[gd_scene load_steps=15 format=3 uid="uid://cem65vxxrl4y0"]
 
 [ext_resource type="Texture2D" uid="uid://xkgvywg6ksa4" path="res://sprites/fish-bg.png" id="1_27xw4"]
+[ext_resource type="Script" path="res://scripts/ui/title/Title.cs" id="1_gq5to"]
 [ext_resource type="Shader" path="res://resources/materials/shaders/wiggly.gdshader" id="2_mtu4l"]
+[ext_resource type="Script" path="res://scripts/ui/title/UiPicker.cs" id="3_1hals"]
+[ext_resource type="Texture2D" uid="uid://ddh85y4taj0nx" path="res://sprites/attacks/square-fish.png" id="4_yf3nm"]
+[ext_resource type="Script" path="res://scripts/ui/title/UiAction.cs" id="5_vlky2"]
+[ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="6_ub6iq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oufey"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etfid"]
 shader = ExtResource("2_mtu4l")
 shader_parameter/bounceAmplitude = 0.0
-shader_parameter/waveAmplitude = 0.032
-shader_parameter/waveFrequency = 10.0
+shader_parameter/waveAmplitude = 0.075
+shader_parameter/waveFrequency = 5.378
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 1.029
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c7hg"]
+shader = ExtResource("2_mtu4l")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.036
+shader_parameter/waveFrequency = 12.101
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 5.093
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vv3ou"]
+shader = ExtResource("2_mtu4l")
+shader_parameter/bounceAmplitude = 0.0
+shader_parameter/waveAmplitude = 0.074
+shader_parameter/waveFrequency = 2.017
 shader_parameter/verticalWave = true
 shader_parameter/keepTransparency = true
 shader_parameter/useTime = true
@@ -18,10 +53,124 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/colour = Color(1, 1, 1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_oaxxp"]
-font_size = 146
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spx3m"]
+shader = ExtResource("2_mtu4l")
+shader_parameter/bounceAmplitude = 4.054
+shader_parameter/waveAmplitude = 0.064
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/startOffset = 2.153
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/colour = Color(1, 1, 1, 1)
 
-[node name="TitleScene" type="Node2D"]
+[sub_resource type="Animation" id="Animation_771aq"]
+resource_name = "enter_title"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Actions/PlayAction:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(515, 700), Vector2(515, 318)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Actions/CreditsAction:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(515, 700), Vector2(515, 402)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Actions/ExitAction:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(515, 700), Vector2(515, 490)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnEnterAnimationFinished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_02r1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Actions/PlayAction:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(515, 700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Actions/CreditsAction:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(515, 700)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Actions/ExitAction:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(515, 700)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4n2o6"]
+_data = {
+"RESET": SubResource("Animation_02r1q"),
+"enter_title": SubResource("Animation_771aq")
+}
+
+[node name="TitleScene" type="Node2D" node_paths=PackedStringArray("Actions", "ActionAnimations")]
+z_index = 100
+script = ExtResource("1_gq5to")
+Actions = NodePath("Actions")
+ActionAnimations = NodePath("ActionAnimationPlayer")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.099986, 0.099986, 0.099986, 1)
@@ -29,57 +178,48 @@ position = Vector2(574, 326)
 scale = Vector2(0.613889, 0.613889)
 texture = ExtResource("1_27xw4")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Actions" type="Node2D" parent="." node_paths=PackedStringArray("ActionList", "SelectorSprite")]
+script = ExtResource("3_1hals")
+ActionList = [NodePath("PlayAction"), NodePath("CreditsAction"), NodePath("ExitAction")]
+SelectorSprite = NodePath("Selector")
+SelectorSpeed = 10.0
 
-[node name="PlayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 419.0
-offset_top = 347.0
-offset_right = 724.0
-offset_bottom = 396.0
-focus_neighbor_top = NodePath("../ExitButton")
-focus_neighbor_bottom = NodePath("../CreditsButton")
-text = "PLAY"
+[node name="PlayAction" type="Sprite2D" parent="Actions"]
+material = SubResource("ShaderMaterial_etfid")
+position = Vector2(515, 700)
+texture = ExtResource("4_yf3nm")
+offset = Vector2(65, 20)
+script = ExtResource("5_vlky2")
 
-[node name="CreditsButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 419.0
-offset_top = 416.0
-offset_right = 724.0
-offset_bottom = 465.0
-focus_neighbor_top = NodePath("../PlayButton")
-focus_neighbor_bottom = NodePath("../ExitButton")
-text = "CREDITS
-"
+[node name="CreditsAction" type="Sprite2D" parent="Actions"]
+material = SubResource("ShaderMaterial_6c7hg")
+position = Vector2(515, 700)
+texture = ExtResource("4_yf3nm")
+offset = Vector2(65, 20)
+script = ExtResource("5_vlky2")
 
-[node name="ExitButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 418.0
-offset_top = 486.0
-offset_right = 723.0
-offset_bottom = 535.0
-focus_neighbor_top = NodePath("../CreditsButton")
-focus_neighbor_bottom = NodePath("../PlayButton")
-text = "EXIT"
+[node name="ExitAction" type="Sprite2D" parent="Actions"]
+material = SubResource("ShaderMaterial_vv3ou")
+position = Vector2(515, 700)
+texture = ExtResource("4_yf3nm")
+offset = Vector2(65, 20)
+script = ExtResource("5_vlky2")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_oufey")
-offset_left = 287.0
-offset_top = 65.0
-offset_right = 857.0
-offset_bottom = 265.0
-text = "BREACH"
-label_settings = SubResource("LabelSettings_oaxxp")
+[node name="Selector" type="Sprite2D" parent="Actions"]
+material = SubResource("ShaderMaterial_spx3m")
+position = Vector2(518, 318)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_ub6iq")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Title" type="RichTextLabel" parent="."]
 offset_left = 373.0
 offset_top = 93.0
 offset_right = 776.0
 offset_bottom = 248.0
 bbcode_enabled = true
 text = "[wave][font_size=100]BREACH"
+
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4n2o6")
+}

@@ -32,7 +32,7 @@ SelectorSprite = NodePath("Selector")
 SelectorSpeed = 10.0
 
 [node name="Selector" type="Sprite2D" parent="."]
-z_index = 4096
+z_index = 10
 material = SubResource("ShaderMaterial_um12x")
 position = Vector2(0, -1)
 scale = Vector2(0.355, 0.355)

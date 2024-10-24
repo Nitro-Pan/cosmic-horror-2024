@@ -34,7 +34,7 @@ SelectorSprite = NodePath("Selector")
 SelectorSpeed = 10.0
 
 [node name="Selector" type="Sprite2D" parent="."]
-z_index = 4096
+z_index = 10
 material = SubResource("ShaderMaterial_hedru")
 position = Vector2(-150, 1)
 scale = Vector2(0.3675, 0.3675)

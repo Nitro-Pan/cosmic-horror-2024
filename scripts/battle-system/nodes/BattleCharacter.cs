@@ -110,7 +110,15 @@ public abstract partial class BattleCharacter : Node2D
 
 	public void StartSelect(Action onComplete = null)
 	{
-		Animator.Play("select");
+		if (!Animator.IsPlaying())
+		{
+            Animator.Play("select");
+        }
+		else
+		{
+			onComplete?.Invoke();
+		}
+		
 		OnSelectAnimationFinished = onComplete;
 	}
 
@@ -126,7 +134,10 @@ public abstract partial class BattleCharacter : Node2D
 
 	public void StartTakeDamage()
 	{
-		Animator.Play("hurt");
+		if (!Animator.IsPlaying())
+		{
+            Animator.Play("hurt");
+        }
 	}
 
 	public void SetSelectableState(bool isSelectable)

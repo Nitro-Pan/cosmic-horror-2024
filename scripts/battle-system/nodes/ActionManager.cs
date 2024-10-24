@@ -11,6 +11,13 @@ public partial class ActionManager : Node
 		Complete
 	}
 
+	private enum WinState
+	{
+		None,
+		Win,
+		Lose
+	}
+
 	private PickState _selectedPickState;
 	private PickState SelectedPickState
 	{
@@ -81,6 +88,8 @@ public partial class ActionManager : Node
 
 	private int FightIndex { get; set; } = 0;
 
+	private WinState CurrentWinState { get; set; } = WinState.None;
+
 	private AutomaticTurnManager EnemyTurnManager { get; set; } = new AutomaticTurnManager();
 
 	public event Action<PickState> OnPickStateChangedForward;
@@ -122,6 +131,18 @@ public partial class ActionManager : Node
 
 		if (@event.IsActionPressed("ui_forward"))
 		{
+			if (CurrentWinState == WinState.Win || CurrentWinState == WinState.Lose)
+			{
+				QueueFree();
+                Title pauseNode = GetNode<Title>("/root/TitleScene");
+                if (IsInstanceValid(pauseNode))
+                {
+					pauseNode.Reset();
+                }
+
+				return;
+            }
+
 			PreviousPickStates.Push(SelectedPickState);
             SelectedPickState++;
 
@@ -365,6 +386,7 @@ public partial class ActionManager : Node
 #endif
 			StageAnimtationPlayer.AnimationFinished += ReturnToMenu;
 			StageAnimtationPlayer.PlayBackwards("enter");
+			CurrentWinState = WinState.Lose;
         }
 
         PreviousPickStates.Clear();

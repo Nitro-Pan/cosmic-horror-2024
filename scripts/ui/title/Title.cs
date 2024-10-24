@@ -231,4 +231,11 @@ public partial class Title : Node2D
 	{
 		CurrentState = state;
 	}
+
+	public void Reset()
+	{
+		Visible = true;
+		ActionAnimations.Play("enter_title");
+		SetProcessInput(true);
+	}
 }

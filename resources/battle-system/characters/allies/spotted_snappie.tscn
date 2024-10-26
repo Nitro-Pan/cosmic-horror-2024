@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/AllyCharacter.cs" id="1_tcio4"]
 [ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="2_ld3cs"]
-[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="3_sch5u"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="3_kpesa"]
 [ext_resource type="Resource" uid="uid://f4dmk32rmbf1" path="res://resources/battle-system/resources/attacks/nibble_attack.tres" id="4_uo3kn"]
 [ext_resource type="Resource" uid="uid://18up4hratsdk" path="res://resources/battle-system/resources/attacks/reel-attack.tres" id="5_0nv3f"]
 [ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="5_f7ijk"]
@@ -437,7 +437,7 @@ script = ExtResource("1_tcio4")
 BaseHealth = 20.0
 BaseSpeed = 10.0
 BaseArmour = 1.0
-BaseAttacks = Array[Resource]([ExtResource("2_ld3cs"), ExtResource("3_sch5u"), ExtResource("4_uo3kn"), ExtResource("5_0nv3f"), ExtResource("5_f7ijk")])
+BaseAttacks = Array[Resource]([ExtResource("5_0nv3f"), ExtResource("3_kpesa"), ExtResource("4_uo3kn"), ExtResource("2_ld3cs"), ExtResource("5_f7ijk")])
 HealthLabel = NodePath("HealthLabel")
 CharacterSprite = NodePath("CharacterSprite")
 Animator = NodePath("AnimationPlayer")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnrf37a01u6fd"]
+[gd_scene load_steps=14 format=3 uid="uid://cnrf37a01u6fd"]
 
 [ext_resource type="Script" path="res://scripts/battle-system/nodes/CharacterPicker.cs" id="1_e5egf"]
 [ext_resource type="Texture2D" uid="uid://tpa4ihxt524i" path="res://sprites/attacks/hook-cursor.png" id="2_i30qf"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://ch2htfgcenmhv" path="res://resources/battle-system/characters/allies/fish_mascot.tscn" id="4_d4oei"]
 [ext_resource type="PackedScene" uid="uid://c3fc5jwp0uubj" path="res://resources/battle-system/characters/allies/loveland_toad.tscn" id="5_7hlfj"]
 [ext_resource type="PackedScene" uid="uid://cmdipi03t0j81" path="res://resources/battle-system/characters/allies/spotted_snappie.tscn" id="6_87j2b"]
+[ext_resource type="Resource" uid="uid://ciia24blbm7oq" path="res://resources/battle-system/resources/attacks/bite_attack.tres" id="6_278l6"]
+[ext_resource type="Resource" uid="uid://dw7r0skafn31s" path="res://resources/battle-system/resources/attacks/maul_attack.tres" id="7_sjvgk"]
+[ext_resource type="Resource" uid="uid://katnx0380oeb" path="res://resources/battle-system/resources/attacks/tendril_attack.tres" id="8_4hwvr"]
+[ext_resource type="Resource" uid="uid://cwdm06omj58ba" path="res://resources/battle-system/resources/attacks/move_attack.tres" id="9_x7a1r"]
+[ext_resource type="Resource" uid="uid://b12wvhtllqtkg" path="res://resources/battle-system/resources/attacks/pass_attack.tres" id="10_vla4x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_auqbe"]
 resource_local_to_scene = true
@@ -26,7 +31,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 
 [node name="CharacterSelector" type="Node2D" node_paths=PackedStringArray("ActionList", "SelectorSprite")]
 script = ExtResource("1_e5egf")
-ActionList = [NodePath("Characters/Spotted Snappie"), NodePath("Characters/Loveland Toad"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Brain Sturgeon")]
+ActionList = [NodePath("Characters/Loveland Toad"), NodePath("Characters/Spotted Snappie"), NodePath("Characters/Fish Mascot"), NodePath("Characters/Brain Sturgeon")]
 DisabledColour = Color(0.392157, 0.392157, 0.392157, 1)
 SelectorSprite = NodePath("Selector")
 ReverseSelectionOrder = true
@@ -45,9 +50,10 @@ texture = ExtResource("2_i30qf")
 
 [node name="Fish Mascot" parent="Characters" instance=ExtResource("4_d4oei")]
 position = Vector2(100, 0)
+BaseAttacks = Array[Resource]([ExtResource("6_278l6"), ExtResource("7_sjvgk"), ExtResource("8_4hwvr"), ExtResource("9_x7a1r"), ExtResource("10_vla4x")])
 
 [node name="Loveland Toad" parent="Characters" instance=ExtResource("5_7hlfj")]
-position = Vector2(200, 0)
+position = Vector2(300, 0)
 
 [node name="Spotted Snappie" parent="Characters" instance=ExtResource("6_87j2b")]
-position = Vector2(300, 0)
+position = Vector2(200, 0)

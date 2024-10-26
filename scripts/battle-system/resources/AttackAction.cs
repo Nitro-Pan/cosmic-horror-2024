@@ -30,6 +30,11 @@ public partial class AttackAction : Resource
 
     public bool CanHitCharacter(BattleCharacter character)
     {
+        if (ContainsStatus(BattleUtils.StatusType.Moving))
+        {
+            return true;
+        }
+
         if (character.IsDead())
         {
             return false;
